@@ -109,7 +109,7 @@ jobs:
           grep -q '"cache_only":true' status.json
           grep -q '"state":"recorded"' status.json
           # browser security headers on the public container
-          curl -fsSI $B/ -o headers.txt
+          curl -fsS -D headers.txt -o /dev/null $B/
           grep -qi '^content-security-policy:' headers.txt
           grep -qi '^x-content-type-options: nosniff' headers.txt
           ! grep -qi '^server:' headers.txt
