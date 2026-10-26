@@ -8,9 +8,19 @@ BYLINE follows a live football match event by event, detects the moments and tac
 
 Built for Microsoft's *Inside the Game: Premier League Developer Hackathon* (2026).
 
-**Live demo:** _to be added at release_ · **Video (under 2 minutes):** _to be added at release_
+**Live demo:** https://ca-byline-demo.yellowstone-acde35ac.eastus.azurecontainerapps.io (test deployment, no sign-in) · **Video (under 2 minutes):** _to be added at release_
 
 ![Commentator at 7 minutes: one live insight, verified by Foundry agents](docs/screenshots/release/cm-7m-desk.png)
+
+## Try BYLINE in 60 seconds
+
+Open the [live demo](https://ca-byline-demo.yellowstone-acde35ac.eastus.azurecontainerapps.io). It starts on the **Commentator** view of the golden match (BYLINE-01).
+
+1. **0–15 s.** Drag the timeline to about **6:30**. The live insight reads *"S. Haddad-Rhys was open as M. Lindqvist's pass was cut out"*, with an amber **Verified by Foundry agents** line.
+2. **15–30 s.** Press **Show the play**. Step through the guided replay with **Next**: what happened, the measured options, the labelled *What if?*. Open **How it was checked** to see the recorded agent run (calls, tokens, latency). Press **← Back to match**; the clock returns to exactly where you were.
+3. **30–40 s.** Tap the **Vantreight** shirt. The player file leads with the one fact worth saying; press **Mark used**.
+4. **40–50 s.** Switch to **Studio**. Preview the *Tactical breakthrough*, try a format (lower third, corner box, spotlight, full screen) and press **Take to air now**: the graphic stays on the simulated programme monitor until **Take off air**.
+5. **50–60 s.** Switch to **Fan**, pick **Northbridge** by its crest, choose a player, and answer **What would you do?** on the real frozen frame.
 
 ## The problem
 
@@ -41,13 +51,19 @@ Live football produces thousands of events a match. Broadcasters and fans get ra
 flowchart LR
   A[Synthetic match source<br/>events + 2 Hz tracking] --> B[Match event engine<br/>event-sourced reducer, IFAB rules]
   B --> C[Tactical detectors<br/>& match statistics]
-  C --> D[Foundry multi-agent investigation<br/>Investigator → Analyst → Verifier]
-  D --> E[Deterministic validator]
-  E --> F[Verified intelligence<br/>stories, tactical reads, recap]
+  C --> I
+  subgraph AF[Microsoft Agent Framework workflow · Foundry gpt-4.1-mini]
+    I[Investigator<br/>bounded read-only tools] --> AN[Analyst]
+    AN --> V[Verifier<br/>re-checks the evidence]
+    V --> DV{Deterministic validator<br/>event ids, numbers, names, no outcomes}
+    DV -- issues: one revision --> AN
+  end
+  DV -- approved --> F[Verified intelligence<br/>stories, tactical reads, recap]
+  DV -- rejected twice --> X[Labelled factual summary<br/>nothing unverified is published]
   F --> G1[Commentator]
-  F --> G2[Studio]
+  F --> G2[Studio · human approval to air]
   F --> G3[Fan]
-  B -. official corrections (VAR) .-> F
+  B -. official corrections (VAR) withdraw stories and graphics .-> F
 ```
 
 - **Ingest.** A seeded simulator produces three full 96-minute matches (about 2,600 events each plus tracking). Sessions stream them over server-sent events at 1–60x; seeking rebuilds state from the log, so replays are deterministic.
@@ -69,6 +85,8 @@ The hackathon demonstration uses recorded outputs from genuine Microsoft Foundry
 
 Agents execute within BYLINE's Python backend using Microsoft Agent Framework. They are not hosted in Foundry Agent Service.
 
+**A real revision, on the record.** The featured 7th-minute moment is a genuine recorded run (`apps/api/recorded/tactics/00cf4191cdb7dd4c6910563c.json`): Investigator → Analyst → Verifier (approved) → deterministic validator, which flagged one name in the draft (it read the possessive "M. Lindqvist's" as an unknown player; a check we have since made exact). The workflow sent the draft **back to the Analyst for a revision**, and the revised draft passed a second Verifier and validator round. All 6 model calls carry their Foundry response IDs, token counts and latency, and the live demo serves that trace with the insight (`/api/matches/BYLINE-01/tactics/T-option-NBA-0180/insight`).
+
 Where to look: `apps/api/byline/agents/orchestrator.py` (the `WorkflowBuilder` graph and the three executors), `agents/tools.py` (bounded read-only tools), `agents/validator.py` (deterministic checks), `apps/api/recorded/` (the recorded runs with per-step response IDs, tokens and latency), `docs/ai-provenance.md`.
 
 **Recorded, not live.** In the demo, every AI result is a stored record of a real run, shown with its trace ("Real Foundry run"). Cache misses fall back to clearly labelled deterministic summaries; they never trigger a model call. A persistent hard cap blocks calls even if cache-only were switched off.
@@ -79,8 +97,8 @@ Where to look: `apps/api/byline/agents/orchestrator.py` (the `WorkflowBuilder` g
 |---|---|
 | Microsoft Foundry | GPT-4.1-mini model deployment used for the agent runs (Entra ID authentication) |
 | Microsoft Agent Framework (Python) | `WorkflowBuilder` graph, `Agent`s with function tools and middleware metering |
-| Azure Container Apps | Target hosting for the public demo (single container, cache-only) |
-| GitHub Actions | CI: tests, type checks, lint, secret scans, container build and smoke test, browser E2E and accessibility |
+| Azure Container Apps | Hosts the public demo: one Consumption-plan container, HTTPS, cache-only, no credentials ([deployment record](docs/submission/DEPLOYMENT.md)) |
+| GitHub Actions | CI on every code change: tests, type checks, lint, secret scans, container build and HTTP smoke test, browser E2E and accessibility; a manual workflow publishes the image to GitHub Container Registry |
 
 ## Run it
 
@@ -91,12 +109,26 @@ docker build -t byline .
 docker run -p 8000:8000 byline     # http://localhost:8000, cache-only, no credentials needed
 ```
 
-**Development:** Python 3.12 and Node 22.
+**Development:** Python 3.12 and Node 22. Use two terminals.
+
+macOS or Linux:
 
 ```bash
-cd apps/api && python -m venv .venv && .venv/bin/pip install -e ".[dev]" -r requirements-ai.txt
+# terminal 1: API (cache-only, recorded runs, no credentials)
+cd apps/api && python3 -m venv .venv && .venv/bin/pip install -e ".[dev]" -r requirements-ai.txt
 BYLINE_AI_PROVIDER=foundry BYLINE_AI_CACHE_ONLY=true .venv/bin/python -m uvicorn byline.api.app:app --port 8000
-cd apps/web && npm ci && npm run dev    # http://localhost:5173
+# terminal 2: web app on http://localhost:5173
+cd apps/web && npm ci && npm run dev
+```
+
+Windows (PowerShell):
+
+```powershell
+# terminal 1: API
+cd apps\api; py -3.12 -m venv .venv; .venv\Scripts\pip install -e ".[dev]" -r requirements-ai.txt
+$env:BYLINE_AI_PROVIDER="foundry"; $env:BYLINE_AI_CACHE_ONLY="true"; .venv\Scripts\python -m uvicorn byline.api.app:app --port 8000
+# terminal 2: web app on http://localhost:5173
+cd apps\web; npm ci; npm run dev
 ```
 
 ## Tests and CI
@@ -106,6 +138,22 @@ cd apps/web && npm ci && npm run dev    # http://localhost:5173
 ## Security model
 
 Read-only public demo: visitors get their own ephemeral replay session and cannot change match data, recorded AI evidence or configuration. Strict Content-Security-Policy and security headers, request-size limits, rate limits that ignore spoofed forwarding headers, no API docs in production, a non-root container. See [security audit](docs/security-audit.md).
+
+## The vision: from synthetic football to live broadcast intelligence
+
+BYLINE was developed rapidly as a working proof of concept for the Microsoft Inside the Game hackathon, using entirely synthetic match events, player tracking and fictional football histories.
+
+The real opportunity lies in connecting the same intelligence engine to the professional data and production infrastructure already available to broadcasters and football organisations.
+
+Imagine BYLINE integrated with **Opta's rich event and historical data, licensed player and ball tracking, live match video, and the broadcast graphics and visualisation tools already used across elite football.**
+
+Rather than simply presenting statistics, BYLINE could continuously investigate the match as it unfolds: identifying emerging tactical patterns, understanding why key moments occurred, checking historical significance and delivering evidence-backed insights tailored to different audiences.
+
+For commentators, that could mean immediate, contextual research and meaningful talking points. For production teams, it could mean automatically prepared tactical overlays, passing-lane visualisations, player movements and alternative scenarios, ready for a producer to review and take to air. For fans, it could mean a personalised, interactive understanding of the football they're watching.
+
+**The ambition is not to build another football statistics platform. It is to turn existing football data into intelligence that can be explained, visualised and used in real time.**
+
+The current prototype demonstrates this approach using synthetic data and a simulated broadcast environment. Integrating real-world feeds, licensed video and professional broadcast systems would require commercial partnerships, data rights and further engineering, but the underlying investigation, verification and storytelling workflows are already demonstrated in BYLINE.
 
 ## Known limitations
 
