@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -123,8 +124,15 @@ def test_var_reversal_retracts_dependent_story_per_session() -> None:
         sess.speed = 60
         while sess.playhead_ms < dis.elapsed_ms:
             sess.tick(1.0)
-        msgs = _drain(sess)
-        ret = [m for m in msgs if m.event == "insight_update" and m.data["candidate_id"] == "P-D2-NBA-2005"]
+        # the retraction is published by a background task: allow it to land on a slow runner
+        msgs = []
+        deadline = time.monotonic() + 10
+        while True:
+            msgs += _drain(sess)
+            ret = [m for m in msgs if m.event == "insight_update" and m.data["candidate_id"] == "P-D2-NBA-2005"]
+            if (ret and ret[-1].data["stage"] == "retracted") or time.monotonic() > deadline:
+                break
+            time.sleep(0.05)
         assert ret and ret[-1].data["stage"] == "retracted"
         ins = ret[-1].data["insight"]
         assert ins["status"] == "retracted" and ins["version"] == 2 and "offside" in ins["retraction_reason"]
