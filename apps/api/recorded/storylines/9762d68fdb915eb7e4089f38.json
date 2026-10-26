@@ -1,0 +1,25 @@
+{
+ "storyline_id": "SL-counterattack-RVC-transition-1",
+ "version": 1,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593301.5799837,
+ "read": null,
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 398,
+  "output_tokens": 46,
+  "started_at": 1792593300.4801111,
+  "response_id": "chatcmpl-EbRh6CxSGHpk7iKs0JYN4GKAaDYxM",
+  "latency_ms": 1096,
+  "issues": [
+   "number 47 is not in the storyline metrics"
+  ],
+  "output": {
+   "line": "Riverton City launched a fast counter with 3 passes, advancing 47 metres in 9.4 seconds, ending with a saved shot.",
+   "caveat": "Counts cannot show player intent or positioning."
+  }
+ }
+}

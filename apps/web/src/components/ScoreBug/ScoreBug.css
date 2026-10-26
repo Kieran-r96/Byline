@@ -1,0 +1,150 @@
+.scorebug {
+  display: inline-flex;
+  align-items: stretch;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--deep);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    0 6px 20px -10px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.scorebug__plate {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-3);
+}
+
+.scorebug__side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.scorebug__side--away {
+  flex-direction: row-reverse;
+}
+
+.scorebug__code {
+  position: relative;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-heavy);
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  padding-bottom: 3px;
+}
+/* Kit colour flag: a short underline, contained and quiet. */
+.scorebug__code::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.1em;
+  bottom: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--kit);
+}
+
+.scorebug__score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 72px;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  height: 36px;
+  border-radius: 7px;
+  background: var(--ink);
+  font-size: var(--fs-score);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cream);
+}
+.scorebug__dash {
+  width: 8px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--muted);
+  opacity: 0.6;
+}
+
+.scorebug__time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  padding: 0 var(--space-4) 0 var(--space-3);
+  border-left: 1px solid var(--line);
+  min-width: 92px;
+}
+.scorebug__clock {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--cream);
+}
+.scorebug__period {
+  font-size: 0.625rem;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.scorebug--compact {
+  height: 44px;
+}
+.scorebug--compact .scorebug__plate {
+  gap: var(--space-2);
+  padding: 0 var(--space-2);
+}
+.scorebug--compact .scorebug__score {
+  min-width: 60px;
+  height: 32px;
+  font-size: 1.625rem;
+  padding: 0 var(--space-2);
+}
+.scorebug--compact .scorebug__time {
+  min-width: 76px;
+  padding: 0 var(--space-3) 0 var(--space-2);
+}
+.scorebug--compact .scorebug__clock {
+  font-size: 1.1875rem;
+}
+
+/* Provisional goal: outlined digit + amber CHECKING tag (text, not colour only). */
+.scorebug__digit--provisional {
+  color: transparent;
+  -webkit-text-stroke: 1.25px var(--gold);
+}
+.scorebug__period--checking {
+  color: var(--gold);
+}
+.scorebug[data-checking='true'] {
+  box-shadow:
+    inset 0 0 0 1px rgba(231, 186, 96, 0.55),
+    0 6px 20px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* crests open the club file where the host allows it (Commentator) */
+.scorebug__crest {
+  display: inline-grid;
+  place-items: center;
+  padding: 2px;
+  margin: -2px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-standard), background var(--dur-fast);
+}
+.scorebug__crest:hover {
+  background: color-mix(in srgb, var(--chalk) 8%, transparent);
+  transform: scale(1.06);
+}
+@media (prefers-reduced-motion: reduce) {
+  .scorebug__crest:hover {
+    transform: none;
+  }
+}

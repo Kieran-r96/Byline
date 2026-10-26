@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-repeated-channel-attack-NBA-right-1",
+ "version": 2,
+ "state": "DEVELOPING",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593298.934129,
+ "read": {
+  "line": "Northbridge Athletic is building pressure with 7 of 8 entries down the right, but no dangerous entries yet.",
+  "caveat": "Counts cannot show player intent or positioning."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 452,
+  "output_tokens": 39,
+  "started_at": 1792593297.9696686,
+  "response_id": "chatcmpl-EbRh4iVKMEOM14ZlDlqXuXvi4Y4yG",
+  "latency_ms": 955,
+  "issues": [],
+  "output": {
+   "line": "Northbridge Athletic is building pressure with 7 of 8 entries down the right, but no dangerous entries yet.",
+   "caveat": "Counts cannot show player intent or positioning."
+  }
+ }
+}

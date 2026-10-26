@@ -1,0 +1,34 @@
+[
+ {
+  "label_id": "L01",
+  "pattern_type": "repeated_channel_attack",
+  "team_id": "NBA",
+  "start_ms": 960000,
+  "end_ms": 1771400,
+  "note": "Authored channel bias toward attacking-frame y=59.0"
+ },
+ {
+  "label_id": "L02",
+  "pattern_type": "counterattack",
+  "team_id": "RVC",
+  "start_ms": 2130400,
+  "end_ms": 2150200,
+  "note": "Interception then three passes to a saved shot"
+ },
+ {
+  "label_id": "L03",
+  "pattern_type": "counterattack",
+  "team_id": "RVC",
+  "start_ms": 3164900,
+  "end_ms": 3173500,
+  "note": "Midfield interception, fast break, goal"
+ },
+ {
+  "label_id": "L04",
+  "pattern_type": "overlap",
+  "team_id": "NBA",
+  "start_ms": 3466300,
+  "end_ms": 3473700,
+  "note": "Right-back overlaps the right winger, crosses, saved header"
+ }
+]

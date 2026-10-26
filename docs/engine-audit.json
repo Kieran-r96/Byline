@@ -1,0 +1,1593 @@
+{
+ "runs": [
+  {
+   "scenario": "golden_story",
+   "seed": 2026,
+   "split": "dev",
+   "candidates": {
+    "repeated_channel_attack": 1,
+    "counterattack": 4,
+    "overlap": 1
+   },
+   "clocks": [
+    [
+     1633200,
+     "28'",
+     "repeated_channel_attack"
+    ],
+    [
+     2140700,
+     "36'",
+     "counterattack"
+    ],
+    [
+     3172900,
+     "51'",
+     "counterattack"
+    ],
+    [
+     3471800,
+     "56'",
+     "overlap"
+    ],
+    [
+     3506400,
+     "57'",
+     "counterattack"
+    ],
+    [
+     4369600,
+     "71'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 27.2,
+   "longest_silence_min": 27.2,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 1,
+     "extra_on_labels": 1,
+     "recovered_labels": 0,
+     "earlier_min": [
+      3.0
+     ]
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 4,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 6,
+    "watch_only": 1,
+    "first_signal_min": 22.6,
+    "versions": 22,
+    "longest_silence_min": 22.6,
+    "labelled_lead_min": [
+     4.6
+    ]
+   }
+  },
+  {
+   "scenario": "golden_story",
+   "seed": 11,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 2,
+    "counterattack": 4,
+    "overlap": 1
+   },
+   "clocks": [
+    [
+     176100,
+     "3'",
+     "counterattack"
+    ],
+    [
+     1485400,
+     "25'",
+     "repeated_channel_attack"
+    ],
+    [
+     1644200,
+     "28'",
+     "counterattack"
+    ],
+    [
+     2140900,
+     "36'",
+     "counterattack"
+    ],
+    [
+     3092600,
+     "50'",
+     "repeated_channel_attack"
+    ],
+    [
+     3195300,
+     "52'",
+     "counterattack"
+    ],
+    [
+     3474700,
+     "56'",
+     "overlap"
+    ]
+   ],
+   "first_signal_min": 2.9,
+   "longest_silence_min": 38.2,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 1,
+     "extra_on_labels": 1,
+     "recovered_labels": 0,
+     "earlier_min": [
+      2.2
+     ]
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 3,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 1,
+     "extra_on_labels": 1,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 5,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 12,
+    "watch_only": 5,
+    "first_signal_min": 2.9,
+    "versions": 35,
+    "longest_silence_min": 9.2,
+    "labelled_lead_min": [
+     2.2
+    ]
+   }
+  },
+  {
+   "scenario": "golden_story",
+   "seed": 12,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 2,
+    "counterattack": 2,
+    "overlap": 1
+   },
+   "clocks": [
+    [
+     1268700,
+     "22'",
+     "repeated_channel_attack"
+    ],
+    [
+     1633100,
+     "28'",
+     "counterattack"
+    ],
+    [
+     1633100,
+     "28'",
+     "repeated_channel_attack"
+    ],
+    [
+     2166000,
+     "37'",
+     "counterattack"
+    ],
+    [
+     3479300,
+     "56'",
+     "overlap"
+    ]
+   ],
+   "first_signal_min": 21.1,
+   "longest_silence_min": 38.2,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 1,
+     "extra_on_labels": 1,
+     "recovered_labels": 0,
+     "earlier_min": [
+      0.5
+     ]
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 5,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 1,
+     "extra_on_labels": 1,
+     "recovered_labels": 1,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 7,
+    "watch_only": 2,
+    "first_signal_min": 12.3,
+    "versions": 22,
+    "longest_silence_min": 18.1,
+    "labelled_lead_min": [
+     2.3
+    ]
+   }
+  },
+  {
+   "scenario": "golden_story",
+   "seed": 13,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 1,
+    "counterattack": 4,
+    "overlap": 1
+   },
+   "clocks": [
+    [
+     1633100,
+     "28'",
+     "counterattack"
+    ],
+    [
+     1633100,
+     "28'",
+     "repeated_channel_attack"
+    ],
+    [
+     1898800,
+     "32'",
+     "counterattack"
+    ],
+    [
+     2196700,
+     "37'",
+     "counterattack"
+    ],
+    [
+     3177500,
+     "51'",
+     "counterattack"
+    ],
+    [
+     3474300,
+     "56'",
+     "overlap"
+    ]
+   ],
+   "first_signal_min": 27.2,
+   "longest_silence_min": 38.2,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 2,
+     "extra_on_labels": 1,
+     "recovered_labels": 0,
+     "earlier_min": [
+      2.1
+     ]
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 4,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 6,
+    "watch_only": 1,
+    "first_signal_min": 20.6,
+    "versions": 21,
+    "longest_silence_min": 20.6,
+    "labelled_lead_min": [
+     6.6
+    ]
+   }
+  },
+  {
+   "scenario": "golden_story",
+   "seed": 14,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 0,
+    "counterattack": 5,
+    "overlap": 0
+   },
+   "clocks": [
+    [
+     20700,
+     "1'",
+     "counterattack"
+    ],
+    [
+     710900,
+     "12'",
+     "counterattack"
+    ],
+    [
+     1348500,
+     "23'",
+     "counterattack"
+    ],
+    [
+     3271900,
+     "53'",
+     "counterattack"
+    ],
+    [
+     4070900,
+     "66'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 0.3,
+   "longest_silence_min": 32.1,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 4,
+     "extra_on_labels": 1,
+     "recovered_labels": 1,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 3,
+     "extra_on_labels": 1,
+     "recovered_labels": 1,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 6,
+    "watch_only": 3,
+    "first_signal_min": 0.3,
+    "versions": 20,
+    "longest_silence_min": 12.0,
+    "labelled_lead_min": []
+   }
+  },
+  {
+   "scenario": "ordinary_match",
+   "seed": 7341,
+   "split": "dev",
+   "candidates": {
+    "repeated_channel_attack": 0,
+    "counterattack": 1,
+    "overlap": 0
+   },
+   "clocks": [
+    [
+     2219700,
+     "37'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 37.0,
+   "longest_silence_min": 57.1,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 6,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 6,
+    "watch_only": 5,
+    "first_signal_min": 8.0,
+    "versions": 12,
+    "longest_silence_min": 24.7,
+    "labelled_lead_min": []
+   }
+  },
+  {
+   "scenario": "ordinary_match",
+   "seed": 21,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 0,
+    "counterattack": 2,
+    "overlap": 0
+   },
+   "clocks": [
+    [
+     4334200,
+     "72'",
+     "counterattack"
+    ],
+    [
+     5553000,
+     "90+2'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 72.2,
+   "longest_silence_min": 72.2,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 5,
+    "watch_only": 3,
+    "first_signal_min": 5.4,
+    "versions": 11,
+    "longest_silence_min": 47.6,
+    "labelled_lead_min": []
+   }
+  },
+  {
+   "scenario": "ordinary_match",
+   "seed": 22,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 1,
+    "counterattack": 5,
+    "overlap": 0
+   },
+   "clocks": [
+    [
+     172400,
+     "3'",
+     "counterattack"
+    ],
+    [
+     574000,
+     "10'",
+     "counterattack"
+    ],
+    [
+     1453900,
+     "25'",
+     "repeated_channel_attack"
+    ],
+    [
+     3520300,
+     "58'",
+     "counterattack"
+    ],
+    [
+     3883100,
+     "64'",
+     "counterattack"
+    ],
+    [
+     4218300,
+     "70'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 2.9,
+   "longest_silence_min": 34.4,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 5,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 3,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 7,
+    "watch_only": 3,
+    "first_signal_min": 2.9,
+    "versions": 22,
+    "longest_silence_min": 13.9,
+    "labelled_lead_min": []
+   }
+  },
+  {
+   "scenario": "ordinary_match",
+   "seed": 23,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 2,
+    "counterattack": 2,
+    "overlap": 0
+   },
+   "clocks": [
+    [
+     2101200,
+     "36'",
+     "repeated_channel_attack"
+    ],
+    [
+     2106600,
+     "36'",
+     "counterattack"
+    ],
+    [
+     3855300,
+     "64'",
+     "counterattack"
+    ],
+    [
+     5637300,
+     "90+3'",
+     "repeated_channel_attack"
+    ]
+   ],
+   "first_signal_min": 35.0,
+   "longest_silence_min": 35.0,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 3,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 7,
+    "watch_only": 3,
+    "first_signal_min": 3.5,
+    "versions": 21,
+    "longest_silence_min": 18.2,
+    "labelled_lead_min": []
+   }
+  },
+  {
+   "scenario": "ordinary_match",
+   "seed": 24,
+   "split": "held_out",
+   "candidates": {
+    "repeated_channel_attack": 2,
+    "counterattack": 3,
+    "overlap": 1
+   },
+   "clocks": [
+    [
+     805300,
+     "14'",
+     "repeated_channel_attack"
+    ],
+    [
+     1404800,
+     "24'",
+     "counterattack"
+    ],
+    [
+     2048800,
+     "35'",
+     "repeated_channel_attack"
+    ],
+    [
+     4149300,
+     "69'",
+     "counterattack"
+    ],
+    [
+     5148400,
+     "85'",
+     "overlap"
+    ],
+    [
+     5436500,
+     "90'",
+     "counterattack"
+    ]
+   ],
+   "first_signal_min": 13.4,
+   "longest_silence_min": 35.0,
+   "ablations": {
+    "repeated_channel_attack|min_entries 5 -> 3": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_possessions 3 -> 2": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_share 0.60 -> 0.45": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|min_dangerous 1 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline required -> not required": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|baseline margin 0.20 -> 0": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|tail probability 0.005 -> 0.05": {
+     "extra": 2,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "repeated_channel_attack|cooldown 15 -> 5 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|max seconds 12 -> 18": {
+     "extra": 1,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min advance 30 -> 20 m": {
+     "extra": 4,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|min actions 2 -> 1": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "counterattack|cooldown 4 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min run 12 -> 8 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|min speed 5.0 -> 4.0 m/s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|wide corridor 17 -> 12 m": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|chance window 9 -> 14 s": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    },
+    "overlap|cooldown 5 -> 1 min": {
+     "extra": 0,
+     "extra_on_labels": 0,
+     "recovered_labels": 0,
+     "earlier_min": []
+    }
+   },
+   "storylines": {
+    "total": 7,
+    "watch_only": 1,
+    "first_signal_min": 2.4,
+    "versions": 21,
+    "longest_silence_min": 24.2,
+    "labelled_lead_min": []
+   }
+  }
+ ],
+ "agents": {
+  "runs": [
+   {
+    "candidate_id": "P-D3-NBA-1601",
+    "calls": 5,
+    "tokens": 7990,
+    "latency_ms": 18536,
+    "outcome": "verified"
+   },
+   {
+    "candidate_id": "P-D2-NBA-2005",
+    "calls": 5,
+    "tokens": 9384,
+    "latency_ms": 17238,
+    "outcome": "verified"
+   },
+   {
+    "candidate_id": "P-D1-NBA-0760",
+    "calls": 5,
+    "tokens": 9944,
+    "latency_ms": 17368,
+    "outcome": "verified"
+   }
+  ],
+  "per_agent_mean": {
+   "investigator": {
+    "latency_ms": 8992.3,
+    "calls": 2,
+    "tokens": 3600,
+    "tool_calls": 2.3
+   },
+   "analyst": {
+    "latency_ms": 3861,
+    "calls": 1,
+    "tokens": 1845.7,
+    "tool_calls": 0
+   },
+   "verifier": {
+    "latency_ms": 3944.7,
+    "calls": 2,
+    "tokens": 3660.3,
+    "tool_calls": 2.3
+   },
+   "deterministic_validator": {
+    "latency_ms": 5.7,
+    "calls": 0,
+    "tokens": 0,
+    "tool_calls": 0
+   }
+  },
+  "translations": [
+   {
+    "tokens": 743,
+    "latency_ms": 7196
+   },
+   {
+    "tokens": 693,
+    "latency_ms": 2479
+   },
+   {
+    "tokens": 712,
+    "latency_ms": 3678
+   }
+  ]
+ },
+ "findings": [
+  "Publication is binary and late: median first signal 24.15 min, median longest silence 36.6 min (worst 72.2 min). Nothing shows a pattern while it builds.",
+  "Developing stage is measurable without lowering any gate: with the danger requirement removed, the channel detector finds the same authored patterns 0.5-3.0 min earlier and recovers none it misses. V1 shows that state as DEVELOPING (measured counts only, no story claim) and promotes it when the production gates pass.",
+  "Gates that must stay: tail probability 0.005 -> 0.05 adds 26 candidates, only 1 on authored patterns; max seconds 12 -> 18 adds 30 candidates, only 0 on authored patterns; min advance 30 -> 20 m adds 13 candidates, only 2 on authored patterns. Relaxing them would mostly publish noise.",
+  "Cooldowns hide almost nothing here (at most one extra), so a storyline should version the existing story rather than add new ones.",
+  "Agent time: the investigator is 54% of a full investigation's latency (two model calls with tool round-trips); analyst and verifier are about 4 s each. V3 should profile the investigator first and keep the verifier and rule check intact.",
+  "Only 3 of the golden match's 6 candidates have real AI runs; the rest are detector summaries. V2 tiers make that explicit per storyline version."
+ ]
+}

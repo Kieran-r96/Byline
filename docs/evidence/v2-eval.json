@@ -1,0 +1,322 @@
+{
+ "started": 1792593238.1429746,
+ "ledger_start": 21,
+ "cap": 53,
+ "v3": [
+  {
+   "candidate_id": "P-D1-NBA-0760",
+   "display_clock": "28'",
+   "outcome": "degraded (budget: case_token_cap)",
+   "calls": 5,
+   "tokens": 17423,
+   "latency_ms": 22961,
+   "per_step": [
+    {
+     "agent": "investigator",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 10427,
+     "model_tool_calls": [
+      "get_events",
+      "get_match_context"
+     ]
+    },
+    {
+     "agent": "analyst",
+     "attempt": 1,
+     "calls": 1,
+     "latency_ms": 4159,
+     "model_tool_calls": []
+    },
+    {
+     "agent": "verifier",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 8061,
+     "model_tool_calls": [
+      "get_events",
+      "get_detector_metrics"
+     ]
+    },
+    {
+     "agent": "deterministic_validator",
+     "attempt": 1,
+     "calls": 0,
+     "latency_ms": 6,
+     "model_tool_calls": []
+    },
+    {
+     "agent": "analyst",
+     "attempt": 2,
+     "calls": 0,
+     "latency_ms": 0,
+     "model_tool_calls": []
+    }
+   ],
+   "error": "budget: case_token_cap",
+   "title": "Repeated attacks down one channel",
+   "claim": "Northbridge Athletic: 10 of their last 11 final-third entries came through the right channel (91%) in the last 10 minutes, across 8 separate possessions; 1 reached the box or produced a shot.",
+   "issues": [
+    "budget: case_token_cap"
+   ],
+   "status": "tentative",
+   "original": {
+    "calls": 5,
+    "tokens": 9944,
+    "latency_ms": 17368,
+    "outcome": "verified"
+   }
+  },
+  {
+   "candidate_id": "P-D3-NBA-1601",
+   "display_clock": "56'",
+   "outcome": "verified",
+   "calls": 5,
+   "tokens": 11671,
+   "latency_ms": 17847,
+   "per_step": [
+    {
+     "agent": "investigator",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 7350,
+     "model_tool_calls": [
+      "get_events",
+      "get_match_context"
+     ]
+    },
+    {
+     "agent": "analyst",
+     "attempt": 1,
+     "calls": 1,
+     "latency_ms": 4094,
+     "model_tool_calls": []
+    },
+    {
+     "agent": "verifier",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 5256,
+     "model_tool_calls": [
+      "get_events",
+      "get_detector_metrics"
+     ]
+    },
+    {
+     "agent": "deterministic_validator",
+     "attempt": 1,
+     "calls": 0,
+     "latency_ms": 1,
+     "model_tool_calls": []
+    }
+   ],
+   "error": null,
+   "title": "Northbridge Executes Overlapping Run Leading to Cross",
+   "claim": "#2 D. Mensah-Lowe ran 36.5 m in 5.5 s from 26.2 m behind to 4.4 m ahead of #7 K. Rennard on the right flank, received a pass, and delivered a cross within 2.8 seconds.",
+   "issues": [],
+   "status": "verified",
+   "cache_key": "f38fb26c924f79a9b46361cb",
+   "original": {
+    "calls": 5,
+    "tokens": 7990,
+    "latency_ms": 18536,
+    "outcome": "verified"
+   }
+  },
+  {
+   "candidate_id": "P-D2-NBA-2005",
+   "display_clock": "71'",
+   "outcome": "verified",
+   "calls": 5,
+   "tokens": 13417,
+   "latency_ms": 16121,
+   "per_step": [
+    {
+     "agent": "investigator",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 6142,
+     "model_tool_calls": [
+      "get_events"
+     ]
+    },
+    {
+     "agent": "analyst",
+     "attempt": 1,
+     "calls": 1,
+     "latency_ms": 3911,
+     "model_tool_calls": []
+    },
+    {
+     "agent": "verifier",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 5805,
+     "model_tool_calls": [
+      "get_events",
+      "get_detector_metrics"
+     ]
+    },
+    {
+     "agent": "deterministic_validator",
+     "attempt": 1,
+     "calls": 0,
+     "latency_ms": 3,
+     "model_tool_calls": []
+    }
+   ],
+   "error": null,
+   "title": "Northbridge Executes Quick 12-Second Counterattack Goal",
+   "claim": "Northbridge Athletic regained the ball by interception in the middle third and scored a goal 12.0 seconds later after 4 passes or carries advancing 36.3 metres.",
+   "issues": [],
+   "status": "verified",
+   "cache_key": "2c5aada8ebcb0d4d291cb081",
+   "original": {
+    "calls": 5,
+    "tokens": 9384,
+    "latency_ms": 17238,
+    "outcome": "verified"
+   }
+  }
+ ],
+ "t1": [
+  {
+   "storyline_id": "SL-repeated-channel-attack-NBA-right-1",
+   "version": 2,
+   "state": "DEVELOPING",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 955,
+   "tokens": 491,
+   "line": "Northbridge Athletic is building pressure with 7 of 8 entries down the right, but no dangerous entries yet."
+  },
+  {
+   "storyline_id": "SL-repeated-channel-attack-NBA-right-1",
+   "version": 3,
+   "state": "STRONG",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 1272,
+   "tokens": 512,
+   "line": "Northbridge Athletic has made 11 final-third entries in 10 minutes, 91% through the right channel, showing strong attacking pressure."
+  },
+  {
+   "storyline_id": "SL-counterattack-RVC-transition-1",
+   "version": 1,
+   "state": "STRONG",
+   "shipped": false,
+   "issues": [
+    "number 47 is not in the storyline metrics"
+   ],
+   "latency_ms": 1096,
+   "tokens": 444,
+   "line": "Riverton City launched a fast counter with 3 passes, advancing 47 metres in 9.4 seconds, ending with a saved shot."
+  },
+  {
+   "storyline_id": "SL-counterattack-RVC-transition-2",
+   "version": 1,
+   "state": "STRONG",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 1121,
+   "tokens": 449,
+   "line": "At 51', Riverton City scored after a 40.8m, 7.4-second counter-attack with 3 passes following a middle third interception."
+  },
+  {
+   "storyline_id": "SL-overlap-NBA-right-1",
+   "version": 1,
+   "state": "STRONG",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 851,
+   "tokens": 489,
+   "line": "At 56', Northbridge Athletic's right flank overlapping run covered 36.5m in 5.5s, leading to a cross chance 2.8s later."
+  },
+  {
+   "storyline_id": "SL-counterattack-NBA-transition-1",
+   "version": 1,
+   "state": "STRONG",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 840,
+   "tokens": 445,
+   "line": "Northbridge Athletic launched a fast counter with 3 passes advancing 46.4 metres, shot saved after 9.3 seconds from interception in middle third."
+  },
+  {
+   "storyline_id": "SL-counterattack-NBA-transition-1",
+   "version": 3,
+   "state": "CONFIRMED",
+   "shipped": true,
+   "issues": [],
+   "latency_ms": 1355,
+   "tokens": 495,
+   "line": "Northbridge Athletic confirmed two fast counter-attacks, latest at 71', with 4 passes and carries advancing 36.3 metres, ending in a goal."
+  },
+  {
+   "storyline_id": "SL-counterattack-NBA-transition-1",
+   "version": 4,
+   "state": "STRONG",
+   "shipped": false,
+   "issues": [
+    "number 71 is not in the storyline metrics"
+   ],
+   "latency_ms": 964,
+   "tokens": 566,
+   "line": "Northbridge Athletic's fast counter-attack at 71' covered 36.3 metres in 12 seconds with 4 passes, ending in a goal later disallowed for offside."
+  }
+ ],
+ "v5": [
+  {
+   "candidate_id": "P-D2-RVC-0986",
+   "display_clock": "36'",
+   "outcome": "verified",
+   "calls": 5,
+   "tokens": 12878,
+   "latency_ms": 17130,
+   "per_step": [
+    {
+     "agent": "investigator",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 7963,
+     "model_tool_calls": [
+      "get_events",
+      "get_match_context"
+     ]
+    },
+    {
+     "agent": "analyst",
+     "attempt": 1,
+     "calls": 1,
+     "latency_ms": 3703,
+     "model_tool_calls": []
+    },
+    {
+     "agent": "verifier",
+     "attempt": 1,
+     "calls": 2,
+     "latency_ms": 5220,
+     "model_tool_calls": [
+      "get_events",
+      "get_detector_metrics"
+     ]
+    },
+    {
+     "agent": "deterministic_validator",
+     "attempt": 1,
+     "calls": 0,
+     "latency_ms": 1,
+     "model_tool_calls": []
+    }
+   ],
+   "error": null,
+   "title": "Riverton City Executes 9.4-Second Counterattack",
+   "claim": "Riverton City regained possession via interception in the middle third and advanced 46.7 metres through 3 passes or carries before a shot was saved 9.4 seconds later.",
+   "issues": [],
+   "status": "verified",
+   "cache_key": "011e9503c33eac94a4c45d18"
+  }
+ ],
+ "ledger_end": 49,
+ "finished": 1792593325.5777972
+}

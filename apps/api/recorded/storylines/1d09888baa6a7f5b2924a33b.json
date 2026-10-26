@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-repeated-channel-attack-NBA-right-1",
+ "version": 3,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593300.3225944,
+ "read": {
+  "line": "Northbridge Athletic has made 11 final-third entries in 10 minutes, 91% through the right channel, showing strong attacking pressure.",
+  "caveat": "Counts cannot show player intent or defensive responses."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 467,
+  "output_tokens": 45,
+  "started_at": 1792593299.0467105,
+  "response_id": "chatcmpl-EbRh5a1swVUh7rpBBoHjd6sds4vOe",
+  "latency_ms": 1272,
+  "issues": [],
+  "output": {
+   "line": "Northbridge Athletic has made 11 final-third entries in 10 minutes, 91% through the right channel, showing strong attacking pressure.",
+   "caveat": "Counts cannot show player intent or defensive responses."
+  }
+ }
+}

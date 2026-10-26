@@ -1,0 +1,430 @@
+/* BYLINE V4 shell: header, the role's own surface, the demo transport. See docs/v4-design.md. */
+@import '../styles/primitives.css';
+
+.app {
+  --surface-h: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background: var(--night);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--chalk);
+  color: var(--night);
+  font-weight: var(--fw-display);
+}
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------- header */
+
+.topbar {
+  flex: none;
+  position: relative;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--header-h);
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+  background: var(--night);
+}
+.topbar__brand {
+  display: flex;
+  align-items: center;
+}
+.topbar__score {
+  display: flex;
+  justify-content: center;
+}
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.banner-slot {
+  padding: var(--space-3) var(--space-5) 0;
+}
+
+/* The fan surface leads with its own scoreboard */
+.app[data-role='fan'] .topbar__score {
+  visibility: hidden;
+}
+
+/* ---------------------------------------------------------------- surface */
+
+.surface {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  position: relative;
+}
+.surface:focus {
+  outline: none;
+}
+
+/* The simulated feed: a theatre inside any box (feed thumbnail, programme monitor, classic pitch). */
+.theatre-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.theatre-parked {
+  width: 100%;
+  height: 100%;
+  background: var(--stand);
+}
+.cm__feed .theatre-box,
+.cm__feed .theatre-parked {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-xs);
+}
+
+/* ---------------------------------------------------------------- demo transport */
+
+/* One slim row: play, the match timeline (the scrubber rides on it), the clock, speed, extras. */
+.demobar {
+  flex: none;
+  position: relative;
+  z-index: 62;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 6px var(--space-5);
+  border-top: 1px solid var(--hairline);
+  background: var(--stand);
+}
+.demobar .transport {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+  grid-template-areas: 'btns track time speed extras';
+  align-items: center;
+  column-gap: var(--space-4);
+}
+.demobar .replay {
+  display: contents;
+}
+.demobar .replay__buttons {
+  grid-area: btns;
+}
+.demobar .timeline {
+  grid-area: track;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  padding-top: 6px;
+}
+.demobar .timeline__marker-item,
+.demobar .timeline__marker-item * {
+  pointer-events: auto;
+}
+.demobar .replay__scrub {
+  grid-area: track;
+  align-self: start;
+  z-index: 2;
+  min-height: 0;
+  /* the thumb rides on the timeline rail (rail centre = 40 px below the top of the cell) */
+  padding: 24px 13px 0;
+}
+.demobar .replay__slider {
+  height: 32px;
+}
+.demobar .replay__slider::-webkit-slider-runnable-track {
+  background: transparent;
+}
+.demobar .replay__slider::-moz-range-track {
+  background: transparent;
+}
+.demobar .replay__slider::-moz-range-progress {
+  background: transparent;
+}
+.demobar .replay__time {
+  grid-area: time;
+  font-size: var(--fs-body);
+}
+.demobar .replay__speed {
+  grid-area: speed;
+}
+.demobar .transport__extras {
+  grid-area: extras;
+  display: flex;
+  align-items: center;
+}
+.demobar__recap[data-ready='true'] {
+  background: var(--chalk);
+  color: var(--night);
+  box-shadow: none;
+}
+
+/* ---------------------------------------------------------------- notifications */
+
+.notify {
+  position: fixed;
+  z-index: 40;
+  top: calc(var(--header-h) + var(--space-3));
+  right: var(--space-5);
+  width: min(420px, calc(100vw - 2 * var(--space-4)));
+  display: grid;
+  gap: var(--space-2);
+}
+.notify > * {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* ---------------------------------------------------------------- analysis layer */
+
+.analysis {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
+  background: var(--night);
+  animation: analysis-in 260ms var(--ease-standard) both;
+}
+@keyframes analysis-in {
+  from {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+}
+.analysis__visual {
+  position: relative;
+  min-height: 0;
+  padding: var(--space-6);
+  display: grid;
+  place-items: center;
+}
+.analysis__visual > .theatre-box {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: calc(100dvh - 2 * var(--space-6));
+  border-radius: var(--radius-xs);
+}
+.analysis__panel {
+  min-height: 0;
+  overflow-y: auto;
+  border-left: 1px solid var(--hairline);
+  background: var(--night);
+}
+
+/* ---------------------------------------------------------------- responsive */
+
+@media (max-width: 1099.98px) {
+  .topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}
+@media (max-width: 899.98px) {
+  .analysis {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    overflow-y: auto;
+  }
+  .analysis__visual {
+    padding: var(--space-3);
+  }
+  .analysis__panel {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+}
+@media (max-width: 767.98px) {
+  .app {
+    --surface-h: auto;
+    height: auto;
+    min-height: 100dvh;
+  }
+  .surface {
+    overflow: visible;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'brand actions' 'score score';
+    height: auto;
+    padding: var(--space-2) var(--space-4);
+    row-gap: var(--space-2);
+  }
+  .topbar__brand {
+    grid-area: brand;
+  }
+  .topbar__score {
+    grid-area: score;
+  }
+  .topbar__actions {
+    grid-area: actions;
+  }
+  .topbar__roles {
+    font-size: var(--fs-micro);
+  }
+  .demobar {
+    position: sticky;
+    bottom: 0;
+    z-index: 15;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3) calc(var(--space-2) + env(safe-area-inset-bottom));
+  }
+  .demobar .transport__extras,
+  .demobar .replay__speed,
+  .demobar .timeline {
+    display: none;
+  }
+  .demobar .transport {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: 'btns track time';
+  }
+  .demobar .replay__scrub {
+    padding: 0;
+    align-self: center;
+  }
+  .demobar .replay__slider::-webkit-slider-runnable-track {
+    background: var(--hairline-strong);
+  }
+}
+
+.analysis__verified {
+  padding: 0 var(--space-5) var(--space-8);
+}
+@media (max-width: 767.98px) {
+  .app[data-role='fan'] .topbar__score {
+    display: none;
+  }
+}
+@media (max-width: 767.98px) {
+  .demobar__recap {
+    align-self: center;
+    margin: 0;
+    min-height: 36px;
+    padding: 0 10px;
+  }
+}
+
+/* ---------------------------------------------------------------- guided tactical analysis */
+
+.analysis--tactic {
+  display: block;
+}
+.ta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+  height: 100%;
+}
+.ta__stage {
+  min-height: 0;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ta__panel {
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-5) var(--space-5) var(--space-8);
+  border-left: 1px solid var(--hairline);
+}
+.ta__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.ta__kind {
+  font-size: var(--fs-small);
+  color: var(--measured);
+  font-weight: var(--fw-display);
+}
+.ta__title {
+  margin-top: var(--space-3);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.ta__step {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--flood);
+}
+.ta__sec {
+  margin-top: var(--space-6);
+}
+.ta__h {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-display);
+  color: var(--chalk-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--hairline);
+}
+.ta__facts {
+  margin: var(--space-2) 0 0;
+  display: grid;
+  gap: 6px;
+}
+.ta__facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--fs-small);
+  padding: 4px 0;
+}
+.ta__facts dt {
+  color: var(--chalk-2);
+}
+.ta__facts dd {
+  margin: 0;
+  font-weight: var(--fw-display);
+}
+.ta__interp {
+  margin-top: var(--space-3);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+}
+.ta__unknowns {
+  margin: var(--space-2) 0 0;
+  padding-left: 1.1em;
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+  display: grid;
+  gap: 4px;
+}
+@media (max-width: 1099.98px) {
+  .ta {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .analysis--tactic {
+    overflow-y: auto;
+  }
+  .ta__panel {
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .ta__stage {
+    padding: var(--space-3);
+  }
+}

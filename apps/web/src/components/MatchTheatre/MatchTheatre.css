@@ -1,0 +1,548 @@
+/* Match Theatre: canvas + crisp DOM overlays */
+.mt {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #060f17;
+}
+
+.mt__stage {
+  position: absolute;
+  inset: 0;
+}
+.mt__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Stadium vignette: soft light falloff toward the frame edges. */
+.mt__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 95% at 50% 52%, transparent 58%, rgba(3, 9, 14, 0.42) 100%),
+    linear-gradient(to bottom, rgba(3, 9, 14, 0.28), transparent 16%, transparent 84%, rgba(3, 9, 14, 0.32));
+}
+
+/* ---- loading skeleton ---- */
+.mt__skeleton {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(130% 110% at 50% 45%, #0c1d2b 0%, #08141f 62%, #050c14 100%);
+}
+.mt__skeleton-pitch {
+  position: absolute;
+  inset: 14% 8% 12%;
+  border-radius: 6px;
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  background: linear-gradient(90deg, rgba(19, 92, 67, 0.22), rgba(19, 92, 67, 0.34), rgba(19, 92, 67, 0.22));
+  background-size: 200% 100%;
+  animation: mt-shimmer 1.6s linear infinite;
+}
+.mt__skeleton-text {
+  position: relative;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--cream-soft);
+}
+@keyframes mt-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---- shared overlay chip look ---- */
+.mt__tag,
+.mt__camera,
+.mt__corner,
+.mt__legend,
+.mt__moment,
+.mt__var {
+  position: absolute;
+  background: rgba(7, 18, 29, 0.78);
+  box-shadow: 0 0 0 1px rgba(225, 241, 248, 0.12), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.mt__tag {
+  left: var(--space-3);
+  bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.625rem;
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--cream-soft);
+  pointer-events: none;
+}
+.mt__tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+/* ---- camera toggle ---- */
+.mt__camera {
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+}
+.mt__camera button {
+  min-height: 38px;
+  padding: 0 var(--space-3);
+  border-radius: 7px;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-display);
+  color: var(--muted);
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+.mt__camera button:hover {
+  color: var(--cream);
+}
+.mt__camera button[aria-pressed='true'] {
+  background: var(--cream);
+  color: var(--ink);
+}
+.mt__camera button:focus-visible {
+  border-radius: 7px;
+}
+/* 44px touch target without visual bulk */
+.mt__camera button {
+  position: relative;
+}
+.mt__camera button::after {
+  content: '';
+  position: absolute;
+  inset: -3px 0;
+}
+
+/* ---- VAR banner ---- */
+.mt__var {
+  top: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: min(560px, calc(100% - 2 * var(--space-3)));
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+  border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px rgba(231, 186, 96, 0.6), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
+  animation: mt-drop var(--dur-slow) var(--ease-standard);
+}
+.mt__var-kicker {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-heavy);
+  letter-spacing: var(--tracking-label);
+}
+.mt__var-text {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--cream);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@keyframes mt-drop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+}
+
+/* ---- moment chips ---- */
+.mt__moments {
+  position: absolute;
+  left: var(--space-3);
+  bottom: calc(var(--space-3) + 32px);
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.mt__moment {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  align-items: center;
+  min-width: 220px;
+  max-width: 340px;
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  animation: mt-rise var(--dur-slow) var(--ease-standard);
+}
+.mt__moment-glyph {
+  grid-row: span 2;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--cream);
+}
+.mt__moment--goal .mt__moment-glyph {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.mt__moment--yellow .mt__moment-glyph {
+  background: var(--gold);
+}
+.mt__moment--red .mt__moment-glyph {
+  background: var(--red);
+}
+.mt__moment--var .mt__moment-glyph {
+  width: 14px;
+  height: 10px;
+  background: none;
+  box-shadow: inset 0 0 0 1.5px var(--cream);
+}
+.mt__moment-kicker {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-heavy);
+  letter-spacing: var(--tracking-label);
+  color: var(--cream);
+}
+.mt__moment-kicker .numeric {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  color: var(--gold);
+  margin-right: 4px;
+}
+.mt__moment-detail {
+  font-size: var(--fs-small);
+  color: var(--cream-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@keyframes mt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* ---- kick-off call to action ---- */
+.mt__start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-6) var(--space-3) var(--space-3);
+  border-radius: var(--radius-round);
+  background: rgba(7, 18, 29, 0.86);
+  box-shadow: 0 0 0 1px rgba(225, 241, 248, 0.16), 0 20px 50px -18px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  text-align: left;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.mt__start:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+}
+.mt__start:focus-visible {
+  border-radius: var(--radius-round);
+}
+.mt__start-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+}
+.mt__start-icon svg {
+  fill: currentColor;
+}
+.mt__start-text {
+  display: grid;
+  gap: 1px;
+}
+.mt__start-text strong {
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-display);
+  color: var(--cream);
+}
+.mt__start-text span {
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+
+/* ---- evidence legend ---- */
+.mt__legend {
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+  max-width: 300px;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-label);
+  color: var(--cream);
+}
+.mt__legend-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.mt__legend-arc {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.625rem;
+  font-weight: var(--fw-heavy);
+}
+.mt__legend-band {
+  flex-shrink: 0;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(80, 201, 194, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(80, 201, 194, 0.8);
+}
+.mt__legend-close {
+  justify-self: start;
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-display);
+  color: var(--cream);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  position: relative;
+}
+.mt__legend-close::after {
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
+.mt__legend-close:hover {
+  background: var(--hover);
+}
+
+/* ---- mobile corner score ---- */
+.mt__corner {
+  top: var(--space-2);
+  left: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-xs);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cream-soft);
+}
+.mt__corner strong {
+  font-weight: 700;
+  color: var(--cream);
+}
+.mt__corner strong.is-provisional {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+}
+.mt__corner-dash {
+  width: 6px;
+  height: 2px;
+  background: var(--muted);
+}
+.mt__corner-clock {
+  margin-left: 4px;
+  padding-left: 6px;
+  border-left: 1px solid var(--line-strong);
+  color: var(--cream);
+}
+
+/* ---- narrow theatres (mobile) ---- */
+@media (max-width: 767.98px) {
+  .mt__tag {
+    left: auto;
+    right: var(--space-2);
+    bottom: var(--space-2);
+    height: 20px;
+    font-size: 0.5625rem;
+  }
+  .mt__camera {
+    top: auto;
+    bottom: var(--space-2);
+    right: auto;
+    left: var(--space-2);
+    padding: 2px;
+  }
+  .mt__camera button {
+    min-height: 30px;
+    padding: 0 var(--space-2);
+    font-size: 0.6875rem;
+  }
+  .mt__camera button::after {
+    inset: -7px 0;
+  }
+  .mt__var {
+    top: auto;
+    bottom: var(--space-2);
+    padding: 4px var(--space-2) 4px 4px;
+    gap: var(--space-2);
+  }
+  .mt__var-text {
+    font-size: var(--fs-micro);
+  }
+  .mt__moments {
+    left: var(--space-2);
+    right: var(--space-2);
+    top: 40px;
+    bottom: auto;
+  }
+  .mt__moment {
+    min-width: 0;
+    max-width: none;
+    padding: 4px var(--space-3) 4px var(--space-2);
+  }
+  .mt__start {
+    padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+    gap: var(--space-3);
+  }
+  .mt__start-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .mt__start-text span {
+    display: none;
+  }
+  .mt__legend {
+    left: var(--space-2);
+    right: auto;
+    top: 40px;
+    bottom: auto;
+    max-width: calc(100% - 2 * var(--space-2));
+    padding: var(--space-2);
+    gap: 4px;
+  }
+  .mt[data-highlight='true'] .mt__tag {
+    display: none;
+  }
+}
+
+/* Legend sits in the corner furthest from the highlighted play. */
+@media (min-width: 768px) {
+  .mt__legend[data-corner='top-left'] {
+    top: var(--space-3);
+    left: var(--space-3);
+    right: auto;
+    bottom: auto;
+  }
+  .mt__legend[data-corner='top-right'] {
+    top: var(--space-3);
+    right: var(--space-3);
+    bottom: auto;
+  }
+  .mt__legend[data-corner='bottom-left'] {
+    left: var(--space-3);
+    right: auto;
+    bottom: calc(var(--space-3) + 32px);
+  }
+}
+
+/* ---- mobile compaction: overlays must not bury a 200px-tall pitch ---- */
+@media (max-width: 767.98px) {
+  .mt__tag-long,
+  .mt__legend-long {
+    display: none;
+  }
+  .mt__moments {
+    top: 40px;
+    left: var(--space-2);
+    right: auto;
+    max-width: calc(100% - 2 * var(--space-2));
+  }
+  .mt__moment {
+    display: flex;
+    gap: var(--space-2);
+    padding: 3px var(--space-3) 3px var(--space-2);
+    border-radius: var(--radius-xs);
+  }
+  .mt__moment-glyph {
+    flex-shrink: 0;
+  }
+  .mt__moment-kicker {
+    flex-shrink: 0;
+    font-size: 0.625rem;
+  }
+  .mt__moment-kicker .numeric {
+    font-size: 0.8125rem;
+  }
+  .mt__moment-detail {
+    min-width: 0;
+    font-size: var(--fs-micro);
+  }
+  .mt__legend {
+    top: auto;
+    bottom: var(--space-2);
+    left: var(--space-2);
+    right: var(--space-2);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--space-3);
+    max-width: none;
+    padding: 4px 4px 4px var(--space-2);
+    font-size: var(--fs-micro);
+  }
+  .mt__legend-row {
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .mt__legend-close {
+    margin-left: auto;
+    min-height: 30px;
+    padding: 0 var(--space-2);
+    font-size: var(--fs-micro);
+  }
+  .mt__legend-close::after {
+    inset: -7px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .mt__legend[data-corner^='top'] {
+    top: 40px;
+    bottom: auto;
+  }
+}
+
+/* Narrow theatres (tablet / laptop): keep the VAR banner clear of the camera toggle. */
+@container (max-width: 900px) {
+  .mt__var {
+    left: var(--space-3);
+    transform: none;
+    max-width: calc(100% - 230px);
+    animation: none;
+  }
+}

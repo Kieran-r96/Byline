@@ -1,0 +1,313 @@
+{
+ "timestamp": "2026-10-20T22:01:30",
+ "commit": "fd85197",
+ "seeds": {
+  "golden": [
+   2026,
+   11,
+   12,
+   13,
+   14
+  ],
+  "ordinary": [
+   7341,
+   21,
+   22,
+   23,
+   24
+  ]
+ },
+ "offline": {
+  "scenarios": 10,
+  "events_total": 26063,
+  "reducer_failures": 0,
+  "detectors": {
+   "repeated_channel_attack": {
+    "TP": 4,
+    "FP": 7,
+    "FN": 1,
+    "precision": 0.364,
+    "recall": 0.8
+   },
+   "counterattack": {
+    "TP": 8,
+    "FP": 24,
+    "FN": 2,
+    "precision": 0.25,
+    "recall": 0.8
+   },
+   "overlap": {
+    "TP": 4,
+    "FP": 1,
+    "FN": 1,
+    "precision": 0.8,
+    "recall": 0.8
+   }
+  },
+  "split": {
+   "dev": {
+    "repeated_channel_attack": {
+     "TP": 1,
+     "FP": 0,
+     "FN": 0
+    },
+    "counterattack": {
+     "TP": 2,
+     "FP": 3,
+     "FN": 0
+    },
+    "overlap": {
+     "TP": 1,
+     "FP": 0,
+     "FN": 0
+    }
+   },
+   "held_out": {
+    "repeated_channel_attack": {
+     "TP": 3,
+     "FP": 7,
+     "FN": 1
+    },
+    "counterattack": {
+     "TP": 6,
+     "FP": 21,
+     "FN": 2
+    },
+    "overlap": {
+     "TP": 3,
+     "FP": 1,
+     "FN": 1
+    }
+   }
+  },
+  "runs": [
+   {
+    "scenario": "golden_story",
+    "seed": 2026,
+    "events": 2582,
+    "labels": 4,
+    "candidates": 6,
+    "unlabelled_detections": [
+     "counterattack@57'/NBA",
+     "counterattack@71'/NBA"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "golden_story",
+    "seed": 11,
+    "events": 2621,
+    "labels": 4,
+    "candidates": 7,
+    "unlabelled_detections": [
+     "counterattack@3'/RVC",
+     "counterattack@28'/NBA",
+     "repeated_channel_attack@50'/NBA"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "golden_story",
+    "seed": 12,
+    "events": 2618,
+    "labels": 4,
+    "candidates": 5,
+    "unlabelled_detections": [
+     "repeated_channel_attack@22'/RVC",
+     "counterattack@28'/NBA"
+    ],
+    "missed": [
+     "counterattack/RVC"
+    ]
+   },
+   {
+    "scenario": "golden_story",
+    "seed": 13,
+    "events": 2567,
+    "labels": 4,
+    "candidates": 6,
+    "unlabelled_detections": [
+     "counterattack@28'/NBA",
+     "counterattack@32'/RVC"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "golden_story",
+    "seed": 14,
+    "events": 2555,
+    "labels": 4,
+    "candidates": 5,
+    "unlabelled_detections": [
+     "counterattack@1'/RVC",
+     "counterattack@12'/RVC",
+     "counterattack@23'/RVC",
+     "counterattack@66'/NBA"
+    ],
+    "missed": [
+     "repeated_channel_attack/NBA",
+     "counterattack/RVC",
+     "overlap/NBA"
+    ]
+   },
+   {
+    "scenario": "ordinary_match",
+    "seed": 7341,
+    "events": 2615,
+    "labels": 0,
+    "candidates": 1,
+    "unlabelled_detections": [
+     "counterattack@37'/RVC"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "ordinary_match",
+    "seed": 21,
+    "events": 2639,
+    "labels": 0,
+    "candidates": 2,
+    "unlabelled_detections": [
+     "counterattack@72'/RVC",
+     "counterattack@90+2'/NBA"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "ordinary_match",
+    "seed": 22,
+    "events": 2654,
+    "labels": 0,
+    "candidates": 6,
+    "unlabelled_detections": [
+     "counterattack@3'/RVC",
+     "counterattack@10'/RVC",
+     "repeated_channel_attack@25'/NBA",
+     "counterattack@58'/NBA",
+     "counterattack@64'/RVC",
+     "counterattack@70'/RVC"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "ordinary_match",
+    "seed": 23,
+    "events": 2608,
+    "labels": 0,
+    "candidates": 4,
+    "unlabelled_detections": [
+     "repeated_channel_attack@36'/NBA",
+     "counterattack@36'/NBA",
+     "counterattack@64'/RVC",
+     "repeated_channel_attack@90+3'/RVC"
+    ],
+    "missed": []
+   },
+   {
+    "scenario": "ordinary_match",
+    "seed": 24,
+    "events": 2604,
+    "labels": 0,
+    "candidates": 6,
+    "unlabelled_detections": [
+     "repeated_channel_attack@14'/NBA",
+     "counterattack@24'/RVC",
+     "repeated_channel_attack@35'/RVC",
+     "counterattack@69'/NBA",
+     "overlap@85'/NBA",
+     "counterattack@90'/NBA"
+    ],
+    "missed": []
+   }
+  ],
+  "methodology": "Thresholds were tuned only on the dev seeds (golden 2026, ordinary 7341). Seeds 11-14 and 21-24 are held out and were not used for tuning.",
+  "note": "Labels are authored motifs only. 'Unlabelled detections' meet the detector definition in generic simulated play but were not authored, so they are counted as false positives."
+ },
+ "agents": {
+  "provider": "Microsoft Foundry (gpt-4.1-mini) via Microsoft Agent Framework",
+  "runs": 4,
+  "verified": 3,
+  "not_verified": 1,
+  "model_calls": 23,
+  "tokens": 43957,
+  "case_latency_p50_ms": 18536,
+  "case_latency_p95_ms": 23482,
+  "schema_failures": 0,
+  "unsupported_claims_caught_by_validator": 2,
+  "details": [
+   {
+    "file": "foundry-run-20261020-212424.json",
+    "candidate": "P-D1-NBA-0760",
+    "outcome": "tentative",
+    "status": "tentative",
+    "model_calls": 8,
+    "tokens": 16639,
+    "latency_ms": 23482,
+    "revisions": 1,
+    "validator_issues": [
+     "title longer than 60 characters",
+     "title longer than 60 characters"
+    ],
+    "response_ids": 8,
+    "schema_failures": 0
+   },
+   {
+    "file": "foundry-run-20261020-212528.json",
+    "candidate": "P-D1-NBA-0760",
+    "outcome": "verified",
+    "status": "verified",
+    "model_calls": 5,
+    "tokens": 9944,
+    "latency_ms": 17368,
+    "revisions": 0,
+    "validator_issues": [],
+    "response_ids": 5,
+    "schema_failures": 0
+   },
+   {
+    "file": "precompute-P-D2-NBA-2005.json",
+    "candidate": "P-D2-NBA-2005",
+    "outcome": "verified",
+    "status": "verified",
+    "model_calls": 5,
+    "tokens": 9384,
+    "latency_ms": 17238,
+    "revisions": 0,
+    "validator_issues": [],
+    "response_ids": 5,
+    "schema_failures": 0
+   },
+   {
+    "file": "precompute-P-D3-NBA-1601.json",
+    "candidate": "P-D3-NBA-1601",
+    "outcome": "verified",
+    "status": "verified",
+    "model_calls": 5,
+    "tokens": 7990,
+    "latency_ms": 18536,
+    "revisions": 0,
+    "validator_issues": [],
+    "response_ids": 5,
+    "schema_failures": 0
+   }
+  ],
+  "note": "Only recorded real runs are counted. Mock-client tests prove orchestration, not model quality."
+ },
+ "tests": {
+  "law_matrix": {
+   "command": "pytest -q tests/test_law_matrix.py",
+   "result": "18 passed in 0.72s",
+   "exit_code": 0
+  },
+  "agents_mock": {
+   "command": "pytest -q tests/test_agents.py",
+   "result": "11 passed in 3.04s",
+   "exit_code": 0
+  },
+  "full_suite": {
+   "command": "pytest -q tests",
+   "result": "110 passed, 1 deselected in 24.03s",
+   "exit_code": 0
+  }
+ }
+}

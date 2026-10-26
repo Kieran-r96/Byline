@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-counterattack-NBA-transition-1",
+ "version": 1,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593305.1946483,
+ "read": {
+  "line": "Northbridge Athletic launched a fast counter with 3 passes advancing 46.4 metres, shot saved after 9.3 seconds from interception in middle third.",
+  "caveat": "Counts can't show player intent or positioning."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 397,
+  "output_tokens": 48,
+  "started_at": 1792593304.3479393,
+  "response_id": "chatcmpl-EbRhAgXoeKpVDfZZhlXOHCyhYpKtV",
+  "latency_ms": 840,
+  "issues": [],
+  "output": {
+   "line": "Northbridge Athletic launched a fast counter with 3 passes advancing 46.4 metres, shot saved after 9.3 seconds from interception in middle third.",
+   "caveat": "Counts can't show player intent or positioning."
+  }
+ }
+}

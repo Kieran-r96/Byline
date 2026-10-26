@@ -1,0 +1,961 @@
+/*
+ * Tactical stage (V4 "chalk and floodlight"). Tokens are scoped to the stage so it renders
+ * correctly inside any surface while the app-wide V4 tokens land.
+ */
+.stage {
+  --st-night: #0b1214;
+  --st-stand: #121b1e;
+  --st-terrace: #1a2629;
+  --st-chalk: #f2f0e8;
+  --st-chalk-2: #a9b4b3;
+  --st-chalk-3: #6f7c7b;
+  --st-flood: #f4b740;
+  --st-measured: #4fd1c5;
+  --st-hypo: #b7a4ff;
+  --st-cont: #dcd3ff;
+  --st-against: #ff7a6b;
+  --st-withdrawn: #8a9493;
+  --st-hair: rgba(242, 240, 232, 0.1);
+  --st-font: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--st-night);
+  color: var(--st-chalk);
+  font-family: var(--st-font);
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.45;
+  border-radius: 4px;
+  overflow: hidden;
+  outline: none;
+  box-shadow: 0 0 0 1px var(--st-hair);
+}
+
+.stage:focus-visible {
+  box-shadow: 0 0 0 2px var(--st-chalk);
+}
+
+.stage .numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------- viewport */
+
+.stage__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(74vh, 780px);
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 40%, #13211d 0%, var(--st-night) 70%);
+  touch-action: manipulation;
+}
+
+.stage--compact .stage__viewport {
+  aspect-ratio: 16 / 10;
+}
+
+.stage--svg .stage__viewport {
+  aspect-ratio: 115 / 78;
+}
+
+@container (max-width: 600px) {
+  .stage:not(.stage--svg) .stage__viewport {
+    aspect-ratio: 4 / 5;
+    max-height: 62vh;
+  }
+}
+
+.stage__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* lens falloff: the floodlit centre holds the eye, the corners sink into the night (depth, not data) */
+.stage__viewport::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(125% 105% at 50% 46%, transparent 58%, rgba(5, 10, 11, 0.42) 100%);
+}
+
+/* withdrawn: the whole picture greyed, the plate struck */
+.stage--withdrawn .stage__canvas,
+.stage--withdrawn .stage-svg {
+  filter: grayscale(1) brightness(0.72);
+}
+
+.stage--withdrawn .stage__stats,
+.stage--withdrawn .stage__labels {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
+.stage__withdrawn-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  color: var(--st-night);
+  background: var(--st-withdrawn);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.stage__withdrawn {
+  margin: 0 0 6px;
+  color: var(--st-chalk-2);
+  font-size: 13px;
+}
+
+.stage__withdrawn .stage__withdrawn-tag {
+  margin-left: 0;
+}
+
+.stage--withdrawn .stage__plate {
+  border-left-color: var(--st-withdrawn);
+}
+
+.stage--withdrawn s {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--st-withdrawn);
+  color: var(--st-chalk-2);
+}
+
+.stage-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--st-font);
+}
+
+.stage-svg__layer {
+  transition: opacity 600ms ease;
+}
+
+/* a quietened layer keeps its marks, not its words */
+.stage-svg__layer.is-dim .stage-svg__tag,
+.stage-svg__layer.is-dim text {
+  display: none;
+}
+
+/* the SVG and its HTML overlays share one box with the viewBox's aspect, so percentages line up */
+.stage__svgbox {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  aspect-ratio: 115 / 78;
+  margin: 0 auto;
+}
+
+.stage__loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--st-chalk-2);
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------- broadcast plates */
+
+.stage__plate {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 14px 9px 12px;
+  background: rgba(11, 18, 20, 0.86);
+  border-left: 3px solid var(--st-chalk);
+  border-radius: 0 4px 4px 0;
+  pointer-events: none;
+  max-width: calc(100% - 28px);
+}
+
+.stage__kicker {
+  color: var(--st-chalk-2);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}
+
+.stage__plate-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 760;
+  font-stretch: 68%;
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+}
+
+.stage__plate-n {
+  color: var(--st-chalk);
+}
+
+.stage__banner {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  margin: 0;
+  padding: 7px 12px;
+  color: var(--st-hypo);
+  background: rgba(11, 18, 20, 0.88);
+  border: 1.5px dashed var(--st-hypo);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 720;
+  font-stretch: 75%;
+  pointer-events: none;
+}
+
+.stage__banner[data-kind='continuation'] {
+  color: var(--st-cont);
+  border: 2px dotted var(--st-cont);
+  font-weight: 650;
+  font-style: italic;
+}
+
+/* illustrative sketch: a filled pale-lilac plate (distinct from the dashed hypothetical and the dotted simulation) */
+.stage__banner[data-kind='illustrative'],
+.stage__banner[data-kind='illustrativeBall'] {
+  color: var(--st-night);
+  background: var(--st-cont);
+  border: 0;
+  font-weight: 760;
+  font-style: italic;
+}
+
+.stage__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  margin: 0;
+  padding: 6px 10px;
+  color: var(--st-night);
+  background: var(--st-measured);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 720;
+  font-stretch: 75%;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+@container (max-width: 600px) {
+  .stage__plate {
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px 7px 9px;
+  }
+  .stage__plate-title {
+    font-size: 18px;
+  }
+  .stage__banner {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    white-space: nowrap;
+    font-size: 13px;
+  }
+}
+
+/* measured values, as a broadcast stat plate (teal = measured) */
+.stage__stats {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  min-width: 220px;
+  max-width: min(340px, calc(100% - 28px));
+  overflow: hidden;
+  background: rgba(79, 209, 197, 0.35);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.stage__stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 10px;
+  background: rgba(11, 18, 20, 0.9);
+}
+
+.stage__stats dt {
+  color: var(--st-chalk-2);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.stage__stats dd {
+  margin: 0;
+  color: var(--st-measured);
+  font-size: 17px;
+  font-weight: 760;
+  font-stretch: 72%;
+  white-space: nowrap;
+}
+
+.stage__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@container (max-width: 600px) {
+  .stage__stats {
+    right: 10px;
+    bottom: 10px;
+    min-width: 0;
+  }
+  .stage__stats > div {
+    padding: 4px 8px;
+  }
+  .stage__stats dd {
+    font-size: 15px;
+  }
+}
+
+/* ---------------------------------------------------------------- 3D labels (positioned by the scene) */
+
+.stage__labels {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.stage-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 7px 4px;
+  border-radius: 4px;
+  font-family: var(--st-font);
+  font-size: 12.5px;
+  font-weight: 650;
+  font-stretch: 78%;
+  line-height: 1.1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.stage-label--name {
+  color: var(--st-chalk);
+  background: rgba(11, 18, 20, 0.84);
+  box-shadow: inset 0 0 0 1px rgba(242, 240, 232, 0.16);
+}
+
+/* the player on the ball: inverted chalk (amber is kept for AI-verified text) */
+.stage-label--name-carrier {
+  color: var(--st-night);
+  background: var(--st-chalk);
+  font-weight: 760;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.stage-label--line {
+  color: var(--st-chalk);
+  background: rgba(11, 18, 20, 0.62);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.stage-label--chip-measured {
+  color: var(--st-night);
+  background: var(--st-measured);
+  font-weight: 760;
+}
+
+.stage-label--chip-against {
+  color: var(--st-night);
+  background: var(--st-against);
+  font-weight: 760;
+}
+
+.stage-label--chip-hypo {
+  color: var(--st-hypo);
+  background: rgba(11, 18, 20, 0.88);
+  box-shadow: none;
+  border: 1.5px dashed var(--st-hypo);
+  font-weight: 720;
+}
+
+/* simulated continuation: paler lilac, dotted outline, lighter weight than the hypothetical */
+.stage-label--chip-cont {
+  color: var(--st-cont);
+  background: rgba(11, 18, 20, 0.86);
+  border: 2px dotted var(--st-cont);
+  font-weight: 650;
+  font-style: italic;
+}
+
+/* illustrative sketch: filled pale lilac, italic (never confused with measured teal or the dashed hypothetical) */
+.stage-label--chip-ill {
+  color: var(--st-night);
+  background: var(--st-cont);
+  font-weight: 740;
+  font-style: italic;
+}
+
+.stage-label--chip-chalk {
+  color: var(--st-chalk);
+  background: rgba(11, 18, 20, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(242, 240, 232, 0.28);
+}
+
+.stage-label--direction {
+  padding: 0;
+  color: var(--st-chalk);
+  font-size: 13px;
+  font-weight: 720;
+  font-stretch: 75%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+
+/* ---------------------------------------------------------------- choose mode */
+
+.stage__choices {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.stage__choice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  min-height: 36px;
+  padding: 6px 12px;
+  color: var(--st-night);
+  background: var(--st-chalk);
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 720;
+  font-stretch: 80%;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.stage__choice[data-placement='percent'] {
+  transform: translate(-50%, calc(-100% - 14px));
+}
+
+.stage__choice-verb {
+  font-weight: 500;
+}
+
+.stage__choice[data-state='picked'] {
+  color: var(--st-chalk);
+  background: var(--st-night);
+  box-shadow: 0 0 0 3px var(--st-chalk), 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.stage__choice:focus-visible {
+  outline: 2px solid var(--st-chalk);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- dock: caption, rail, controls */
+
+.stage__dock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'caption nav'
+    'rail controls';
+  gap: 14px 28px;
+  padding: 16px 18px 16px;
+  border-top: 1px solid var(--st-hair);
+  background: var(--st-stand);
+}
+
+.stage[data-mode='choose'] .stage__dock {
+  grid-template-areas:
+    'caption caption'
+    'rail controls';
+}
+
+/* ---- Back / Next: the viewer moves on; nothing advances by itself unless Auto-play is on */
+.stage__nav {
+  grid-area: nav;
+  display: flex;
+  align-items: stretch;
+  align-self: start;
+  gap: 8px;
+}
+
+.stage__back,
+.stage__next {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.stage__back {
+  padding: 0 14px 0 10px;
+  color: var(--st-chalk);
+  background: var(--st-terrace);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.stage__next {
+  min-width: 210px;
+  padding: 0 14px 0 18px;
+  justify-content: space-between;
+  color: var(--st-night);
+  background: var(--st-chalk);
+  font-size: 17px;
+  font-weight: 760;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.stage__next-k {
+  font-stretch: 80%;
+}
+
+.stage__next-t {
+  flex: 1;
+  color: rgba(11, 18, 20, 0.62);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.stage__next-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--st-night);
+  opacity: 0.55;
+  transform-origin: left center;
+  animation-name: stage-next-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes stage-next-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.stage__back:hover:not(:disabled),
+.stage__next:hover {
+  filter: brightness(1.08);
+}
+
+.stage__back:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.stage__back:focus-visible,
+.stage__next:focus-visible {
+  outline: 2px solid var(--st-chalk);
+  outline-offset: 3px;
+}
+
+/* ---- the AI-verified read: the only amber in the stage (text, never geometry) */
+.stage__verified {
+  margin-top: 12px;
+  padding: 8px 12px 9px;
+  border-left: 3px solid var(--st-flood);
+  background: rgba(244, 183, 64, 0.08);
+  border-radius: 0 6px 6px 0;
+}
+
+.stage__verified-h {
+  margin: 0 0 2px;
+  color: var(--st-flood);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stage__verified-text {
+  margin: 0;
+  color: var(--st-chalk);
+  font-size: 15px;
+}
+
+.stage__caption {
+  grid-area: caption;
+  max-width: 70ch;
+  min-height: 4.6em;
+}
+
+.stage__caption-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 740;
+  font-stretch: 75%;
+  line-height: 1.2;
+}
+
+.stage__caption-n {
+  color: var(--st-chalk-2);
+}
+
+.stage__caption-hypo {
+  padding: 1px 8px;
+  color: var(--st-hypo);
+  border: 1px dashed var(--st-hypo);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.stage__caption-hypo[data-kind='continuation'] {
+  color: var(--st-cont);
+  border: 1.5px dotted var(--st-cont);
+  font-style: italic;
+}
+
+.stage__caption-hypo[data-kind='illustrative'],
+.stage__caption-hypo[data-kind='illustrativeBall'] {
+  color: var(--st-night);
+  background: var(--st-cont);
+  border-color: var(--st-cont);
+  font-style: italic;
+}
+
+.stage__caption-text {
+  margin: 0;
+  color: var(--st-chalk);
+  font-size: 15px;
+}
+
+/* the last step's one-sentence takeaway: the line a viewer should leave with */
+.stage__takeaway {
+  max-width: 62ch;
+  margin: 2px 0 6px;
+  color: var(--st-chalk);
+  font-size: 19px;
+  font-weight: 680;
+  font-stretch: 92%;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.stage__notes {
+  margin-top: 10px;
+}
+
+.stage__notes-h {
+  margin: 0 0 2px;
+  color: var(--st-chalk-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stage__notes ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--st-chalk-2);
+  font-size: 13px;
+}
+
+.stage__error {
+  margin: 8px 0 0;
+  color: var(--st-against);
+  font-size: 13px;
+}
+
+.stage__rail {
+  grid-area: rail;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-self: center;
+}
+
+.stage__rail-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 6px 10px 6px 8px;
+  color: var(--st-chalk-2);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+
+.stage__rail-step:hover {
+  color: var(--st-chalk);
+  background: rgba(242, 240, 232, 0.05);
+}
+
+.stage__rail-n {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--st-chalk-3);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stage__rail-step[aria-current='step'] {
+  color: var(--st-chalk);
+  background: var(--st-terrace);
+}
+
+.stage__rail-step[aria-current='step'] .stage__rail-n {
+  color: var(--st-night);
+  background: var(--st-chalk);
+  box-shadow: none;
+}
+
+.stage__rail-step[data-kind='hypothetical'] .stage__rail-t {
+  color: var(--st-hypo);
+}
+
+.stage__controls {
+  grid-area: controls;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.stage__icon,
+.stage__btn,
+.stage__speed button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  color: var(--st-chalk);
+  background: var(--st-terrace);
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.stage__icon {
+  width: 38px;
+  padding: 0;
+}
+
+.stage__icon--main {
+  width: 44px;
+  color: var(--st-night);
+  background: var(--st-chalk);
+}
+
+.stage__btn {
+  padding: 0 12px;
+}
+
+.stage__btn--primary {
+  color: var(--st-night);
+  background: var(--st-chalk);
+  font-weight: 720;
+}
+
+.stage__icon:hover:not(:disabled),
+.stage__btn:hover:not(:disabled),
+.stage__speed button:hover {
+  filter: brightness(1.18);
+}
+
+.stage__icon:disabled,
+.stage__btn:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+
+.stage__icon:focus-visible,
+.stage__btn:focus-visible,
+.stage__speed button:focus-visible,
+.stage__rail-step:focus-visible {
+  outline: 2px solid var(--st-chalk);
+  outline-offset: 2px;
+}
+
+.stage__speed {
+  display: inline-flex;
+  padding: 2px;
+  margin-left: 4px;
+  background: var(--st-terrace);
+  border-radius: 8px;
+}
+
+.stage__speed button {
+  min-height: 32px;
+  padding: 0 9px;
+  color: var(--st-chalk-2);
+  background: transparent;
+  border-radius: 6px;
+}
+
+.stage__speed button[aria-pressed='true'] {
+  color: var(--st-night);
+  background: var(--st-chalk);
+}
+
+.stage__rail-step[data-kind='continuation'] .stage__rail-t,
+.stage__rail-step[data-kind='illustrative'] .stage__rail-t,
+.stage__rail-step[data-kind='illustrativeBall'] .stage__rail-t {
+  color: var(--st-cont);
+  font-style: italic;
+}
+
+@container (max-width: 760px) {
+  .stage__dock {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'caption'
+      'nav'
+      'rail'
+      'controls';
+    padding: 14px;
+  }
+  .stage[data-mode='choose'] .stage__dock {
+    grid-template-areas:
+      'caption'
+      'rail'
+      'controls';
+  }
+  .stage__nav {
+    width: 100%;
+  }
+  .stage__next {
+    flex: 1;
+    min-width: 0;
+  }
+  .stage__rail {
+    gap: 0;
+  }
+  .stage__rail-step {
+    padding: 4px 5px;
+  }
+  .stage__controls {
+    justify-content: flex-start;
+  }
+  .stage__rail-t {
+    display: none;
+  }
+  .stage__rail-step[aria-current='step'] .stage__rail-t {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-svg__layer,
+  .stage__choice {
+    transition: none;
+  }
+  .stage__next-progress {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- clip mode (a graphics-package asset) */
+
+.stage.stage--clip {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.stage.stage--clip .stage__viewport {
+  height: 100%;
+  aspect-ratio: auto;
+  max-height: none;
+}
+.stage.stage--clip .stage__svgbox {
+  height: 100%;
+}
+/*
+ * A clip is often shown small (a 320 x 180 corner picture-in-picture): the banner sits along the bottom, clear of
+ * the host's own top-corner plates, and type is sized to the frame, never below a legible floor.
+ */
+.stage.stage--clip .stage__banner {
+  top: auto;
+  right: auto;
+  left: 3cqw;
+  bottom: 3cqw;
+  max-width: 94cqw;
+  transform: none;
+  padding: clamp(2px, 0.7cqw, 6px) clamp(5px, 1.6cqw, 12px);
+  font-size: clamp(10px, 3.1cqw, 17px);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stage.stage--clip .stage-label {
+  padding: clamp(2px, 0.6cqw, 5px) clamp(3px, 1.2cqw, 8px);
+  font-size: clamp(10px, 3cqw, 16px);
+}

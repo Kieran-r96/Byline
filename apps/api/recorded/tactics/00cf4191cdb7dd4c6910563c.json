@@ -1,0 +1,1082 @@
+{
+ "kind": "tactical_insight",
+ "match_id": "BYLINE-01",
+ "moment_id": "T-option-NBA-0180",
+ "state": "verified",
+ "provider": "foundry",
+ "saved_at": 1792634791.7352588,
+ "prompt_version": "2026-10-21.2+tactical-2026-10-22.1",
+ "input_hash": "05bf6337a268b4891887e63307e0436e53777f236712b51440ded30b20ff7999",
+ "insight": {
+  "insight_id": "TI-T-option-NBA-0180",
+  "match_id": "BYLINE-01",
+  "moment_id": "T-option-NBA-0180",
+  "kind": "option",
+  "team_id": "NBA",
+  "display_clock": "7'",
+  "status": "verified",
+  "title": "S. Haddad-Rhys Open as Lindqvist's Pass Intercepted",
+  "canonical_claim": "At 7 minutes, the pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+  "why_it_matters": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+  "uncertainty": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+  "certainty": "supported",
+  "evidence_event_ids": [
+   "E0180",
+   "E0181"
+  ],
+  "metric_provenance": {
+   "minute": 7,
+   "observed_1_intended_lane_nearest_opponent": 0.3,
+   "observed_2_open_lane_nearest_opponent": 3.3,
+   "observed_3_space_around_the_open_player": 9.3,
+   "observed_4_ground_the_open_option_gained": 13.0,
+   "observed_5_opponents_goal_side_of_the_ball_bypassed": 3,
+   "actual_lane_clearance_m": 0.3,
+   "actual_receiver_space_m": 2.7,
+   "actual_progression_m": 15.2,
+   "actual_distance_m": 16.3,
+   "actual_opponents_bypassed": 3,
+   "actual_opponents_in_lane": 2,
+   "alternative_1_lane_clearance_m": 3.3,
+   "alternative_1_receiver_space_m": 9.3,
+   "alternative_1_progression_m": 13.0,
+   "alternative_1_distance_m": 37.3,
+   "alternative_1_opponents_bypassed": 3,
+   "alternative_2_lane_clearance_m": 6.5,
+   "alternative_2_receiver_space_m": 13.8,
+   "alternative_2_progression_m": 7.7,
+   "alternative_2_distance_m": 19.0,
+   "alternative_2_opponents_bypassed": 2,
+   "alternatives_measured": 2,
+   "defending_back_line_x_m": 82.7,
+   "defending_midfield_line_x_m": 64.2,
+   "offside_line_x_m": 86.2,
+   "midfield_to_back_line_gap_m": 18.5,
+   "open_lane_rule_m": 3.0,
+   "open_space_rule_m": 4.0,
+   "contested_lane_rule_m": 1.5,
+   "contested_space_rule_m": 2.0
+  },
+  "audience": {
+   "commentator": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+   "studio_title": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+   "studio_subtitle": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space",
+   "fan_plain": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+   "fan_analyst": "At 7 minutes, the pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+   "translations": {
+    "es.title": "S. Haddad-Rhys Libre mientras se Intercepta el Pase de Lindqvist",
+    "es.canonical_claim": "En el minuto 7, el pase hacia N. Vantreight fue interceptado con 2 oponentes a menos de 1,5 m del carril (el más cercano a 0,3 m), mientras que S. Haddad-Rhys estaba libre con el oponente más cercano a 3,3 m, 9,3 m de espacio y 13 m más adelante.",
+    "es.commentator": "El pase de Lindqvist fue cortado, pero Haddad-Rhys estaba libre con mucho espacio por delante.",
+    "es.fan_plain": "El pase de Lindqvist fue bloqueado, pero Haddad-Rhys estaba libre y tenía mucho espacio para correr.",
+    "es.fan_analyst": "En el minuto 7, el pase a Vantreight fue interceptado con 2 oponentes a menos de 1,5 m del carril (el más cercano a 0,3 m). Mientras tanto, Haddad-Rhys estaba libre con 3,3 m hasta el oponente más cercano, 9,3 m de espacio a su alrededor y posicionado 13 m más adelante, presentando una opción alternativa de pase en el mismo instante.",
+    "es.studio_subtitle": "Pase a Vantreight interceptado; Haddad-Rhys tenía carril libre y 9,3 m de espacio",
+    "es._note": "Machine translation of verified English text (Foundry); English is authoritative."
+   }
+  },
+  "hypothetical_label": "What if: other options on the same frame. Not what happened; no outcome is implied.",
+  "verifier": {
+   "verdict": "approved",
+   "checks": [
+    {
+     "claim": "At 7 minutes, the pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Matches the factual summary and observed metrics in moment_facts."
+    },
+    {
+     "claim": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Alternatives on the same frame include S. Haddad-Rhys and K. Rennard as open options."
+    },
+    {
+     "claim": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Unknowns explicitly state no facing or intent data and no outcome beyond the instant."
+    },
+    {
+     "claim": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Pass was intercepted (cut out) and Haddad-Rhys had 9.3 m space and 3.3 m nearest opponent."
+    },
+    {
+     "claim": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Pass lane was blocked (0.3 m nearest opponent), Haddad-Rhys open (3.3 m nearest opponent, 9.3 m space)."
+    },
+    {
+     "claim": "At 7 minutes, the pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "All numbers and facts match the moment_facts and event log."
+    },
+    {
+     "claim": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Title consistent with events and metrics."
+    },
+    {
+     "claim": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space",
+     "supported": true,
+     "event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "note": "Subtitle matches observed data."
+    }
+   ],
+   "issues": [],
+   "revision_instructions": null
+  },
+  "validator": {
+   "passed": true,
+   "issues": [],
+   "attempts": [
+    [
+     "canonical_claim: names M. Lindqvist's who is not a player in this moment"
+    ],
+    []
+   ],
+   "checker": "deterministic_validator (tactical rules)"
+  }
+ },
+ "verifier": {
+  "verdict": "approved",
+  "checks": [
+   {
+    "claim": "At 7 minutes, the pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Matches the factual summary and observed metrics in moment_facts."
+   },
+   {
+    "claim": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Alternatives on the same frame include S. Haddad-Rhys and K. Rennard as open options."
+   },
+   {
+    "claim": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Unknowns explicitly state no facing or intent data and no outcome beyond the instant."
+   },
+   {
+    "claim": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Pass was intercepted (cut out) and Haddad-Rhys had 9.3 m space and 3.3 m nearest opponent."
+   },
+   {
+    "claim": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Pass lane was blocked (0.3 m nearest opponent), Haddad-Rhys open (3.3 m nearest opponent, 9.3 m space)."
+   },
+   {
+    "claim": "At 7 minutes, the pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "All numbers and facts match the moment_facts and event log."
+   },
+   {
+    "claim": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Title consistent with events and metrics."
+   },
+   {
+    "claim": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space",
+    "supported": true,
+    "event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "note": "Subtitle matches observed data."
+   }
+  ],
+  "issues": [],
+  "revision_instructions": null
+ },
+ "validator": {
+  "passed": true,
+  "issues": [],
+  "attempts": [
+   [
+    "canonical_claim: names M. Lindqvist's who is not a player in this moment"
+   ],
+   []
+  ]
+ },
+ "provenance": {
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "prompt_version": "2026-10-21.2+tactical-2026-10-22.1",
+  "input_hash": "05bf6337a268b4891887e63307e0436e53777f236712b51440ded30b20ff7999",
+  "recording_key": "00cf4191cdb7dd4c6910563c",
+  "case_id": "C-T-option-NBA-0180-b8173a",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "started_at": 1792634759.9491315,
+  "started_at_iso": "2026-10-22T02:05:59+00:00",
+  "finished_at": 1792634789.1596787,
+  "finished_at_iso": "2026-10-22T02:06:29+00:00",
+  "model_calls": 6,
+  "input_tokens": 17312,
+  "output_tokens": 2730,
+  "total_latency_ms": 29209,
+  "est_cost_usd": 0.011293,
+  "calls": [
+   {
+    "role": "investigator",
+    "attempt": 1,
+    "ok": true,
+    "started_at": 1792634760.2520216,
+    "latency_ms": 8795,
+    "input_tokens": 3647,
+    "output_tokens": 483,
+    "response_id": "chatcmpl-EbcTspu8r5LqqqrnuPh7FE24XrpQE",
+    "ledger_slot": 54,
+    "error": null
+   },
+   {
+    "role": "analyst",
+    "attempt": 1,
+    "ok": true,
+    "started_at": 1792634769.3196025,
+    "latency_ms": 3697,
+    "input_tokens": 2577,
+    "output_tokens": 371,
+    "response_id": "chatcmpl-EbcTx2LxWaxsFUtN3aERpJpl0cDkT",
+    "ledger_slot": 55,
+    "error": null
+   },
+   {
+    "role": "verifier",
+    "attempt": 1,
+    "ok": true,
+    "started_at": 1792634773.3487082,
+    "latency_ms": 5509,
+    "input_tokens": 3774,
+    "output_tokens": 572,
+    "response_id": "chatcmpl-EbcU1Lq5usAeAzhDVHQiw4riOgSsG",
+    "ledger_slot": 56,
+    "error": null
+   },
+   {
+    "role": "analyst",
+    "attempt": 2,
+    "ok": true,
+    "started_at": 1792634779.0797274,
+    "latency_ms": 4090,
+    "input_tokens": 3024,
+    "output_tokens": 363,
+    "response_id": "chatcmpl-EbcU72AsXvzMVtpNLemVPwHU2qMTa",
+    "ledger_slot": 57,
+    "error": null
+   },
+   {
+    "role": "verifier",
+    "attempt": 2,
+    "ok": true,
+    "started_at": 1792634783.4059834,
+    "latency_ms": 5007,
+    "input_tokens": 3766,
+    "output_tokens": 617,
+    "response_id": "chatcmpl-EbcUB97RAoyOz1Zw7GQ6MqKeuWQ2c",
+    "ledger_slot": 58,
+    "error": null
+   },
+   {
+    "role": "translator",
+    "ok": true,
+    "started_at": 1792634789.1653607,
+    "latency_ms": 2564,
+    "input_tokens": 524,
+    "output_tokens": 324,
+    "response_id": "chatcmpl-EbcUHVzjeGYFfDJxErYNu2SoNn9bD",
+    "ledger_slot": 59,
+    "error": null
+   }
+  ],
+  "ledger": {
+   "cap": 61,
+   "used_before": 53,
+   "used_after": 59,
+   "slots": [
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+   ]
+  },
+  "error": null
+ },
+ "translation": {
+  "model_calls": 1,
+  "input_tokens": 524,
+  "output_tokens": 324,
+  "latency_ms": 2571,
+  "issues": {
+   "studio_headline": [
+    "too long (61 > 60)"
+   ]
+  },
+  "response_id": "chatcmpl-EbcUHVzjeGYFfDJxErYNu2SoNn9bD",
+  "fields_shipped": [
+   "es.canonical_claim",
+   "es.commentator",
+   "es.fan_analyst",
+   "es.fan_discover",
+   "es.studio_subtitle",
+   "es.title"
+  ]
+ },
+ "trace": {
+  "case_id": "C-T-option-NBA-0180-b8173a",
+  "candidate_id": "T-option-NBA-0180",
+  "match_id": "BYLINE-01",
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "stages": [
+   "queued",
+   "investigating",
+   "analysing",
+   "verifying",
+   "validating",
+   "analysing",
+   "verifying",
+   "validating"
+  ],
+  "steps": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "started_at": 1792634760.2245052,
+    "latency_ms": 8816,
+    "model_calls": 1,
+    "input_tokens": 3647,
+    "output_tokens": 483,
+    "response_ids": [
+     "chatcmpl-EbcTspu8r5LqqqrnuPh7FE24XrpQE"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_moment_facts",
+      "arguments": {},
+      "result_preview": "{\"moment_id\":\"T-option-NBA-0180\",\"kind\":\"option\",\"label\":\"Better option on\",\"team\":\"Northbridge\",\"clock\":\"7'\",\"title\":\"S. Haddad-Rhys was open as M. Lindqvist's pass was cut out\",\"summary\":\"M. Lindqvist's pass towards N. Vantreight ran through a lane with 2 opponents within 1.5 m of it (closest 0.3 ",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0180\",\"clock\":\"7'\",\"type\":\"pass.failed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[60.1,42.4],\"end\":[72.6,38.5],\"outcome\":\"intercepted\",\"pass_kind\":\"open_play\",\"height\":\"ground\"},{\"id\":\"E0181\",\"clock\":\"7'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#6 G. Ndiay",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"7'\",\"score\":{\"NBA\":0,\"RVC\":0},\"provisional_score\":{\"NBA\":0,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     }
+    ],
+    "output": {
+     "candidate_finding": "At 7 minutes, M. Lindqvist's pass towards N. Vantreight was intercepted by G. Ndiaye-Shaw, while at the same instant S. Haddad-Rhys was open with a clear lane and significant space.",
+     "key_event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "observed_facts": [
+      {
+       "statement": "M. Lindqvist attempted a pass towards N. Vantreight which was intercepted by G. Ndiaye-Shaw (E0180, E0181).",
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ]
+      },
+      {
+       "statement": "The intended passing lane to N. Vantreight had 2 opponents within 1.5 m, with the closest opponent 0.3 m from the lane (E0180).",
+       "event_ids": [
+        "E0180"
+       ]
+      },
+      {
+       "statement": "At the same instant, S. Haddad-Rhys had an open lane with the nearest opponent 3.3 m away, 9.3 m of space around him, and was positioned 13 m further forward (moment facts).",
+       "event_ids": [
+        "E0180"
+       ]
+      },
+      {
+       "statement": "The pass to N. Vantreight covered 16.3 m and bypassed 3 opponents, while the alternative pass to S. Haddad-Rhys would have covered 37.3 m and also bypassed 3 opponents (moment facts).",
+       "event_ids": [
+        "E0180"
+       ]
+      }
+     ],
+     "match_context": [
+      "Score was 0-0 at 7 minutes.",
+      "No cards had been issued.",
+      "Northbridge Athletic was attacking in the +x direction."
+     ],
+     "alternative_explanations": [
+      "S. Haddad-Rhys was an open passing option on the same frame as the intercepted pass to N. Vantreight.",
+      "Another open passing option was K. Rennard, with a lane nearest opponent of 6.5 m and 13.8 m of space around him."
+     ],
+     "cannot_establish": [
+      "Whether M. Lindqvist could see S. Haddad-Rhys at the moment of the pass (no facing data).",
+      "Whether a pass to S. Haddad-Rhys or any other alternative would have been completed.",
+      "What happened after the interception event.",
+      "The passer's intent or decision-making process.",
+      "Any outcome or probability related to the alternative passing options."
+     ]
+    },
+    "error": null,
+    "handoff_to": "analyst"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "started_at": 1792634769.3121772,
+    "latency_ms": 3708,
+    "model_calls": 1,
+    "input_tokens": 2577,
+    "output_tokens": 371,
+    "response_ids": [
+     "chatcmpl-EbcTx2LxWaxsFUtN3aERpJpl0cDkT"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "S. Haddad-Rhys Open as Lindqvist's Pass Intercepted",
+     "canonical_claim": "At 7 minutes, M. Lindqvist's pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+     "why_it_matters": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+     "uncertainty": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "commentator": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+     "fan_discover": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+     "fan_analyst": "At 7 minutes, Lindqvist's pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+     "studio_headline": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+     "studio_subtitle": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "started_at": 1792634773.3414044,
+    "latency_ms": 5517,
+    "model_calls": 1,
+    "input_tokens": 3774,
+    "output_tokens": 572,
+    "response_ids": [
+     "chatcmpl-EbcU1Lq5usAeAzhDVHQiw4riOgSsG"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_moment_facts",
+      "arguments": {},
+      "result_preview": "{\"moment_id\":\"T-option-NBA-0180\",\"kind\":\"option\",\"label\":\"Better option on\",\"team\":\"Northbridge\",\"clock\":\"7'\",\"title\":\"S. Haddad-Rhys was open as M. Lindqvist's pass was cut out\",\"summary\":\"M. Lindqvist's pass towards N. Vantreight ran through a lane with 2 opponents within 1.5 m of it (closest 0.3 ",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0180\",\"clock\":\"7'\",\"type\":\"pass.failed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[60.1,42.4],\"end\":[72.6,38.5],\"outcome\":\"intercepted\",\"pass_kind\":\"open_play\",\"height\":\"ground\"},{\"id\":\"E0181\",\"clock\":\"7'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#6 G. Ndiay",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"7'\",\"score\":{\"NBA\":0,\"RVC\":0},\"provisional_score\":{\"NBA\":0,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "At 7 minutes, M. Lindqvist's pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Supported by moment facts and events E0180 and E0181."
+      },
+      {
+       "claim": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Supported by the alternatives measured on the same frame in the moment facts."
+      },
+      {
+       "claim": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+       "supported": true,
+       "event_ids": [],
+       "note": "Explicitly stated as unknown in the moment facts."
+      },
+      {
+       "claim": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Supported by event E0180 interception and measured space around Haddad-Rhys."
+      },
+      {
+       "claim": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Consistent with the measured lane clearance and space metrics."
+      },
+      {
+       "claim": "At 7 minutes, Lindqvist's pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Fully supported by the moment facts and event log."
+      },
+      {
+       "claim": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Title matches the factual summary and event outcomes."
+      },
+      {
+       "claim": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Subtitle matches measured data and event outcomes."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "started_at": 1792634778.8638358,
+    "latency_ms": 3,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [
+      "canonical_claim: names M. Lindqvist's who is not a player in this moment"
+     ],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": "analyst (revision)"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 2,
+    "started_at": 1792634779.0748343,
+    "latency_ms": 4098,
+    "model_calls": 1,
+    "input_tokens": 3024,
+    "output_tokens": 363,
+    "response_ids": [
+     "chatcmpl-EbcU72AsXvzMVtpNLemVPwHU2qMTa"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "S. Haddad-Rhys Open as Lindqvist's Pass Intercepted",
+     "canonical_claim": "At 7 minutes, the pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+     "why_it_matters": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+     "uncertainty": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E0180",
+      "E0181"
+     ],
+     "commentator": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+     "fan_discover": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+     "fan_analyst": "At 7 minutes, the pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+     "studio_headline": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+     "studio_subtitle": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 2,
+    "started_at": 1792634783.3999863,
+    "latency_ms": 5015,
+    "model_calls": 1,
+    "input_tokens": 3766,
+    "output_tokens": 617,
+    "response_ids": [
+     "chatcmpl-EbcUB97RAoyOz1Zw7GQ6MqKeuWQ2c"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_moment_facts",
+      "arguments": {},
+      "result_preview": "{\"moment_id\":\"T-option-NBA-0180\",\"kind\":\"option\",\"label\":\"Better option on\",\"team\":\"Northbridge\",\"clock\":\"7'\",\"title\":\"S. Haddad-Rhys was open as M. Lindqvist's pass was cut out\",\"summary\":\"M. Lindqvist's pass towards N. Vantreight ran through a lane with 2 opponents within 1.5 m of it (closest 0.3 ",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0180\",\"clock\":\"7'\",\"type\":\"pass.failed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[60.1,42.4],\"end\":[72.6,38.5],\"outcome\":\"intercepted\",\"pass_kind\":\"open_play\",\"height\":\"ground\"},{\"id\":\"E0181\",\"clock\":\"7'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#6 G. Ndiay",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"7'\",\"score\":{\"NBA\":0,\"RVC\":0},\"provisional_score\":{\"NBA\":0,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "At 7 minutes, the pass towards N. Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m), while S. Haddad-Rhys was open with nearest opponent 3.3 m, 9.3 m space, and 13 m further forward.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Matches the factual summary and observed metrics in moment_facts."
+      },
+      {
+       "claim": "This moment shows multiple passing options existed simultaneously, highlighting the spatial dynamics and defensive pressure faced by the passer.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Alternatives on the same frame include S. Haddad-Rhys and K. Rennard as open options."
+      },
+      {
+       "claim": "This does not establish whether the passer saw or intended to pass to S. Haddad-Rhys, nor the outcome of any alternative passes.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Unknowns explicitly state no facing or intent data and no outcome beyond the instant."
+      },
+      {
+       "claim": "Lindqvist's pass was cut out, but Haddad-Rhys was open with plenty of space ahead.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Pass was intercepted (cut out) and Haddad-Rhys had 9.3 m space and 3.3 m nearest opponent."
+      },
+      {
+       "claim": "Lindqvist's pass was blocked, but Haddad-Rhys was free and had lots of room to run.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Pass lane was blocked (0.3 m nearest opponent), Haddad-Rhys open (3.3 m nearest opponent, 9.3 m space)."
+      },
+      {
+       "claim": "At 7 minutes, the pass to Vantreight was intercepted with 2 opponents within 1.5 m of the lane (closest 0.3 m). Meanwhile, Haddad-Rhys was open with 3.3 m to the nearest opponent, 9.3 m of space around him, and positioned 13 m further forward, presenting an alternative passing option on the same frame.",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "All numbers and facts match the moment_facts and event log."
+      },
+      {
+       "claim": "Haddad-Rhys Open as Lindqvist's Pass Cut Out",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Title consistent with events and metrics."
+      },
+      {
+       "claim": "Pass to Vantreight intercepted; Haddad-Rhys had clear lane and 9.3 m space",
+       "supported": true,
+       "event_ids": [
+        "E0180",
+        "E0181"
+       ],
+       "note": "Subtitle matches observed data."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 2,
+    "started_at": 1792634788.4177814,
+    "latency_ms": 2,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": null
+   }
+  ],
+  "outcome": "verified",
+  "total_latency_ms": 29209,
+  "total_model_calls": 5,
+  "total_tokens": 19194,
+  "cache_hit": false
+ },
+ "inputs": {
+  "subject": {
+   "candidate_id": "T-option-NBA-0180",
+   "match_id": "BYLINE-01",
+   "pattern_type": "tactical_option",
+   "team_id": "NBA",
+   "detected_at_seq": 181,
+   "detected_at_ms": 375100,
+   "display_clock": "7'",
+   "window_start_ms": 368100,
+   "window_end_ms": 375100,
+   "evidence_event_ids": [
+    "E0180",
+    "E0181"
+   ],
+   "calculated_metrics": {
+    "minute": 7,
+    "observed_1_intended_lane_nearest_opponent": 0.3,
+    "observed_2_open_lane_nearest_opponent": 3.3,
+    "observed_3_space_around_the_open_player": 9.3,
+    "observed_4_ground_the_open_option_gained": 13.0,
+    "observed_5_opponents_goal_side_of_the_ball_bypassed": 3,
+    "actual_lane_clearance_m": 0.3,
+    "actual_receiver_space_m": 2.7,
+    "actual_progression_m": 15.2,
+    "actual_distance_m": 16.3,
+    "actual_opponents_bypassed": 3,
+    "actual_opponents_in_lane": 2,
+    "alternative_1_lane_clearance_m": 3.3,
+    "alternative_1_receiver_space_m": 9.3,
+    "alternative_1_progression_m": 13.0,
+    "alternative_1_distance_m": 37.3,
+    "alternative_1_opponents_bypassed": 3,
+    "alternative_2_lane_clearance_m": 6.5,
+    "alternative_2_receiver_space_m": 13.8,
+    "alternative_2_progression_m": 7.7,
+    "alternative_2_distance_m": 19.0,
+    "alternative_2_opponents_bypassed": 2,
+    "alternatives_measured": 2,
+    "defending_back_line_x_m": 82.7,
+    "defending_midfield_line_x_m": 64.2,
+    "offside_line_x_m": 86.2,
+    "midfield_to_back_line_gap_m": 18.5,
+    "open_lane_rule_m": 3.0,
+    "open_space_rule_m": 4.0,
+    "contested_lane_rule_m": 1.5,
+    "contested_space_rule_m": 2.0
+   },
+   "factual_summary": "M. Lindqvist's pass towards N. Vantreight ran through a lane with 2 opponents within 1.5 m of it (closest 0.3 m) and was intercepted. At that instant S. Haddad-Rhys had an open lane (nearest opponent 3.3 m), 9.3 m of space and was 13 m further forward.",
+   "allowed_claims": [
+    "what happened at the instant, as recorded in the event log",
+    "the measured lanes, space, ground gained and opponents bypassed for each option",
+    "that other passing options existed on the same frame, framed as options or alternatives"
+   ],
+   "unsupported_claims": [
+    "Whether the passer could see the open player (no facing data)",
+    "Whether that pass would have been completed",
+    "What would have happened next: nothing after this instant is shown as fact",
+    "what the passer saw or intended (no facing or intent data)",
+    "whether any alternative pass would have been completed",
+    "any outcome, chance or probability after this instant",
+    "instructions from coaches or a planned pattern"
+   ],
+   "explanation_constraints": [
+    "history first: what happened, with event ids",
+    "alternatives are options on the same frame, never outcomes",
+    "no intent, no instructions, no judgement of the player",
+    "no outcome or probability claims"
+   ],
+   "moment_id": "T-option-NBA-0180",
+   "kind": "option",
+   "title": "S. Haddad-Rhys was open as M. Lindqvist's pass was cut out",
+   "player_ids": [
+    "NBA-04",
+    "NBA-11",
+    "NBA-09",
+    "RVC-06",
+    "RVC-10",
+    "RVC-08",
+    "RVC-02",
+    "NBA-07",
+    "RVC-03"
+   ],
+   "facts": {
+    "moment_id": "T-option-NBA-0180",
+    "kind": "option",
+    "label": "Better option on",
+    "team": "Northbridge",
+    "clock": "7'",
+    "title": "S. Haddad-Rhys was open as M. Lindqvist's pass was cut out",
+    "summary": "M. Lindqvist's pass towards N. Vantreight ran through a lane with 2 opponents within 1.5 m of it (closest 0.3 m) and was intercepted. At that instant S. Haddad-Rhys had an open lane (nearest opponent 3.3 m), 9.3 m of space and was 13 m further forward.",
+    "deterministic_interpretation": "The tracking shows a safer and more progressive passing lane than the one chosen. This describes the geometry at one instant, not a mistake: the passer's view and intent are unknown.",
+    "observed": [
+     {
+      "label": "Intended lane: nearest opponent",
+      "value": 0.3,
+      "unit": "m"
+     },
+     {
+      "label": "Open lane: nearest opponent",
+      "value": 3.3,
+      "unit": "m"
+     },
+     {
+      "label": "Space around the open player",
+      "value": 9.3,
+      "unit": "m"
+     },
+     {
+      "label": "Ground the open option gained",
+      "value": 13.0,
+      "unit": "m"
+     },
+     {
+      "label": "Opponents goal-side of the ball, bypassed",
+      "value": 3,
+      "unit": ""
+     }
+    ],
+    "unknowns": [
+     "Whether the passer could see the open player (no facing data)",
+     "Whether that pass would have been completed",
+     "What would have happened next: nothing after this instant is shown as fact"
+    ],
+    "evidence_event_ids": [
+     "E0180",
+     "E0181"
+    ],
+    "measured_from": "synthetic event log + 2 Hz player-centre tracking, frame at the decision instant",
+    "what_happened": {
+     "kind": "pass",
+     "by": "#4 M. Lindqvist",
+     "towards": "#9 N. Vantreight",
+     "outcome": "intercepted",
+     "intercepted_by": "#6 G. Ndiaye-Shaw",
+     "event_id": "E0180",
+     "measured_lane": {
+      "receiver": "#9 N. Vantreight",
+      "rating": "blocked",
+      "lane_nearest_opponent_m": 0.3,
+      "opponents_in_lane": [
+       "#10 P. Rostami",
+       "#6 G. Ndiaye-Shaw"
+      ],
+      "closest_to_lane": "#10 P. Rostami",
+      "space_around_receiver_m": 2.7,
+      "nearest_marker": "#6 G. Ndiaye-Shaw",
+      "ground_gained_m": 15.2,
+      "pass_length_m": 16.3,
+      "opponents_bypassed": 3,
+      "between_lines": true,
+      "offside_position": false
+     }
+    },
+    "alternatives_on_the_same_frame": [
+     {
+      "receiver": "#11 S. Haddad-Rhys",
+      "rating": "open",
+      "lane_nearest_opponent_m": 3.3,
+      "opponents_in_lane": [],
+      "closest_to_lane": "#8 A. Brennick",
+      "space_around_receiver_m": 9.3,
+      "nearest_marker": "#2 I. Tremaine",
+      "ground_gained_m": 13.0,
+      "pass_length_m": 37.3,
+      "opponents_bypassed": 3,
+      "between_lines": true,
+      "offside_position": false
+     },
+     {
+      "receiver": "#7 K. Rennard",
+      "rating": "open",
+      "lane_nearest_opponent_m": 6.5,
+      "opponents_in_lane": [],
+      "closest_to_lane": "#10 P. Rostami",
+      "space_around_receiver_m": 13.8,
+      "nearest_marker": "#3 M. Osterholt",
+      "ground_gained_m": 7.7,
+      "pass_length_m": 19.0,
+      "opponents_bypassed": 2,
+      "between_lines": true,
+      "offside_position": false
+     }
+    ],
+    "defending_lines_x_m": {
+     "back_x": 82.7,
+     "mid_x": 64.2,
+     "offside_x": 86.2
+    },
+    "labels": {
+     "history": "What happened: event log + tracking at this instant",
+     "hypothetical": "What if: other options on the same frame. Not what happened; no outcome is implied."
+    },
+    "option_rules": {
+     "open": "lane >= 3.0 m from every opponent and >= 4.0 m of space",
+     "contested": "lane >= 1.5 m and >= 2.0 m of space",
+     "blocked": "anything tighter",
+     "offside": "ahead of the ball and the second-last opponent"
+    },
+    "players_in_moment": [
+     "#4 M. Lindqvist",
+     "#11 S. Haddad-Rhys",
+     "#9 N. Vantreight",
+     "#6 G. Ndiaye-Shaw",
+     "#10 P. Rostami",
+     "#8 A. Brennick",
+     "#2 I. Tremaine",
+     "#7 K. Rennard",
+     "#3 M. Osterholt"
+    ],
+    "metrics": {
+     "minute": 7,
+     "observed_1_intended_lane_nearest_opponent": 0.3,
+     "observed_2_open_lane_nearest_opponent": 3.3,
+     "observed_3_space_around_the_open_player": 9.3,
+     "observed_4_ground_the_open_option_gained": 13.0,
+     "observed_5_opponents_goal_side_of_the_ball_bypassed": 3,
+     "actual_lane_clearance_m": 0.3,
+     "actual_receiver_space_m": 2.7,
+     "actual_progression_m": 15.2,
+     "actual_distance_m": 16.3,
+     "actual_opponents_bypassed": 3,
+     "actual_opponents_in_lane": 2,
+     "alternative_1_lane_clearance_m": 3.3,
+     "alternative_1_receiver_space_m": 9.3,
+     "alternative_1_progression_m": 13.0,
+     "alternative_1_distance_m": 37.3,
+     "alternative_1_opponents_bypassed": 3,
+     "alternative_2_lane_clearance_m": 6.5,
+     "alternative_2_receiver_space_m": 13.8,
+     "alternative_2_progression_m": 7.7,
+     "alternative_2_distance_m": 19.0,
+     "alternative_2_opponents_bypassed": 2,
+     "alternatives_measured": 2,
+     "defending_back_line_x_m": 82.7,
+     "defending_midfield_line_x_m": 64.2,
+     "offside_line_x_m": 86.2,
+     "midfield_to_back_line_gap_m": 18.5,
+     "open_lane_rule_m": 3.0,
+     "open_space_rule_m": 4.0,
+     "contested_lane_rule_m": 1.5,
+     "contested_space_rule_m": 2.0
+    }
+   }
+  }
+ }
+}

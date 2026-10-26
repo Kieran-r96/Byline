@@ -1,0 +1,463 @@
+{
+ "trace": {
+  "case_id": "C-P-D1-NBA-0760-f8d8c4",
+  "candidate_id": "P-D1-NBA-0760",
+  "match_id": "BYLINE-01",
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "stages": [
+   "queued",
+   "investigating",
+   "analysing",
+   "verifying",
+   "validating",
+   "analysing",
+   "verifying",
+   "validating"
+  ],
+  "steps": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "started_at": 1792527841.6943843,
+    "latency_ms": 8596,
+    "model_calls": 2,
+    "input_tokens": 3855,
+    "output_tokens": 504,
+    "response_ids": [
+     "chatcmpl-EbAfNKH3HCoRJ7C2p7aLQURODIMVC",
+     "chatcmpl-EbAfPZgW0Oyr800SvxPrpyGZsqBl2"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"repeated_channel_attack\",\"team\":\"NBA\",\"metrics\":{\"window_minutes\":10,\"channel\":\"right\",\"channel_entries\":10,\"total_entries\":11,\"channel_share\":0.909,\"distinct_possessions\":8,\"dangerous_entries\":1,\"shots_following\":1,\"baseline_channel_share\":0.111,\"attacking_direction\":\"+x\",\"concentr",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757",
+        "E0760"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0523\",\"clock\":\"19'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[67.8,49.4],\"end\":[81.9,65.9],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#7 K. Rennard\"},{\"id\":\"E0538\",\"clock\":\"20'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\"",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"28'\",\"score\":{\"NBA\":0,\"RVC\":0},\"provisional_score\":{\"NBA\":0,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0
+     }
+    ],
+    "output": {
+     "candidate_finding": "Northbridge Athletic have predominantly advanced through the right channel in their final-third entries during the last 10 minutes, with 10 out of 11 entries (91%) occurring there across 8 possessions, resulting in 1 shot and 1 goal.",
+     "key_event_ids": [
+      "E0523",
+      "E0538",
+      "E0587",
+      "E0590",
+      "E0631",
+      "E0653",
+      "E0676",
+      "E0707",
+      "E0709",
+      "E0757",
+      "E0760"
+     ],
+     "observed_facts": [
+      {
+       "statement": "Between the 19th and 28th minute, Northbridge Athletic completed multiple passes and carries predominantly on the right side of the pitch, indicating repeated use of the right channel for final-third entries.",
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757"
+       ]
+      },
+      {
+       "statement": "At the 28th minute, Northbridge Athletic took a shot that resulted in a goal, following their right channel attacks.",
+       "event_ids": [
+        "E0760"
+       ]
+      }
+     ],
+     "match_context": [
+      "Score is 0-0 at 28 minutes.",
+      "No cards have been issued so far.",
+      "Northbridge Athletic is attacking in the +x direction, making the right channel relative to this direction.",
+      "Both teams have 11 players on the pitch."
+     ],
+     "alternative_explanations": [
+      "The repeated right channel entries could be due to player positioning or opponent defensive setup rather than a deliberate tactical plan.",
+      "The single shot and goal from these entries might be coincidental rather than a direct consequence of the channel usage."
+     ],
+     "cannot_establish": [
+      "The exact positioning or movement of defenders during these attacks, as no tracking data is available.",
+      "The intent or instructions from the Northbridge Athletic manager regarding channel usage.",
+      "Whether defenders were pulled out of position or caught out by these attacks.",
+      "Any prediction about future goals or outcomes based on this pattern."
+     ]
+    },
+    "error": null,
+    "handoff_to": "analyst"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "started_at": 1792527850.3776038,
+    "latency_ms": 3584,
+    "model_calls": 1,
+    "input_tokens": 1554,
+    "output_tokens": 324,
+    "response_ids": [
+     "chatcmpl-EbAfSNhZ6W2aErocc0P1X1gGCGZCF"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "Northbridge Athletic favor right channel in final-third entries",
+     "canonical_claim": "Northbridge Athletic made 10 of their last 11 final-third entries (91%) through the right channel in the last 10 minutes, across 8 possessions, resulting in 1 shot.",
+     "why_it_matters": "This shows a strong preference for attacking through the right channel, highlighting a clear pattern in Northbridge Athletic's offensive approach during this period.",
+     "uncertainty": "This does not establish the reasons behind this pattern, the defensive impact, or predict future outcomes.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E0523",
+      "E0538",
+      "E0587",
+      "E0590",
+      "E0631",
+      "E0653",
+      "E0676",
+      "E0707",
+      "E0709",
+      "E0757",
+      "E0760"
+     ],
+     "commentator": "Northbridge Athletic are consistently pushing through the right channel, with 91% of their final-third entries there in the last 10 minutes.",
+     "fan_discover": "Northbridge Athletic mostly attack down the right side recently, making 10 of 11 entries there in the last 10 minutes.",
+     "fan_analyst": "Northbridge Athletic have concentrated 91% of their final-third entries through the right channel over the last 10 minutes, across 8 possessions, resulting in 1 shot. This is a significant increase from their baseline channel share of 11%, indicating a focused attacking pattern.",
+     "studio_headline": "Northbridge Athletic's Right Channel Focus",
+     "studio_subtitle": "91% of final-third entries in last 10 minutes came through the right channel, across 8 possessions"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "started_at": 1792527854.006329,
+    "latency_ms": 3684,
+    "model_calls": 2,
+    "input_tokens": 3823,
+    "output_tokens": 242,
+    "response_ids": [
+     "chatcmpl-EbAfWlckLQ6yazlaZ9SDYPmc56vL4",
+     "chatcmpl-EbAfXDsUrH3UVvb73H6Ed2yayGjey"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757",
+        "E0760"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0523\",\"clock\":\"19'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[67.8,49.4],\"end\":[81.9,65.9],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#7 K. Rennard\"},{\"id\":\"E0538\",\"clock\":\"20'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\"",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"repeated_channel_attack\",\"team\":\"NBA\",\"metrics\":{\"window_minutes\":10,\"channel\":\"right\",\"channel_entries\":10,\"total_entries\":11,\"channel_share\":0.909,\"distinct_possessions\":8,\"dangerous_entries\":1,\"shots_following\":1,\"baseline_channel_share\":0.111,\"attacking_direction\":\"+x\",\"concentr",
+      "latency_ms": 0
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "Northbridge Athletic made 10 of their last 11 final-third entries (91%) through the right channel in the last 10 minutes, across 8 possessions, resulting in 1 shot.",
+       "supported": true,
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757",
+        "E0760"
+       ],
+       "note": "The detector metrics confirm 10 of 11 entries through the right channel in the last 10 minutes, across 8 possessions, with 1 shot (E0760)."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "started_at": 1792527857.696923,
+    "latency_ms": 6,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [
+      "title longer than 60 characters"
+     ],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": "analyst (revision)"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 2,
+    "started_at": 1792527857.7853806,
+    "latency_ms": 3384,
+    "model_calls": 1,
+    "input_tokens": 1949,
+    "output_tokens": 324,
+    "response_ids": [
+     "chatcmpl-EbAfaB1uvePb3jYFcOcpAnP9fAFFz"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "Northbridge Athletic favor right channel in final-third entries",
+     "canonical_claim": "Northbridge Athletic made 10 of their last 11 final-third entries (91%) through the right channel in the last 10 minutes, across 8 possessions, resulting in 1 shot.",
+     "why_it_matters": "This shows a strong preference for attacking through the right channel, highlighting a clear pattern in Northbridge Athletic's offensive approach during this period.",
+     "uncertainty": "This does not establish the reasons behind this pattern, the defensive impact, or predict future outcomes.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E0523",
+      "E0538",
+      "E0587",
+      "E0590",
+      "E0631",
+      "E0653",
+      "E0676",
+      "E0707",
+      "E0709",
+      "E0757",
+      "E0760"
+     ],
+     "commentator": "Northbridge Athletic are consistently pushing through the right channel, with 91% of their final-third entries there in the last 10 minutes.",
+     "fan_discover": "Northbridge Athletic mostly attack down the right side recently, making 10 of 11 entries there in the last 10 minutes.",
+     "fan_analyst": "Northbridge Athletic have concentrated 91% of their final-third entries through the right channel over the last 10 minutes, across 8 possessions, resulting in 1 shot. This is a significant increase from their baseline channel share of 11%, indicating a focused attacking pattern.",
+     "studio_headline": "Northbridge Athletic's Right Channel Focus",
+     "studio_subtitle": "91% of final-third entries in last 10 minutes came through the right channel, across 8 possessions"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 2,
+    "started_at": 1792527861.24673,
+    "latency_ms": 3368,
+    "model_calls": 2,
+    "input_tokens": 3823,
+    "output_tokens": 241,
+    "response_ids": [
+     "chatcmpl-EbAfdo4XgVpLpe6scg7fGGIrv12aq",
+     "chatcmpl-EbAffiPbXMLDjsufVQZkDzizWWpmX"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757",
+        "E0760"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0523\",\"clock\":\"19'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#4 M. Lindqvist\",\"start\":[67.8,49.4],\"end\":[81.9,65.9],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#7 K. Rennard\"},{\"id\":\"E0538\",\"clock\":\"20'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\"",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"repeated_channel_attack\",\"team\":\"NBA\",\"metrics\":{\"window_minutes\":10,\"channel\":\"right\",\"channel_entries\":10,\"total_entries\":11,\"channel_share\":0.909,\"distinct_possessions\":8,\"dangerous_entries\":1,\"shots_following\":1,\"baseline_channel_share\":0.111,\"attacking_direction\":\"+x\",\"concentr",
+      "latency_ms": 0
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "Northbridge Athletic made 10 of their last 11 final-third entries (91%) through the right channel in the last 10 minutes, across 8 possessions, resulting in 1 shot.",
+       "supported": true,
+       "event_ids": [
+        "E0523",
+        "E0538",
+        "E0587",
+        "E0590",
+        "E0631",
+        "E0653",
+        "E0676",
+        "E0707",
+        "E0709",
+        "E0757",
+        "E0760"
+       ],
+       "note": "The detector metrics and events confirm 10 of 11 entries through the right channel in the last 10 minutes, across 8 possessions, with 1 shot recorded."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 2,
+    "started_at": 1792527864.6185248,
+    "latency_ms": 2,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [
+      "title longer than 60 characters"
+     ],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": null
+   }
+  ],
+  "outcome": "tentative",
+  "total_latency_ms": 23482,
+  "total_model_calls": 8,
+  "total_tokens": 16639,
+  "cache_hit": false
+ },
+ "insight": {
+  "schema_version": "1.0.0",
+  "insight_id": "I-P-D1-NBA-0760",
+  "match_id": "BYLINE-01",
+  "candidate_id": "P-D1-NBA-0760",
+  "version": 1,
+  "status": "tentative",
+  "insight_type": "repeated_channel_attack",
+  "title": "Repeated attacks down one channel",
+  "canonical_claim": "Northbridge Athletic: 10 of their last 11 final-third entries came through the right channel (91%) in the last 10 minutes, across 8 separate possessions; 1 reached the box or produced a shot.",
+  "why_it_matters": "The AI draft did not pass verification, so only the detector's factual summary is shown.",
+  "uncertainty": "Any statement about defenders being dragged, pulled or caught out of position (no tracking used).; Any statement about the manager's instructions or tactical intent.; Any prediction that a goal will follow.",
+  "certainty": "tentative",
+  "evidence_event_ids": [
+   "E0523",
+   "E0538",
+   "E0587",
+   "E0590",
+   "E0631",
+   "E0653",
+   "E0676",
+   "E0707",
+   "E0709",
+   "E0757",
+   "E0760"
+  ],
+  "frame_intervals": [],
+  "source_snapshot_seq": 760,
+  "metric_provenance": {
+   "window_minutes": 10,
+   "channel": "right",
+   "channel_entries": 10,
+   "total_entries": 11,
+   "channel_share": 0.909,
+   "distinct_possessions": 8,
+   "dangerous_entries": 1,
+   "shots_following": 1,
+   "baseline_channel_share": 0.111,
+   "attacking_direction": "+x",
+   "concentration_tail_vs_baseline": 0.00013
+  },
+  "verification": {
+   "verdict": "rejected",
+   "issues": [
+    "title longer than 60 characters"
+   ],
+   "checker_name": "deterministic_only (ai_rejected)",
+   "agent_run_id": "C-P-D1-NBA-0760-f8d8c4"
+  },
+  "audience_variants": {
+   "commentator": "Northbridge Athletic: 10 of their last 11 final-third entries came through the right channel (91%) in the last 10 minutes, across 8 separate possessions; 1 reached the box or produced a shot.",
+   "fan_discover": "Repeated attacks down one channel",
+   "fan_analyst": "Northbridge Athletic: 10 of their last 11 final-third entries came through the right channel (91%) in the last 10 minutes, across 8 separate possessions; 1 reached the box or produced a shot.",
+   "studio": {
+    "template_id": "channel_pressure",
+    "headline": "Repeated attacks down one channel",
+    "subtitle": "Detector summary - not reviewed by AI",
+    "requires_approval": true
+   },
+   "translations": {}
+  },
+  "created_at_ms": 1633200,
+  "expires_at_elapsed_ms": 2533200,
+  "supersedes_insight_id": null,
+  "retraction_reason": null
+ },
+ "error": null,
+ "budget": {
+  "calls_today": 8,
+  "daily_cap": 50,
+  "session_cap": 20,
+  "total_calls": 8,
+  "total_tokens": 16639,
+  "breaker_open": false,
+  "latency_p50_ms": 3383,
+  "latency_p95_ms": 4890,
+  "measured_calls": 8
+ }
+}

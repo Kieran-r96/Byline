@@ -1,0 +1,113 @@
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear var(--dur-drawer);
+}
+.drawer[data-open='true'] {
+  pointer-events: auto;
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.drawer__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  opacity: 0;
+  transition: opacity var(--dur-drawer) var(--ease-drawer);
+}
+.drawer[data-open='true'] .drawer__scrim {
+  opacity: 1;
+}
+
+.drawer__panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-elevated);
+  transition: transform var(--dur-drawer) var(--ease-drawer);
+  overscroll-behavior: contain;
+}
+
+.drawer--right .drawer__panel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(400px, 92vw);
+  border-radius: var(--radius-drawer) 0 0 var(--radius-drawer);
+  box-shadow: var(--shadow-drawer);
+  transform: translateX(104%);
+}
+.drawer--right[data-open='true'] .drawer__panel {
+  transform: none;
+}
+
+.drawer--bottom .drawer__panel {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: min(78dvh, 640px);
+  padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+  border-radius: var(--radius-drawer) var(--radius-drawer) 0 0;
+  box-shadow: var(--shadow-sheet);
+  transform: translateY(104%);
+}
+.drawer--bottom[data-open='true'] .drawer__panel {
+  transform: none;
+}
+
+.drawer__handle {
+  align-self: center;
+  width: 36px;
+  height: 4px;
+  margin-top: var(--space-2);
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.drawer__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+.drawer__title {
+  flex: 1;
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-display);
+  color: var(--cream);
+}
+
+.drawer__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Non-modal: only the panel takes pointer events; the page beside it stays usable */
+.drawer[data-modal='false'][data-open='true'] {
+  pointer-events: none;
+}
+.drawer[data-modal='false'] .drawer__panel {
+  pointer-events: auto;
+}
+.drawer--right[data-wide='true'] .drawer__panel {
+  width: min(480px, 94vw);
+}
+.drawer__panel {
+  background: var(--stand);
+  color: var(--chalk);
+}
+.drawer--right[data-modal='false'] .drawer__panel {
+  top: var(--header-h);
+  bottom: var(--demobar-h, 0px);
+  border-radius: 20px 0 0 20px;
+  border-radius: 20px 0 0 0;
+}
+.drawer--right .drawer__panel {
+  box-shadow: var(--lift), -1px 0 0 var(--hairline);
+}

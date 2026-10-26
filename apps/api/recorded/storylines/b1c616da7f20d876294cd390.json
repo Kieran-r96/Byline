@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-counterattack-RVC-transition-2",
+ "version": 1,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593302.8796308,
+ "read": {
+  "line": "At 51', Riverton City scored after a 40.8m, 7.4-second counter-attack with 3 passes following a middle third interception.",
+  "caveat": "Counts cannot show player emotions or exact positioning."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 398,
+  "output_tokens": 51,
+  "started_at": 1792593301.7563274,
+  "response_id": "chatcmpl-EbRh8EpXTQziXiaHwakTNbVNHJ4K6",
+  "latency_ms": 1121,
+  "issues": [],
+  "output": {
+   "line": "At 51', Riverton City scored after a 40.8m, 7.4-second counter-attack with 3 passes following a middle third interception.",
+   "caveat": "Counts cannot show player emotions or exact positioning."
+  }
+ }
+}

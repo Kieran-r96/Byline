@@ -1,0 +1,294 @@
+{
+ "trace": {
+  "case_id": "C-P-D2-NBA-2005-aee0f8",
+  "candidate_id": "P-D2-NBA-2005",
+  "match_id": "BYLINE-01",
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "stages": [
+   "queued",
+   "investigating",
+   "analysing",
+   "verifying",
+   "validating"
+  ],
+  "steps": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "started_at": 1792529681.1966748,
+    "latency_ms": 9510,
+    "model_calls": 2,
+    "input_tokens": 3325,
+    "output_tokens": 549,
+    "response_ids": [
+     "chatcmpl-EbB93kIAYNOqYjpU8qzs16fKiWlFs",
+     "chatcmpl-EbB94a1HYRhvmvLB62FQEgGjABNtx"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"counterattack\",\"team\":\"NBA\",\"metrics\":{\"seconds_regain_to_shot\":12.0,\"metres_advanced\":36.3,\"passes_and_carries\":4,\"regain_type\":\"interception\",\"regain_zone\":\"middle third\",\"shot_outcome\":\"goal\",\"regain_clock\":\"71'\"},\"evidence_event_ids\":[\"E1999\",\"E2000\",\"E2001\",\"E2002\",\"E2004\",\"E20",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1999",
+        "E2000",
+        "E2001",
+        "E2002",
+        "E2004",
+        "E2005"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1999\",\"clock\":\"71'\",\"type\":\"interception\",\"team\":\"Northbridge\",\"player\":\"#9 N. Vantreight\",\"location\":[39.7,52.5]},{\"id\":\"E2000\",\"clock\":\"71'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#9 N. Vantreight\",\"start\":[36.2,52.5],\"end\":[55.0,38.0],\"pass_kind\":\"open_play\",\"he",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"71'\",\"score\":{\"NBA\":1,\"RVC\":1},\"provisional_score\":{\"NBA\":1,\"RVC\":1},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":10},\"cards\":[{\"player\":\"RVC-06\",\"colour\":\"yellow\",\"minute\":\"42'\"},{\"player\":\"RVC-06\",\"colour\":\"second_yellow\",\"minute\":\"64'\"}],\"atta",
+      "latency_ms": 0
+     }
+    ],
+    "output": {
+     "candidate_finding": "Northbridge Athletic executed a quick counterattack starting with an interception by #9 N. Vantreight in their middle third, leading to a goal 12 seconds later after 4 passes or carries advancing 36.3 metres.",
+     "key_event_ids": [
+      "E1999",
+      "E2000",
+      "E2001",
+      "E2002",
+      "E2004",
+      "E2005"
+     ],
+     "observed_facts": [
+      {
+       "statement": "At 71', Northbridge Athletic's #9 N. Vantreight intercepted the ball in the middle third at location [39.7, 52.5].",
+       "event_ids": [
+        "E1999"
+       ]
+      },
+      {
+       "statement": "Following the interception, Northbridge completed 3 passes: from #9 N. Vantreight to #8 O. Achterberg, then to #10 L. Ferrandi, and back to #9 N. Vantreight, covering significant field distance.",
+       "event_ids": [
+        "E2000",
+        "E2001",
+        "E2002"
+       ]
+      },
+      {
+       "statement": "#9 N. Vantreight carried the ball advancing from [7.1, 32.1] to [3.0, 33.1] before shooting.",
+       "event_ids": [
+        "E2004"
+       ]
+      },
+      {
+       "statement": "The sequence ended with a shot by #9 N. Vantreight at location [3.4, 32.8] resulting in a goal.",
+       "event_ids": [
+        "E2005"
+       ]
+      }
+     ],
+     "match_context": [
+      "Score tied at 1-1 at 71' minute.",
+      "Northbridge Athletic (NBA) attacking direction is negative x-axis.",
+      "Northbridge Athletic had 11 players on pitch, Riverton City had 10.",
+      "Riverton City had a player sent off at 64' (second yellow card)."
+     ],
+     "alternative_explanations": [
+      "The quick transition could be a result of opportunistic play rather than a planned counterattack.",
+      "The interception and subsequent passes might reflect normal open play dynamics rather than a specific counterattacking strategy."
+     ],
+     "cannot_establish": [
+      "The positional shape or organization of the opposition at the time of the interception and counterattack.",
+      "Whether the counterattack was planned or rehearsed by Northbridge Athletic.",
+      "Any tactical formation changes during the sequence.",
+      "Intentions or decision-making processes of players involved in the sequence."
+     ]
+    },
+    "error": null,
+    "handoff_to": "analyst"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "started_at": 1792529690.76561,
+    "latency_ms": 3542,
+    "model_calls": 1,
+    "input_tokens": 1626,
+    "output_tokens": 304,
+    "response_ids": [
+     "chatcmpl-EbB998P3ju8ZMkpjjddIwPuq1zZmN"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "Northbridge Executes 12-Second Counterattack Goal",
+     "canonical_claim": "Northbridge Athletic intercepted the ball in their middle third and scored a goal 12.0 seconds later after 4 passes or carries advancing 36.3 metres.",
+     "why_it_matters": "This sequence highlights Northbridge's ability to quickly transition from defense to attack, creating a scoring opportunity in just 12.0 seconds.",
+     "uncertainty": "This does not establish whether the counterattack was planned, the opposition's shape, or tactical intentions during the sequence.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E1999",
+      "E2000",
+      "E2001",
+      "E2002",
+      "E2004",
+      "E2005"
+     ],
+     "commentator": "Northbridge's #9 Vantreight intercepts and within 12 seconds, it's a goal after 4 quick actions covering 36.3 metres!",
+     "fan_discover": "Northbridge grabbed the ball in the middle and scored fast, just 12 seconds and 4 passes later.",
+     "fan_analyst": "Northbridge Athletic's #9 Vantreight intercepted in the middle third at 71', then after 4 passes or carries advancing 36.3 metres, scored a goal 12.0 seconds later. This quick transition shows effective ball progression and finishing under pressure.",
+     "studio_headline": "Northbridge's 12-Second Counterattack Goal",
+     "studio_subtitle": "4 passes or carries advancing 36.3 metres led to a goal after interception in middle third"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "started_at": 1792529694.4034915,
+    "latency_ms": 3706,
+    "model_calls": 2,
+    "input_tokens": 3343,
+    "output_tokens": 237,
+    "response_ids": [
+     "chatcmpl-EbB9CZRqQzglwtY43PKdRDNG1hjfK",
+     "chatcmpl-EbB9EDIXyzv98PH6u80Gwly0xZD7t"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1999",
+        "E2000",
+        "E2001",
+        "E2002",
+        "E2004",
+        "E2005"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1999\",\"clock\":\"71'\",\"type\":\"interception\",\"team\":\"Northbridge\",\"player\":\"#9 N. Vantreight\",\"location\":[39.7,52.5]},{\"id\":\"E2000\",\"clock\":\"71'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#9 N. Vantreight\",\"start\":[36.2,52.5],\"end\":[55.0,38.0],\"pass_kind\":\"open_play\",\"he",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"counterattack\",\"team\":\"NBA\",\"metrics\":{\"seconds_regain_to_shot\":12.0,\"metres_advanced\":36.3,\"passes_and_carries\":4,\"regain_type\":\"interception\",\"regain_zone\":\"middle third\",\"shot_outcome\":\"goal\",\"regain_clock\":\"71'\"},\"evidence_event_ids\":[\"E1999\",\"E2000\",\"E2001\",\"E2002\",\"E2004\",\"E20",
+      "latency_ms": 0
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"71'\",\"score\":{\"NBA\":1,\"RVC\":1},\"provisional_score\":{\"NBA\":1,\"RVC\":1},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":10},\"cards\":[{\"player\":\"RVC-06\",\"colour\":\"yellow\",\"minute\":\"42'\"},{\"player\":\"RVC-06\",\"colour\":\"second_yellow\",\"minute\":\"64'\"}],\"atta",
+      "latency_ms": 0
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "Northbridge Athletic intercepted the ball in their middle third and scored a goal 12.0 seconds later after 4 passes or carries advancing 36.3 metres.",
+       "supported": true,
+       "event_ids": [
+        "E1999",
+        "E2000",
+        "E2001",
+        "E2002",
+        "E2004",
+        "E2005"
+       ],
+       "note": "Event E1999 confirms interception by #9 N. Vantreight in middle third. Events E2000, E2001, E2002, and E2004 show 4 passes or carries advancing 36.3 metres. Event E2005 shows a goal scored 12.0 seconds later."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "started_at": 1792529698.1133418,
+    "latency_ms": 3,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": null
+   }
+  ],
+  "outcome": "verified",
+  "total_latency_ms": 17238,
+  "total_model_calls": 5,
+  "total_tokens": 9384,
+  "cache_hit": false
+ },
+ "insight": {
+  "schema_version": "1.0.0",
+  "insight_id": "I-P-D2-NBA-2005",
+  "match_id": "BYLINE-01",
+  "candidate_id": "P-D2-NBA-2005",
+  "version": 1,
+  "status": "verified",
+  "insight_type": "counterattack",
+  "title": "Northbridge Executes 12-Second Counterattack Goal",
+  "canonical_claim": "Northbridge Athletic intercepted the ball in their middle third and scored a goal 12.0 seconds later after 4 passes or carries advancing 36.3 metres.",
+  "why_it_matters": "This sequence highlights Northbridge's ability to quickly transition from defense to attack, creating a scoring opportunity in just 12.0 seconds.",
+  "uncertainty": "This does not establish whether the counterattack was planned, the opposition's shape, or tactical intentions during the sequence.",
+  "certainty": "supported",
+  "evidence_event_ids": [
+   "E1999",
+   "E2000",
+   "E2001",
+   "E2002",
+   "E2004",
+   "E2005"
+  ],
+  "frame_intervals": [],
+  "source_snapshot_seq": 2005,
+  "metric_provenance": {
+   "seconds_regain_to_shot": 12.0,
+   "metres_advanced": 36.3,
+   "passes_and_carries": 4,
+   "regain_type": "interception",
+   "regain_zone": "middle third",
+   "shot_outcome": "goal",
+   "regain_clock": "71'"
+  },
+  "verification": {
+   "verdict": "approved",
+   "issues": [],
+   "checker_name": "verifier_agent+deterministic_validator",
+   "agent_run_id": "C-P-D2-NBA-2005-aee0f8"
+  },
+  "audience_variants": {
+   "commentator": "Northbridge's #9 Vantreight intercepts and within 12 seconds, it's a goal after 4 quick actions covering 36.3 metres!",
+   "fan_discover": "Northbridge grabbed the ball in the middle and scored fast, just 12 seconds and 4 passes later.",
+   "fan_analyst": "Northbridge Athletic's #9 Vantreight intercepted in the middle third at 71', then after 4 passes or carries advancing 36.3 metres, scored a goal 12.0 seconds later. This quick transition shows effective ball progression and finishing under pressure.",
+   "studio": {
+    "template_id": "transition_breakdown",
+    "headline": "Northbridge's 12-Second Counterattack Goal",
+    "subtitle": "4 passes or carries advancing 36.3 metres led to a goal after interception in middle third",
+    "requires_approval": true
+   },
+   "translations": {}
+  },
+  "created_at_ms": 4369600,
+  "expires_at_elapsed_ms": 5269600,
+  "supersedes_insight_id": null,
+  "retraction_reason": null
+ }
+}

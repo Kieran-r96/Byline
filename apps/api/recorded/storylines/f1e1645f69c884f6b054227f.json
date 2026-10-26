@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-counterattack-NBA-transition-1",
+ "version": 3,
+ "state": "CONFIRMED",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593306.9992843,
+ "read": {
+  "line": "Northbridge Athletic confirmed two fast counter-attacks, latest at 71', with 4 passes and carries advancing 36.3 metres, ending in a goal.",
+  "caveat": "Counts cannot show player emotions or off-ball movement."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 444,
+  "output_tokens": 51,
+  "started_at": 1792593305.6412592,
+  "response_id": "chatcmpl-EbRhC3fXhHBb4BTBdotjhD0ttYKph",
+  "latency_ms": 1355,
+  "issues": [],
+  "output": {
+   "line": "Northbridge Athletic confirmed two fast counter-attacks, latest at 71', with 4 passes and carries advancing 36.3 metres, ending in a goal.",
+   "caveat": "Counts cannot show player emotions or off-ball movement."
+  }
+ }
+}

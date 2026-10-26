@@ -1,0 +1,289 @@
+/* The line-up as shirts on a floodlit pitch. A cinematic island: always night theme. */
+
+.sp {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  grid-template-areas:
+    'switch switch'
+    'meta meta'
+    'pitch bench';
+  gap: 0 var(--space-3);
+  padding: var(--space-3);
+  border-radius: 20px;
+  background:
+    radial-gradient(120% 70% at 50% 0%, #1b2b38 0%, transparent 60%),
+    var(--night);
+  color: var(--chalk);
+  box-shadow: var(--lift);
+}
+
+/* ---- club switcher: two clubs, one obvious choice */
+.sp__switch {
+  grid-area: switch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.sp__club {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  border-radius: 11px;
+  font-weight: 600;
+  font-size: var(--fs-body);
+  color: var(--chalk-2);
+  transition:
+    background var(--dur-base) var(--ease-standard),
+    color var(--dur-base) var(--ease-standard);
+}
+.sp__club:hover {
+  color: var(--chalk);
+}
+.sp__club[aria-checked='true'] {
+  color: #fff;
+  background: color-mix(in srgb, var(--kit) 70%, #0f1419);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.sp__meta {
+  grid-area: meta;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-2) var(--space-2);
+}
+.sp__clubfile {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: var(--fs-body);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--dur-fast);
+}
+.sp__clubfile:hover {
+  text-decoration-color: var(--flood);
+}
+.sp__shape {
+  display: flex;
+  gap: 6px;
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sp__down {
+  color: var(--against);
+}
+
+/* ---- the pitch */
+.sp__pitch {
+  grid-area: pitch;
+  position: relative;
+  aspect-ratio: 0.8;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 60% at 50% 40%, rgba(255, 255, 255, 0.08), transparent 70%),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 7.14%, transparent 7.14% 14.28%),
+    linear-gradient(180deg, #1f7049 0%, #19603e 55%, #144f33 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 -40px 60px -30px rgba(0, 0, 0, 0.35);
+}
+.sp__lines {
+  position: absolute;
+  inset: 3%;
+  width: 94%;
+  height: 94%;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 0.35;
+  vector-effect: non-scaling-stroke;
+}
+.sp__dir {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+}
+.sp__dir::after {
+  content: ' ↑';
+}
+.sp__xi {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sp__slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: grid;
+  justify-items: center;
+  animation: sp-in 380ms var(--ease-standard) both;
+  animation-delay: calc(var(--i, 0) * 22ms);
+}
+@keyframes sp-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 10px)) scale(0.92);
+  }
+}
+.sp__empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- a shirt */
+.sp__player {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 2px 4px 4px;
+  border-radius: 10px;
+  transition: transform 220ms var(--ease-standard);
+}
+.sp__shirt {
+  position: relative;
+  display: block;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+  transition: filter 220ms var(--ease-standard);
+}
+.sp__player:hover {
+  transform: translateY(-2px);
+}
+.sp__player:hover .sp__shirt {
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.45));
+}
+.sp__player[aria-pressed='true'] .sp__shirt::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -5px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--flood);
+}
+.sp__name {
+  max-width: 92px;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sp__player[data-off='true'] {
+  opacity: 0.55;
+}
+.sp__marks {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.sp__card {
+  width: 9px;
+  height: 12px;
+  border-radius: 2px;
+  background: #f4c430;
+  transform: rotate(8deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.sp__card[data-red='true'] {
+  background: #ef4b3f;
+}
+.sp__on {
+  font-size: 10px;
+  color: #5cf29a;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.sp__gap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 122, 107, 0.8);
+}
+.sp__slot--empty .sp__name {
+  color: #ffb3a8;
+}
+
+/* ---- bench alongside */
+.sp__bench {
+  grid-area: bench;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.sp__bench-title {
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--chalk-2);
+  margin: var(--space-1) 0 var(--space-1);
+  text-align: center;
+}
+.sp__bench-list {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.sp__player[data-small='true'] .sp__name {
+  max-width: 54px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--chalk-2);
+  text-shadow: none;
+}
+.sp__player[data-small='true'] .sp__shirt {
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 767.98px) {
+  .sp {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'switch' 'meta' 'pitch' 'bench';
+    border-radius: 16px;
+  }
+  .sp__bench-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .sp__player:not([data-small='true']) .sp__shirt svg {
+    width: 40px;
+    height: 40px;
+  }
+  .sp__name {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp__slot {
+    animation: none;
+  }
+  .sp__player,
+  .sp__player:hover {
+    transform: none;
+  }
+}

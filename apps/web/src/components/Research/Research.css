@@ -1,0 +1,391 @@
+.research {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ---- photo-free ident ---- */
+.ident {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+}
+.ident__card {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 72px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--fill) 80%, white) 0%, var(--fill) 45%, color-mix(in srgb, var(--fill) 65%, black) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 10px 22px -12px rgba(0, 0, 0, 0.8);
+}
+.ident__initials {
+  font-size: 1.375rem;
+  font-weight: var(--fw-heavy);
+  letter-spacing: 0.02em;
+  color: var(--num);
+}
+.ident__shirt {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--num);
+  opacity: 0.85;
+}
+.ident__text {
+  min-width: 0;
+}
+.ident__name {
+  font-size: 1.25rem;
+  font-weight: var(--fw-display);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--cream);
+}
+.ident__meta {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+/* ---- tabs ---- */
+.research__tabs {
+  display: flex;
+  gap: 2px;
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.research__tabs button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--touch);
+  padding: 0 var(--space-3);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-display);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.research__tabs button[aria-selected='true'] {
+  color: var(--cream);
+}
+.research__tabs button[aria-selected='true']::after {
+  content: '';
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--gold);
+}
+.research__count {
+  min-width: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: rgba(225, 241, 248, 0.08);
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--cream-soft);
+}
+
+.research__body {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5) var(--space-6);
+}
+.research__asof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--fs-micro);
+  color: var(--muted);
+}
+.research__asof button,
+.research__error button {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-display);
+  color: var(--cream);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+.research__none {
+  padding: var(--space-4) 0;
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+.research__facts {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fact {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background: var(--panel);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.fact__pinned {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  justify-self: start;
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-heavy);
+  color: var(--gold);
+}
+.fact__text {
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1.45;
+  color: var(--cream);
+}
+.fact__more {
+  font-size: var(--fs-small);
+  color: var(--cream-soft);
+}
+.fact__prov {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-micro);
+  color: var(--muted);
+}
+.fact__dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.fact__dot--match {
+  background: var(--teal);
+}
+.fact__dot--seed {
+  background: none;
+  box-shadow: inset 0 0 0 1.5px var(--muted);
+}
+.fact__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+.fact__actions button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-round);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--chalk-2);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.fact__actions button:hover {
+  color: var(--chalk);
+  background: var(--hover);
+}
+.fact__actions button[aria-pressed='true'] {
+  color: var(--night);
+  background: var(--measured);
+  box-shadow: none;
+}
+/* the same Mark used chip as everywhere else, a touch stronger as the likely next action */
+.fact__actions .fact__use {
+  color: var(--chalk);
+  font-weight: 600;
+}
+
+.research__used {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-3);
+}
+.research__used > button {
+  min-height: 36px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-display);
+  color: var(--cream-soft);
+}
+.research__used ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.research__used li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(158, 177, 191, 0.5);
+}
+.research__used li button {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  text-decoration: none;
+  font-weight: var(--fw-display);
+  color: var(--cream);
+}
+.research__skeleton {
+  display: grid;
+  gap: var(--space-3);
+}
+.research__skeleton span {
+  height: 88px;
+  border-radius: var(--radius-card);
+  background: var(--panel);
+}
+.research__error {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+}
+
+.fact__kicker {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+/* ---- R2: compact broadcast research cards (more facts per screen, same actions) ---- */
+.research__facts {
+  gap: var(--space-2);
+}
+.fact {
+  gap: 6px;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid transparent;
+}
+.fact[data-live='true'] {
+  border-left-color: var(--teal);
+}
+.fact[data-pinned='true'] {
+  border-left-color: var(--gold);
+}
+.fact__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 14px;
+}
+.fact__top:empty {
+  display: none;
+}
+.fact__text {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
+.fact__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.fact__foot .fact__prov {
+  flex: 1 1 140px;
+  min-width: 0;
+}
+.fact__actions button {
+  position: relative;
+  min-height: 34px;
+  padding: 0 var(--space-3);
+  font-size: var(--fs-label);
+}
+/* keep a 44px touch target around the compact buttons */
+.fact__actions button::after {
+  content: '';
+  position: absolute;
+  inset: -5px -2px;
+}
+
+/* five player tabs must all be visible at drawer width (no hidden scroll) */
+.research__tabs {
+  justify-content: space-between;
+  gap: 0;
+  padding: 0 var(--space-3);
+}
+.research__tabs button {
+  gap: 4px;
+  padding: 0 var(--space-2);
+}
+.research__tabs button[aria-selected='true']::after {
+  left: var(--space-2);
+  right: var(--space-2);
+}
+.research__tabs button {
+  padding: 0 6px;
+  font-size: var(--fs-label);
+}
+.research__tabs button[aria-selected='true']::after {
+  left: 6px;
+  right: 6px;
+}
+
+
+/* V4.1: notes, not records. No boxes, no shouted eyebrows; the fact is the hero. */
+.research__facts {
+  gap: 0;
+}
+.fact {
+  padding: var(--space-4) 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  border-left: 0;
+  border-top: 1px solid var(--hairline);
+}
+.fact[data-pinned='true'] {
+  border-left: 0;
+  box-shadow: inset 3px 0 0 var(--flood);
+  padding-left: var(--space-3);
+}
+.fact[data-live='true'] {
+  border-left: 0;
+}
+.fact__kicker,
+.fact__pinned {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+.fact__kicker {
+  color: var(--chalk-2);
+}
+.fact__text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--chalk);
+}
+.fact__actions button {
+  min-height: 32px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+

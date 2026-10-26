@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/byline/contracts/insight.schema.json",
+  "title": "BYLINE Verified Insight v1",
+  "type": "object",
+  "required": ["schema_version", "insight_id", "match_id", "candidate_id", "version", "status", "insight_type", "title", "canonical_claim", "why_it_matters", "certainty", "evidence_event_ids", "source_snapshot_seq", "metric_provenance", "verification", "audience_variants"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "insight_id": {"type": "string", "minLength": 2},
+    "match_id": {"type": "string", "minLength": 3},
+    "candidate_id": {"type": "string", "minLength": 2},
+    "version": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["pending", "verified", "tentative", "rejected", "retracted", "superseded"]},
+    "insight_type": {"enum": ["repeated_channel_attack", "counterattack", "overlap", "pressure_change", "player_milestone", "decision_explainer", "goal_story", "recap"]},
+    "title": {"type": "string", "minLength": 3, "maxLength": 110},
+    "canonical_claim": {"type": "string", "minLength": 3, "maxLength": 600},
+    "why_it_matters": {"type": "string", "minLength": 3, "maxLength": 800},
+    "uncertainty": {"type": ["string", "null"], "maxLength": 800},
+    "certainty": {"enum": ["supported", "tentative", "insufficient"]},
+    "evidence_event_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "frame_intervals": {"type": "array", "items": {"type": "object", "required": ["start_ms", "end_ms"], "properties": {"start_ms": {"type": "integer", "minimum": 0}, "end_ms": {"type": "integer", "minimum": 0}}, "additionalProperties": false}},
+    "source_snapshot_seq": {"type": "integer", "minimum": 0},
+    "metric_provenance": {"type": "object", "additionalProperties": {"type": ["number", "string", "boolean", "null"]}},
+    "verification": {"$ref": "#/$defs/verification"},
+    "audience_variants": {"$ref": "#/$defs/audiences"},
+    "created_at_ms": {"type": "integer", "minimum": 0},
+    "expires_at_elapsed_ms": {"type": ["integer", "null"], "minimum": 0},
+    "supersedes_insight_id": {"type": ["string", "null"]},
+    "retraction_reason": {"type": ["string", "null"], "maxLength": 500}
+  },
+  "$defs": {
+    "verification": {
+      "type": "object",
+      "required": ["verdict", "issues", "checker_name"],
+      "properties": {"verdict": {"enum": ["approved", "needs_revision", "rejected"]}, "issues": {"type": "array", "items": {"type": "string"}}, "checker_name": {"type": "string"}, "agent_run_id": {"type": ["string", "null"]}},
+      "additionalProperties": false
+    },
+    "audiences": {
+      "type": "object",
+      "required": ["commentator", "fan_discover", "fan_analyst", "studio"],
+      "properties": {
+        "commentator": {"type": "string", "maxLength": 500},
+        "fan_discover": {"type": "string", "maxLength": 400},
+        "fan_analyst": {"type": "string", "maxLength": 900},
+        "studio": {"type": "object", "required": ["template_id", "headline", "subtitle", "requires_approval"], "properties": {"template_id": {"type": "string"}, "headline": {"type": "string", "maxLength": 80}, "subtitle": {"type": "string", "maxLength": 140}, "requires_approval": {"const": true}}, "additionalProperties": false},
+        "translations": {"type": "object", "additionalProperties": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "verified"}}, "required": ["status"]}, "then": {"properties": {"verification": {"properties": {"verdict": {"const": "approved"}}}, "certainty": {"enum": ["supported", "tentative"]}}}},
+    {"if": {"properties": {"status": {"const": "retracted"}}, "required": ["status"]}, "then": {"required": ["retraction_reason"]}}
+  ]
+}

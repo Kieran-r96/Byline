@@ -1,0 +1,364 @@
+{
+ "stage": "verified",
+ "provider": "foundry",
+ "saved_at": 1792593325.5657957,
+ "insight": {
+  "schema_version": "1.0.0",
+  "insight_id": "I-P-D2-RVC-0986",
+  "match_id": "BYLINE-01",
+  "candidate_id": "P-D2-RVC-0986",
+  "version": 1,
+  "status": "verified",
+  "insight_type": "counterattack",
+  "title": "Riverton City Executes 9.4-Second Counterattack",
+  "canonical_claim": "Riverton City regained possession via interception in the middle third and advanced 46.7 metres through 3 passes or carries before a shot was saved 9.4 seconds later.",
+  "why_it_matters": "This sequence highlights Riverton City's ability to quickly transition from defense to attack, creating a scoring opportunity in under 10 seconds.",
+  "uncertainty": "This does not establish whether the counterattack was planned or if the opposition was out of position during the sequence.",
+  "certainty": "supported",
+  "evidence_event_ids": [
+   "E0982",
+   "E0983",
+   "E0984",
+   "E0985",
+   "E0986"
+  ],
+  "frame_intervals": [],
+  "source_snapshot_seq": 986,
+  "metric_provenance": {
+   "seconds_regain_to_shot": 9.4,
+   "metres_advanced": 46.7,
+   "passes_and_carries": 3,
+   "regain_type": "interception",
+   "regain_zone": "middle third",
+   "shot_outcome": "saved",
+   "regain_clock": "36'"
+  },
+  "verification": {
+   "verdict": "approved",
+   "issues": [],
+   "checker_name": "verifier_agent+deterministic_validator",
+   "agent_run_id": "C-P-D2-RVC-0986-537ecf"
+  },
+  "audience_variants": {
+   "commentator": "Riverton City swiftly turns defense into attack, advancing 47 metres in just 9.4 seconds before a saved shot!",
+   "fan_discover": "Riverton City quickly took the ball and shot within 9.4 seconds after moving it 47 metres with 3 passes or carries.",
+   "fan_analyst": "Riverton City's #10 intercepted in the middle third, then combined 3 passes or carries to cover 46.7 metres, culminating in a shot saved after 9.4 seconds. This rapid transition shows effective ball progression and quick decision-making under pressure.",
+   "studio": {
+    "template_id": "transition_breakdown",
+    "headline": "Riverton City's 9.4-Second Counterattack",
+    "subtitle": "3 passes/carries advance 46.7 metres leading to a saved shot",
+    "requires_approval": true
+   },
+   "translations": {}
+  },
+  "created_at_ms": 2140700,
+  "expires_at_elapsed_ms": 3040700,
+  "supersedes_insight_id": null,
+  "retraction_reason": null
+ },
+ "trace": {
+  "case_id": "C-P-D2-RVC-0986-537ecf",
+  "candidate_id": "P-D2-RVC-0986",
+  "match_id": "BYLINE-01",
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "stages": [
+   "queued",
+   "investigating",
+   "analysing",
+   "verifying",
+   "validating"
+  ],
+  "steps": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "started_at": 1792593308.469068,
+    "latency_ms": 7963,
+    "model_calls": 2,
+    "input_tokens": 4871,
+    "output_tokens": 574,
+    "response_ids": [
+     "chatcmpl-EbRhEkFEMpwoqCQO5EbRWyBEf2b6G",
+     "chatcmpl-EbRhG5UTMv0yFB3IiKMUf675htNa0"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"counterattack\",\"team\":\"RVC\",\"metrics\":{\"seconds_regain_to_shot\":9.4,\"metres_advanced\":46.7,\"passes_and_carries\":3,\"regain_type\":\"interception\",\"regain_zone\":\"middle third\",\"shot_outcome\":\"saved\",\"regain_clock\":\"36'\"},\"evidence_event_ids\":[\"E0982\",\"E0983\",\"E0984\",\"E0985\",\"E0986\"],\"fa",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0982\",\"clock\":\"36'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"location\":[62.0,59.6]},{\"id\":\"E0983\",\"clock\":\"36'\",\"type\":\"carry\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"start\":[62.0,59.6],\"end\":[53.0,42.0]},{\"id\":\"E0984\",\"clock\":\"36'\",\"type\":\"pass.comp",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"36'\",\"score\":{\"NBA\":1,\"RVC\":0},\"provisional_score\":{\"NBA\":1,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0982\",\"clock\":\"36'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"location\":[62.0,59.6]},{\"id\":\"E0983\",\"clock\":\"36'\",\"type\":\"carry\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"start\":[62.0,59.6],\"end\":[53.0,42.0]},{\"id\":\"E0984\",\"clock\":\"36'\",\"type\":\"pass.comp",
+      "latency_ms": 0,
+      "prefetched": false
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"36'\",\"score\":{\"NBA\":1,\"RVC\":0},\"provisional_score\":{\"NBA\":1,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": false
+     }
+    ],
+    "output": {
+     "candidate_finding": "Riverton City executed a quick transition counterattack starting with an interception by #10 P. Rostami in their middle third, progressing through three passes or carries over approximately 47 metres, culminating in a shot that was saved.",
+     "key_event_ids": [
+      "E0982",
+      "E0983",
+      "E0984",
+      "E0985",
+      "E0986"
+     ],
+     "observed_facts": [
+      {
+       "statement": "At 36', #10 P. Rostami of Riverton City intercepted the ball in the middle third at location (62.0, 59.6).",
+       "event_ids": [
+        "E0982"
+       ]
+      },
+      {
+       "statement": "#10 P. Rostami carried the ball from (62.0, 59.6) to (53.0, 42.0) immediately after the interception.",
+       "event_ids": [
+        "E0983"
+       ]
+      },
+      {
+       "statement": "#10 P. Rostami completed a ground pass in open play to #7 J. Okafor-Lisle from (52.1, 43.0) to (31.0, 16.0).",
+       "event_ids": [
+        "E0984"
+       ]
+      },
+      {
+       "statement": "#7 J. Okafor-Lisle completed a ground pass in open play to #9 M. Delacroix-Hunt from (29.6, 15.9) to (16.0, 31.0).",
+       "event_ids": [
+        "E0985"
+       ]
+      },
+      {
+       "statement": "#9 M. Delacroix-Hunt took a shot at 36' from location (15.3, 31.0) which was saved, with the ball ending at (4.0, 32.7).",
+       "event_ids": [
+        "E0986"
+       ]
+      }
+     ],
+     "match_context": [
+      "Minute: 36'",
+      "Score: Northbridge Athletic 1 - 0 Riverton City",
+      "Players on pitch: 11 per team",
+      "No cards issued",
+      "Riverton City attacking direction this half is -x"
+     ],
+     "alternative_explanations": [
+      "The sequence could be a result of normal open play progression rather than a specifically planned counterattack.",
+      "The quick transition might have been opportunistic rather than a structured team tactic."
+     ],
+     "cannot_establish": [
+      "The positional shape or organization of the opposition at the time of the interception and subsequent play.",
+      "Intentions or tactical planning behind the sequence by Riverton City.",
+      "Exact off-ball player positions and movements beyond the involved players in the events.",
+      "Whether the opposition was out of shape or caught out of position during the sequence."
+     ]
+    },
+    "error": null,
+    "handoff_to": "analyst"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "started_at": 1792593316.483178,
+    "latency_ms": 3703,
+    "model_calls": 1,
+    "input_tokens": 1665,
+    "output_tokens": 301,
+    "response_ids": [
+     "chatcmpl-EbRhMt5LsxmnHnpNInioB9jY8Pqe0"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "Riverton City Executes 9.4-Second Counterattack",
+     "canonical_claim": "Riverton City regained possession via interception in the middle third and advanced 46.7 metres through 3 passes or carries before a shot was saved 9.4 seconds later.",
+     "why_it_matters": "This sequence highlights Riverton City's ability to quickly transition from defense to attack, creating a scoring opportunity in under 10 seconds.",
+     "uncertainty": "This does not establish whether the counterattack was planned or if the opposition was out of position during the sequence.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E0982",
+      "E0983",
+      "E0984",
+      "E0985",
+      "E0986"
+     ],
+     "commentator": "Riverton City swiftly turns defense into attack, advancing 47 metres in just 9.4 seconds before a saved shot!",
+     "fan_discover": "Riverton City quickly took the ball and shot within 9.4 seconds after moving it 47 metres with 3 passes or carries.",
+     "fan_analyst": "Riverton City's #10 intercepted in the middle third, then combined 3 passes or carries to cover 46.7 metres, culminating in a shot saved after 9.4 seconds. This rapid transition shows effective ball progression and quick decision-making under pressure.",
+     "studio_headline": "Riverton City's 9.4-Second Counterattack",
+     "studio_subtitle": "3 passes/carries advance 46.7 metres leading to a saved shot"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "started_at": 1792593320.282363,
+    "latency_ms": 5220,
+    "model_calls": 2,
+    "input_tokens": 5131,
+    "output_tokens": 336,
+    "response_ids": [
+     "chatcmpl-EbRhQSDZSMjjo50RtmbIxs2o1R22M",
+     "chatcmpl-EbRhRd1WZVRe8TUoyfyBcnvtTxytd"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"counterattack\",\"team\":\"RVC\",\"metrics\":{\"seconds_regain_to_shot\":9.4,\"metres_advanced\":46.7,\"passes_and_carries\":3,\"regain_type\":\"interception\",\"regain_zone\":\"middle third\",\"shot_outcome\":\"saved\",\"regain_clock\":\"36'\"},\"evidence_event_ids\":[\"E0982\",\"E0983\",\"E0984\",\"E0985\",\"E0986\"],\"fa",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0982\",\"clock\":\"36'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"location\":[62.0,59.6]},{\"id\":\"E0983\",\"clock\":\"36'\",\"type\":\"carry\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"start\":[62.0,59.6],\"end\":[53.0,42.0]},{\"id\":\"E0984\",\"clock\":\"36'\",\"type\":\"pass.comp",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"36'\",\"score\":{\"NBA\":1,\"RVC\":0},\"provisional_score\":{\"NBA\":1,\"RVC\":0},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[],\"attacking_direction_this_half\":{\"NBA\":\"+x\",\"RVC\":\"-x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E0982\",\"clock\":\"36'\",\"type\":\"interception\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"location\":[62.0,59.6]},{\"id\":\"E0983\",\"clock\":\"36'\",\"type\":\"carry\",\"team\":\"Riverton\",\"player\":\"#10 P. Rostami\",\"start\":[62.0,59.6],\"end\":[53.0,42.0]},{\"id\":\"E0984\",\"clock\":\"36'\",\"type\":\"pass.comp",
+      "latency_ms": 0,
+      "prefetched": false
+     },
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"counterattack\",\"team\":\"RVC\",\"metrics\":{\"seconds_regain_to_shot\":9.4,\"metres_advanced\":46.7,\"passes_and_carries\":3,\"regain_type\":\"interception\",\"regain_zone\":\"middle third\",\"shot_outcome\":\"saved\",\"regain_clock\":\"36'\"},\"evidence_event_ids\":[\"E0982\",\"E0983\",\"E0984\",\"E0985\",\"E0986\"],\"fa",
+      "latency_ms": 0,
+      "prefetched": false
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "Riverton City regained possession via interception in the middle third and advanced 46.7 metres through 3 passes or carries before a shot was saved 9.4 seconds later.",
+       "supported": true,
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ],
+       "note": "All metrics and events confirm the interception by #10 P. Rostami in the middle third, 3 passes/carries advancing 46.7 metres, and a shot saved after 9.4 seconds."
+      },
+      {
+       "claim": "This sequence highlights Riverton City's ability to quickly transition from defense to attack, creating a scoring opportunity in under 10 seconds.",
+       "supported": true,
+       "event_ids": [
+        "E0982",
+        "E0983",
+        "E0984",
+        "E0985",
+        "E0986"
+       ],
+       "note": "The pattern type is counterattack with a quick transition from regain to shot in 9.4 seconds, creating a shot opportunity."
+      },
+      {
+       "claim": "This does not establish whether the counterattack was planned or if the opposition was out of position during the sequence.",
+       "supported": true,
+       "event_ids": [],
+       "note": "No evidence or metrics support claims about planning or opposition shape; these claims are explicitly unsupported."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "started_at": 1792593325.5038161,
+    "latency_ms": 1,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": null
+   }
+  ],
+  "outcome": "verified",
+  "total_latency_ms": 17130,
+  "total_model_calls": 5,
+  "total_tokens": 12878,
+  "cache_hit": false
+ }
+}

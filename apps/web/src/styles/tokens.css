@@ -1,0 +1,181 @@
+/*
+ * BYLINE design tokens: two themes, one system (docs/v4-design.md).
+ *   Night: cinematic charcoal and navy. Studio, and every pitch, stage and monitor anywhere.
+ *   Paper: warm off-white. Commentator notes and the fan experience.
+ * A theme is set on .app by role and can be overridden locally with data-theme, so a pitch stays
+ * cinematic inside a paper page. Colour meanings never change between themes:
+ *   flood = live now / selection, measured = from tracking or events, hypo = hypothetical only (dashed),
+ *   against = what went wrong (interception, card, correction), team kits = identity only.
+ */
+:root,
+[data-theme='night'] {
+  --night: #0f1419;
+  --stand: #172029;
+  --terrace: #212c37;
+  --terrace-hi: #2b3845;
+  --chalk: #f4f1ea;
+  --chalk-2: #b6bfc5;
+  --chalk-3: #8e999f;
+  --flood: #f2b544;
+  --measured: #4fd1c5;
+  --hypo: #b7a4ff;
+  --against: #ff7a6b;
+  --verified: #f2b544;
+  --pitch: #1d6a45;
+  --pitch-deep: #0f3f2b;
+  --hairline: rgba(244, 241, 234, 0.1);
+  --hairline-strong: rgba(244, 241, 234, 0.2);
+  --hover: rgba(244, 241, 234, 0.06);
+  --pressed: rgba(244, 241, 234, 0.1);
+  --scrim: rgba(6, 9, 12, 0.62);
+  --lift: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.6);
+  --cream-soft: rgba(244, 241, 234, 0.8);
+  color-scheme: dark;
+  color: var(--chalk);
+}
+
+[data-theme='paper'] {
+  --night: #f5f1e8;
+  --stand: #fffdf8;
+  --terrace: #ebe5d8;
+  --terrace-hi: #e0d8c8;
+  --chalk: #15181b;
+  --chalk-2: #4a5157;
+  --chalk-3: #565e64;
+  --flood: #8a5100;
+  --measured: #08655d;
+  --hypo: #5b40c9;
+  --against: #a83423;
+  --verified: #8a5100;
+  --pitch: #1d6a45;
+  --pitch-deep: #0f3f2b;
+  --hairline: rgba(21, 24, 27, 0.1);
+  --hairline-strong: rgba(21, 24, 27, 0.2);
+  --hover: rgba(21, 24, 27, 0.05);
+  --pressed: rgba(21, 24, 27, 0.09);
+  --scrim: rgba(21, 24, 27, 0.32);
+  --lift: 0 1px 2px rgba(21, 24, 27, 0.06), 0 18px 40px -20px rgba(21, 24, 27, 0.28);
+  --cream-soft: rgba(21, 24, 27, 0.75);
+  color-scheme: light;
+  color: var(--chalk);
+}
+
+:root,
+[data-theme] {
+  /* Legacy names mapped onto the active theme so older components inherit it */
+  --ink: var(--night);
+  --deep: var(--stand);
+  --panel: var(--stand);
+  --panel-elevated: var(--terrace);
+  --cream: var(--chalk);
+  --muted: var(--chalk-2);
+  --gold: var(--flood);
+  --teal: var(--measured);
+  --grass: var(--pitch);
+  --red: var(--against);
+  --line: var(--hairline);
+  --line-strong: var(--hairline-strong);
+  --gold-wash: color-mix(in srgb, var(--flood) 14%, transparent);
+  --teal-wash: color-mix(in srgb, var(--measured) 12%, transparent);
+  --hypo-wash: color-mix(in srgb, var(--hypo) 12%, transparent);
+  --against-wash: color-mix(in srgb, var(--against) 12%, transparent);
+}
+
+:root {
+  /* ---- Typography: Instrument Sans for reading; Archivo for scores, numbers, big moments, broadcast plates ---- */
+  --font-sans: 'Instrument Sans Variable', 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-numeric: var(--font-display);
+  --stretch-display: 78%; /* scoreboards, shirt numbers, broadcast plates: never ordinary reading */
+  --stretch-body: 100%;
+
+  --fs-micro: 0.75rem; /* 12 */
+  --fs-label: 0.75rem; /* 12 */
+  --fs-small: 0.8125rem; /* 13 */
+  --fs-body: 0.9375rem; /* 15 */
+  --fs-body-lg: 1rem; /* 16 */
+  --fs-lead: 1.125rem; /* 18 */
+  --fs-title: 1.375rem; /* 22 */
+  --fs-headline: 2rem; /* 32 */
+  --fs-score: 2.25rem; /* 36 condensed */
+  --fs-hero: 3.5rem; /* 56 condensed */
+
+  --fw-body: 420;
+  --fw-medium: 560;
+  --fw-display: 720;
+  --fw-heavy: 820;
+
+  --tracking-label: 0.02em;
+  --tracking-wide: 0.08em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* ---- Radius ---- */
+  --radius-xs: 4px; /* monitors, pitch frames */
+  --radius-sm: 8px; /* controls */
+  --radius-card: 12px;
+  --radius-drawer: 20px; /* 16-24 drawers */
+  --radius-round: 999px;
+
+  /* ---- Elevation (soft, physically plausible) ---- */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+  --shadow-drawer: 0 0 0 1px var(--line), -24px 0 60px -20px rgba(0, 0, 0, 0.7);
+  --shadow-sheet: 0 0 0 1px var(--line), 0 -24px 60px -20px rgba(0, 0, 0, 0.7);
+
+  /* ---- Motion ---- */
+  --dur-fast: 180ms;
+  --dur-base: 220ms;
+  --dur-slow: 260ms;
+  --dur-drawer: 350ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* ---- Focus ---- */
+  --focus-ring: 0 0 0 2px var(--night), 0 0 0 4px var(--flood);
+
+  /* ---- Layout ---- */
+  --header-h: 64px;
+  --dock-w: 380px;
+  --touch: 44px;
+  --bottom-nav-h: 64px;
+  --gutter: var(--space-6);
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-drawer: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Wide screens: the extra width goes to the intelligence, not to empty margins */
+@media (min-width: 1600px) {
+  :root {
+    --dock-w: 440px;
+  }
+}
+@media (min-width: 1900px) {
+  :root {
+    --dock-w: 500px;
+  }
+}

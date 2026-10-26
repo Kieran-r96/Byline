@@ -1,0 +1,113 @@
+.radar-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+}
+
+.radar-empty__art {
+  align-self: center;
+  margin: var(--space-2) 0 var(--space-5);
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.radar-empty__cross {
+  stroke: var(--line);
+}
+.radar-empty__sweep {
+  stroke: var(--teal);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.radar-empty__hub {
+  fill: var(--teal);
+  stroke: none;
+}
+
+.radar-empty__title {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-display);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--cream);
+}
+
+.radar-empty__body {
+  font-size: var(--fs-body);
+  color: var(--muted);
+  max-width: 30ch;
+}
+
+.radar-empty__steps {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+.radar-empty__steps li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+.radar-empty__steps li > span:last-child {
+  display: grid;
+  gap: 1px;
+}
+.radar-empty__steps strong {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-display);
+  color: var(--cream);
+}
+.radar-empty__steps li > span:last-child > span {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+.radar-empty__step-num {
+  width: 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.radar-empty__note {
+  margin-top: var(--space-2);
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+
+.radar-empty__jump {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  margin-top: var(--space-4);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid rgba(231, 186, 96, 0.55);
+  border-radius: 12px;
+  background: rgba(231, 186, 96, 0.08);
+  color: var(--cream);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--motion-fast, 180ms) ease, border-color var(--motion-fast, 180ms) ease;
+}
+.radar-empty__jump:hover {
+  background: rgba(231, 186, 96, 0.14);
+  border-color: var(--gold);
+}
+.radar-empty__jump-meta {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.radar-empty__jump--compact {
+  justify-self: stretch;
+  margin-top: var(--space-1);
+}

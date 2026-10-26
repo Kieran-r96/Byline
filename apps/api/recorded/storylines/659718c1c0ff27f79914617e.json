@@ -1,0 +1,26 @@
+{
+ "storyline_id": "SL-overlap-NBA-right-1",
+ "version": 1,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593304.0831645,
+ "read": {
+  "line": "At 56', Northbridge Athletic's right flank overlapping run covered 36.5m in 5.5s, leading to a cross chance 2.8s later.",
+  "caveat": "Counts cannot show player intent or defensive reactions."
+ },
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 435,
+  "output_tokens": 54,
+  "started_at": 1792593303.234413,
+  "response_id": "chatcmpl-EbRh95eMblERNiIEylYEFuXyxyV5t",
+  "latency_ms": 851,
+  "issues": [],
+  "output": {
+   "line": "At 56', Northbridge Athletic's right flank overlapping run covered 36.5m in 5.5s, leading to a cross chance 2.8s later.",
+   "caveat": "Counts cannot show player intent or defensive reactions."
+  }
+ }
+}

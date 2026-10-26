@@ -1,0 +1,25 @@
+{
+ "storyline_id": "SL-counterattack-NBA-transition-1",
+ "version": 4,
+ "state": "STRONG",
+ "model_deployment": "gpt-4.1-mini",
+ "saved_at": 1792593308.327531,
+ "read": null,
+ "trace": {
+  "agent": "storyline_reader",
+  "tier": "T1",
+  "model_calls": 1,
+  "input_tokens": 510,
+  "output_tokens": 56,
+  "started_at": 1792593307.3601534,
+  "response_id": "chatcmpl-EbRhDyHXp2uInCrtlr8VUbwwdGRDZ",
+  "latency_ms": 964,
+  "issues": [
+   "number 71 is not in the storyline metrics"
+  ],
+  "output": {
+   "line": "Northbridge Athletic's fast counter-attack at 71' covered 36.3 metres in 12 seconds with 4 passes, ending in a goal later disallowed for offside.",
+   "caveat": "Counts cannot show player intent or offside details."
+  }
+ }
+}

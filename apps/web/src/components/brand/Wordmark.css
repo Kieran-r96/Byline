@@ -1,0 +1,45 @@
+.wordmark {
+  display: inline-grid;
+  grid-template-columns: max-content;
+  justify-items: start;
+  row-gap: 3px;
+  color: var(--cream);
+  user-select: none;
+}
+
+.wordmark__word {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-heavy);
+  font-size: 1.3125rem; /* 21px */
+  line-height: 1;
+  letter-spacing: 0.2em;
+  /* letter-spacing adds trailing space; pull it back so the rule aligns */
+  margin-right: -0.2em;
+}
+
+.wordmark__rule {
+  width: 0;
+  min-width: 100%;
+  height: 8px;
+  margin-top: -1px;
+  color: rgba(245, 242, 233, 0.32);
+  overflow: visible;
+}
+
+.wordmark__kick {
+  stroke: var(--gold);
+}
+
+.wordmark__sub {
+  font-size: 0.5625rem; /* 9px: brand lockup only */
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wordmark--compact .wordmark__word {
+  font-size: 1.125rem;
+}

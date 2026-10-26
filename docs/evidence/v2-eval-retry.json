@@ -1,0 +1,57 @@
+{
+ "ledger_end": 53,
+ "cap": 53,
+ "run": {
+  "candidate_id": "P-D1-NBA-0760",
+  "display_clock": "28'",
+  "outcome": "verified",
+  "calls": 4,
+  "tokens": 11708,
+  "latency_ms": 20483,
+  "per_step": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "calls": 2,
+    "latency_ms": 10850,
+    "model_tool_calls": [
+     "get_recent_events",
+     "get_player"
+    ]
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "calls": 1,
+    "latency_ms": 3966,
+    "model_tool_calls": []
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "calls": 1,
+    "latency_ms": 5373,
+    "model_tool_calls": []
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "calls": 0,
+    "latency_ms": 2,
+    "model_tool_calls": []
+   }
+  ],
+  "error": null,
+  "title": "Northbridge Athletic Repeatedly Attacks Through Right Channel",
+  "claim": "Northbridge Athletic made 10 of their last 11 final-third entries through the right channel in the last 10 minutes, across 8 possessions, with 1 entry reaching the box or producing a shot.",
+  "issues": [],
+  "status": "verified",
+  "cache_key": "d27b5aa16cb8f1bbd113a18e",
+  "original": {
+   "calls": 5,
+   "tokens": 9944,
+   "latency_ms": 17368,
+   "outcome": "verified"
+  }
+ }
+}

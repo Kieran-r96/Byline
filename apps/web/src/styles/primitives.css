@@ -1,0 +1,138 @@
+/* V4 shared primitives: buttons, quiet links, chips, empty states. See docs/v4-design.md. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--terrace);
+  color: var(--chalk);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-small);
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+.btn:hover {
+  background: var(--terrace-hi);
+}
+.btn--primary {
+  background: var(--chalk);
+  color: var(--night);
+}
+.btn--primary:hover {
+  background: #fff;
+}
+.btn--quiet {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.btn--quiet:hover {
+  background: var(--hover);
+}
+.btn[aria-pressed='true'] {
+  background: var(--chalk);
+  color: var(--night);
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  color: var(--chalk);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-small);
+  text-decoration: underline;
+  text-decoration-color: var(--hairline-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--dur-fast);
+}
+.link-btn:hover {
+  text-decoration-color: var(--flood);
+}
+.link-btn--more {
+  color: var(--chalk-2);
+  margin-top: var(--space-2);
+}
+
+.chip-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-round);
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  color: var(--chalk-2);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.chip-btn:hover {
+  color: var(--chalk);
+  background: var(--hover);
+}
+.chip-btn[aria-pressed='true'] {
+  color: var(--night);
+  background: var(--measured);
+  box-shadow: none;
+}
+
+.empty-line {
+  color: var(--chalk-2);
+  font-size: var(--fs-small);
+  max-width: 46ch;
+}
+.empty-block {
+  color: var(--chalk-2);
+  padding: var(--space-6) 0;
+  max-width: 40ch;
+}
+.fine {
+  color: var(--chalk-3);
+  font-size: var(--fs-micro);
+  margin-top: var(--space-4);
+}
+
+.display {
+  font-stretch: var(--stretch-display);
+  font-weight: var(--fw-heavy);
+  letter-spacing: -0.005em;
+  line-height: 1.02;
+}
+
+.provenance {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-micro);
+  color: var(--chalk-2);
+}
+.provenance::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--measured);
+}
+.provenance[data-source='ai']::before {
+  background: var(--flood);
+}
+.provenance[data-source='history']::before {
+  background: var(--chalk-3);
+}
+.provenance[data-source='hypothetical']::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--hypo);
+}
+
+/* "Back to match": the one way out of any analysis, always the same and always obvious */
+.btn--back {
+  background: var(--chalk);
+  color: var(--night);
+  font-size: var(--fs-body);
+  min-height: 44px;
+  padding: 0 var(--space-5);
+}
+.btn--back:hover {
+  background: #fff;
+}

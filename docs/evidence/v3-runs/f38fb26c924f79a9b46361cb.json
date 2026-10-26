@@ -1,0 +1,338 @@
+{
+ "stage": "verified",
+ "provider": "foundry",
+ "saved_at": 1792593281.4733102,
+ "insight": {
+  "schema_version": "1.0.0",
+  "insight_id": "I-P-D3-NBA-1601",
+  "match_id": "BYLINE-01",
+  "candidate_id": "P-D3-NBA-1601",
+  "version": 1,
+  "status": "verified",
+  "insight_type": "overlap",
+  "title": "Northbridge Executes Overlapping Run Leading to Cross",
+  "canonical_claim": "#2 D. Mensah-Lowe ran 36.5 m in 5.5 s from 26.2 m behind to 4.4 m ahead of #7 K. Rennard on the right flank, received a pass, and delivered a cross within 2.8 seconds.",
+  "why_it_matters": "This overlapping run created a chance by advancing the ball quickly on the flank and delivering a cross, showing effective team coordination in attack.",
+  "uncertainty": "It does not establish whether the run was rehearsed or instructed, nor the defenders' positioning or intent during the play.",
+  "certainty": "supported",
+  "evidence_event_ids": [
+   "E1600",
+   "E1601"
+  ],
+  "frame_intervals": [
+   {
+    "start_ms": 3463200,
+    "end_ms": 3469000
+   }
+  ],
+  "source_snapshot_seq": 1601,
+  "metric_provenance": {
+   "runner_distance_m": 36.5,
+   "runner_mean_speed_ms": 6.6,
+   "runner_start_behind_m": 26.2,
+   "runner_finish_ahead_m": 4.4,
+   "run_seconds": 5.5,
+   "flank": "right",
+   "frames_used": 12,
+   "tracking_precision": "player-centre synthetic, 2 Hz",
+   "chance_type": "cross",
+   "seconds_pass_to_chance": 2.8
+  },
+  "verification": {
+   "verdict": "approved",
+   "issues": [],
+   "checker_name": "verifier_agent+deterministic_validator",
+   "agent_run_id": "C-P-D3-NBA-1601-73f7c9"
+  },
+  "audience_variants": {
+   "commentator": "Mensah-Lowe bursts past Rennard on the right, receives the ball, and sends in a dangerous cross!",
+   "fan_discover": "Mensah-Lowe sprinted past his teammate on the right and quickly crossed the ball to create a scoring chance.",
+   "fan_analyst": "Mensah-Lowe covered 36.5 m in 5.5 seconds, moving from 26.2 m behind to 4.4 m ahead of Rennard on the right flank. He received a pass and delivered a cross 2.8 seconds later, demonstrating a classic overlapping run that led directly to a chance (E1600, E1601).",
+   "studio": {
+    "template_id": "channel_pressure",
+    "headline": "Northbridge Overlap Spurs Cross Chance",
+    "subtitle": "Mensah-Lowe's 36.5 m run and quick cross create attacking opportunity",
+    "requires_approval": true
+   },
+   "translations": {}
+  },
+  "created_at_ms": 3471800,
+  "expires_at_elapsed_ms": 4371800,
+  "supersedes_insight_id": null,
+  "retraction_reason": null
+ },
+ "trace": {
+  "case_id": "C-P-D3-NBA-1601-73f7c9",
+  "candidate_id": "P-D3-NBA-1601",
+  "match_id": "BYLINE-01",
+  "provider": "foundry",
+  "model_deployment": "gpt-4.1-mini",
+  "orchestration": "Microsoft Agent Framework WorkflowBuilder: investigator -> analyst -> verifier -> validator",
+  "stages": [
+   "queued",
+   "investigating",
+   "analysing",
+   "verifying",
+   "validating"
+  ],
+  "steps": [
+   {
+    "agent": "investigator",
+    "attempt": 1,
+    "started_at": 1792593263.8145285,
+    "latency_ms": 7350,
+    "model_calls": 2,
+    "input_tokens": 4317,
+    "output_tokens": 493,
+    "response_ids": [
+     "chatcmpl-EbRgW0U0OvFE2DOpM1CT01gP4wPd9",
+     "chatcmpl-EbRgYJlHS7sA51XziUj2CkvvXptID"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"overlap\",\"team\":\"NBA\",\"metrics\":{\"runner_distance_m\":36.5,\"runner_mean_speed_ms\":6.6,\"runner_start_behind_m\":26.2,\"runner_finish_ahead_m\":4.4,\"run_seconds\":5.5,\"flank\":\"right\",\"frames_used\":12,\"tracking_precision\":\"player-centre synthetic, 2 Hz\",\"chance_type\":\"cross\",\"seconds_pass_t",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1600\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#7 K. Rennard\",\"start\":[33.4,14.6],\"end\":[19.0,4.5],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#2 D. Mensah-Lowe\"},{\"id\":\"E1601\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"56'\",\"score\":{\"NBA\":1,\"RVC\":1},\"provisional_score\":{\"NBA\":1,\"RVC\":1},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[{\"player\":\"RVC-06\",\"colour\":\"yellow\",\"minute\":\"42'\"}],\"attacking_direction_this_half\":{\"NBA\":\"-x\",\"RVC\":\"+x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1600\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#7 K. Rennard\",\"start\":[33.4,14.6],\"end\":[19.0,4.5],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#2 D. Mensah-Lowe\"},{\"id\":\"E1601\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player",
+      "latency_ms": 0,
+      "prefetched": false
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"56'\",\"score\":{\"NBA\":1,\"RVC\":1},\"provisional_score\":{\"NBA\":1,\"RVC\":1},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[{\"player\":\"RVC-06\",\"colour\":\"yellow\",\"minute\":\"42'\"}],\"attacking_direction_this_half\":{\"NBA\":\"-x\",\"RVC\":\"+x\"}}",
+      "latency_ms": 0,
+      "prefetched": false
+     }
+    ],
+    "output": {
+     "candidate_finding": "Northbridge Athletic player #2 D. Mensah-Lowe made a run from behind teammate #7 K. Rennard on the right flank, received a pass, and then delivered a cross, constituting a possible overlapping run followed by a chance.",
+     "key_event_ids": [
+      "E1600",
+      "E1601"
+     ],
+     "observed_facts": [
+      {
+       "statement": "At 56', #7 K. Rennard completed a ground pass to #2 D. Mensah-Lowe, who was positioned on the right flank.",
+       "event_ids": [
+        "E1600"
+       ]
+      },
+      {
+       "statement": "#2 D. Mensah-Lowe ran from 26.2 m behind #7 K. Rennard to 4.4 m ahead on the outside of the right flank, covering 36.5 m in 5.5 seconds.",
+       "event_ids": [
+        "E1600"
+       ]
+      },
+      {
+       "statement": "After receiving the pass, #2 D. Mensah-Lowe completed a high cross pass to #9 N. Vantreight, creating a chance.",
+       "event_ids": [
+        "E1601"
+       ]
+      },
+      {
+       "statement": "The match score at 56' was 1-1 between Northbridge Athletic and Riverton City, with all players on pitch and one yellow card issued to RVC-06 at 42'.",
+       "event_ids": []
+      }
+     ],
+     "match_context": [
+      "Minute 56'",
+      "Score tied 1-1",
+      "All players on pitch",
+      "Yellow card to RVC-06 at 42'",
+      "Northbridge Athletic attacking direction is -x"
+     ],
+     "alternative_explanations": [
+      "The run by #2 D. Mensah-Lowe may have been spontaneous rather than rehearsed or instructed.",
+      "The defenders' positioning or reactions to the run are not known from the data.",
+      "The cross following the run may not have been directly caused by the overlap but coincided in time."
+     ],
+     "cannot_establish": [
+      "Whether the run was rehearsed or instructed by the team or coach.",
+      "The intent or positioning of any defenders during the run or pass.",
+      "Exact body positions or off-ball movements beyond player-centre synthetic tracking at 2 Hz.",
+      "Any tactical or strategic context beyond the observed events and tracking data."
+     ]
+    },
+    "error": null,
+    "handoff_to": "analyst"
+   },
+   {
+    "agent": "analyst",
+    "attempt": 1,
+    "started_at": 1792593271.3914917,
+    "latency_ms": 4094,
+    "model_calls": 1,
+    "input_tokens": 1611,
+    "output_tokens": 323,
+    "response_ids": [
+     "chatcmpl-EbRgdKLeR07maWFQjPhdelpvDTgte"
+    ],
+    "tool_calls": [],
+    "output": {
+     "title": "Northbridge Executes Overlapping Run Leading to Cross",
+     "canonical_claim": "#2 D. Mensah-Lowe ran 36.5 m in 5.5 s from 26.2 m behind to 4.4 m ahead of #7 K. Rennard on the right flank, received a pass, and delivered a cross within 2.8 seconds.",
+     "why_it_matters": "This overlapping run created a chance by advancing the ball quickly on the flank and delivering a cross, showing effective team coordination in attack.",
+     "uncertainty": "It does not establish whether the run was rehearsed or instructed, nor the defenders' positioning or intent during the play.",
+     "certainty": "supported",
+     "evidence_event_ids": [
+      "E1600",
+      "E1601"
+     ],
+     "commentator": "Mensah-Lowe bursts past Rennard on the right, receives the ball, and sends in a dangerous cross!",
+     "fan_discover": "Mensah-Lowe sprinted past his teammate on the right and quickly crossed the ball to create a scoring chance.",
+     "fan_analyst": "Mensah-Lowe covered 36.5 m in 5.5 seconds, moving from 26.2 m behind to 4.4 m ahead of Rennard on the right flank. He received a pass and delivered a cross 2.8 seconds later, demonstrating a classic overlapping run that led directly to a chance (E1600, E1601).",
+     "studio_headline": "Northbridge Overlap Spurs Cross Chance",
+     "studio_subtitle": "Mensah-Lowe's 36.5 m run and quick cross create attacking opportunity"
+    },
+    "error": null,
+    "handoff_to": "verifier"
+   },
+   {
+    "agent": "verifier",
+    "attempt": 1,
+    "started_at": 1792593275.705547,
+    "latency_ms": 5256,
+    "model_calls": 2,
+    "input_tokens": 4624,
+    "output_tokens": 303,
+    "response_ids": [
+     "chatcmpl-EbRgiGD5uDpWi2PYq8c7PR3wDWqvv",
+     "chatcmpl-EbRgjYpGkBdFVFwdRDKaznUO0aP1X"
+    ],
+    "tool_calls": [
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"overlap\",\"team\":\"NBA\",\"metrics\":{\"runner_distance_m\":36.5,\"runner_mean_speed_ms\":6.6,\"runner_start_behind_m\":26.2,\"runner_finish_ahead_m\":4.4,\"run_seconds\":5.5,\"flank\":\"right\",\"frames_used\":12,\"tracking_precision\":\"player-centre synthetic, 2 Hz\",\"chance_type\":\"cross\",\"seconds_pass_t",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1600\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#7 K. Rennard\",\"start\":[33.4,14.6],\"end\":[19.0,4.5],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#2 D. Mensah-Lowe\"},{\"id\":\"E1601\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_match_context",
+      "arguments": {},
+      "result_preview": "{\"minute\":\"56'\",\"score\":{\"NBA\":1,\"RVC\":1},\"provisional_score\":{\"NBA\":1,\"RVC\":1},\"home\":\"Northbridge Athletic\",\"away\":\"Riverton City\",\"players_on_pitch\":{\"NBA\":11,\"RVC\":11},\"cards\":[{\"player\":\"RVC-06\",\"colour\":\"yellow\",\"minute\":\"42'\"}],\"attacking_direction_this_half\":{\"NBA\":\"-x\",\"RVC\":\"+x\"}}",
+      "latency_ms": 0,
+      "prefetched": true
+     },
+     {
+      "name": "get_events",
+      "arguments": {
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ]
+      },
+      "result_preview": "{\"events\":[{\"id\":\"E1600\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player\":\"#7 K. Rennard\",\"start\":[33.4,14.6],\"end\":[19.0,4.5],\"pass_kind\":\"open_play\",\"height\":\"ground\",\"receiver\":\"#2 D. Mensah-Lowe\"},{\"id\":\"E1601\",\"clock\":\"56'\",\"type\":\"pass.completed\",\"team\":\"Northbridge\",\"player",
+      "latency_ms": 0,
+      "prefetched": false
+     },
+     {
+      "name": "get_detector_metrics",
+      "arguments": {},
+      "result_preview": "{\"pattern_type\":\"overlap\",\"team\":\"NBA\",\"metrics\":{\"runner_distance_m\":36.5,\"runner_mean_speed_ms\":6.6,\"runner_start_behind_m\":26.2,\"runner_finish_ahead_m\":4.4,\"run_seconds\":5.5,\"flank\":\"right\",\"frames_used\":12,\"tracking_precision\":\"player-centre synthetic, 2 Hz\",\"chance_type\":\"cross\",\"seconds_pass_t",
+      "latency_ms": 0,
+      "prefetched": false
+     }
+    ],
+    "output": {
+     "verdict": "approved",
+     "checks": [
+      {
+       "claim": "#2 D. Mensah-Lowe ran 36.5 m in 5.5 s from 26.2 m behind to 4.4 m ahead of #7 K. Rennard on the right flank, received a pass, and delivered a cross within 2.8 seconds.",
+       "supported": true,
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ],
+       "note": "Supported by detector metrics and events E1600 (pass received) and E1601 (cross delivered)."
+      },
+      {
+       "claim": "This overlapping run created a chance by advancing the ball quickly on the flank and delivering a cross, showing effective team coordination in attack.",
+       "supported": true,
+       "event_ids": [
+        "E1600",
+        "E1601"
+       ],
+       "note": "The run is classified as a possible overlapping run and was followed by a cross chance within 2.8 seconds as per metrics and events."
+      },
+      {
+       "claim": "It does not establish whether the run was rehearsed or instructed, nor the defenders' positioning or intent during the play.",
+       "supported": true,
+       "event_ids": [],
+       "note": "This is explicitly listed as unsupported in the factual summary and metrics."
+      }
+     ],
+     "issues": [],
+     "revision_instructions": null
+    },
+    "error": null,
+    "handoff_to": null
+   },
+   {
+    "agent": "deterministic_validator",
+    "attempt": 1,
+    "started_at": 1792593280.964029,
+    "latency_ms": 1,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "response_ids": [],
+    "tool_calls": [],
+    "output": {
+     "issues": [],
+     "verifier_verdict": "approved"
+    },
+    "error": null,
+    "handoff_to": null
+   }
+  ],
+  "outcome": "verified",
+  "total_latency_ms": 17847,
+  "total_model_calls": 5,
+  "total_tokens": 11671,
+  "cache_hit": false
+ }
+}

@@ -1,0 +1,4 @@
+agent-framework-core==1.22.0
+agent-framework-openai==1.17.0
+azure-identity>=1.26
+azure-identity-broker>=1.2

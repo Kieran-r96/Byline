@@ -1,0 +1,162 @@
+{
+ "match_id": "BYLINE-01",
+ "final_score": {
+  "Northbridge": 2,
+  "Riverton": 1
+ },
+ "headline": "Northbridge Athletic Wins 2-1 Over Riverton City",
+ "summary": "Northbridge Athletic secured a 2-1 victory against Riverton City with goals from Nico Vantreight and Luca Ferrandi. Riverton's Marcus Delacroix-Hunt scored an equalizer early in the second half. Northbridge had a goal disallowed and Riverton's Gabriel Ndiaye-Shaw was sent off after a second yellow card. Both teams created numerous chances, with Riverton taking more shots but Northbridge converting a late penalty to clinch the win.",
+ "turning_points": [
+  {
+   "minute": "28'",
+   "text": "Nico Vantreight opened the scoring for Northbridge Athletic.",
+   "event_ids": [
+    "E0761",
+    "E0762"
+   ]
+  },
+  {
+   "minute": "64'",
+   "text": "Gabriel Ndiaye-Shaw received a second yellow card, reducing Riverton to ten men.",
+   "event_ids": [
+    "E1800"
+   ]
+  },
+  {
+   "minute": "85'",
+   "text": "Luca Ferrandi scored a penalty to give Northbridge the winning goal.",
+   "event_ids": [
+    "E2344",
+    "E2346"
+   ]
+  }
+ ],
+ "goals": [
+  {
+   "minute": "28'",
+   "team": "Northbridge",
+   "scorer": "Nico Vantreight (#9, Northbridge)",
+   "situation": "open_play",
+   "event_id": "E0761",
+   "decided_by": "E0762"
+  },
+  {
+   "minute": "51'",
+   "team": "Riverton",
+   "scorer": "Marcus Delacroix-Hunt (#9, Riverton)",
+   "situation": "open_play",
+   "event_id": "E1472",
+   "decided_by": "E1473"
+  },
+  {
+   "minute": "85'",
+   "team": "Northbridge",
+   "scorer": "Luca Ferrandi (#10, Northbridge)",
+   "situation": "penalty",
+   "event_id": "E2344",
+   "decided_by": "E2346"
+  }
+ ],
+ "disallowed": [
+  {
+   "minute": "71'",
+   "team": "Northbridge",
+   "scorer": "Nico Vantreight (#9, Northbridge)",
+   "event_id": "E2006",
+   "decided_by": "E2009"
+  }
+ ],
+ "discipline": [
+  {
+   "minute": "42'",
+   "player": "Gabriel Ndiaye-Shaw (#6, Riverton)",
+   "card": "yellow",
+   "event_id": "E1138"
+  },
+  {
+   "minute": "64'",
+   "player": "Gabriel Ndiaye-Shaw (#6, Riverton)",
+   "card": "second_yellow",
+   "event_id": "E1800"
+  },
+  {
+   "minute": "90+2'",
+   "player": "Arlo Brennick (#8, Riverton)",
+   "card": "yellow",
+   "event_id": "E2512"
+  }
+ ],
+ "stories": [
+  {
+   "title": "Northbridge Athletic Focuses Attacks Through Right Channel",
+   "claim": "Northbridge Athletic made 10 of their last 11 final-third entries through the right channel (91%) in the last 10 minutes, across 8 possessions, producing 1 shot.",
+   "insight_id": "I-P-D1-NBA-0760",
+   "evidence_event_ids": [
+    "E0523",
+    "E0538",
+    "E0587",
+    "E0590",
+    "E0631",
+    "E0653"
+   ]
+  },
+  {
+   "title": "Northbridge Executes Overlapping Run Leading to Cross",
+   "claim": "#2 D. Mensah-Lowe ran 36.5 m in 5.5 s from 26.2 m behind to 4.4 m ahead on the right flank, received a pass, and delivered a cross 2.8 s later.",
+   "insight_id": "I-P-D3-NBA-1601",
+   "evidence_event_ids": [
+    "E1600",
+    "E1601"
+   ]
+  }
+ ],
+ "stats": {
+  "Northbridge": {
+   "passes": 839,
+   "passes_completed": 681,
+   "shots": 20,
+   "shots_on_target": 8,
+   "fouls": 3,
+   "corners": 7,
+   "offsides": 2
+  },
+  "Riverton": {
+   "passes": 867,
+   "passes_completed": 717,
+   "shots": 24,
+   "shots_on_target": 13,
+   "fouls": 7,
+   "corners": 8,
+   "offsides": 0
+  }
+ },
+ "source_event_ids": [
+  "E0761",
+  "E0762",
+  "E1800",
+  "E2344",
+  "E2346"
+ ],
+ "generated_by": "foundry_recap_writer",
+ "validation_issues": [],
+ "model_trace": {
+  "agent": "recap_writer",
+  "model_calls": 1,
+  "tokens": 1382,
+  "latency_ms": 7073,
+  "response_id": "chatcmpl-EbBZ7jtXN0f6EzfCgNztmzYUorqEC"
+ },
+ "synthetic_notice": "Synthetic match between fictional clubs.",
+ "rekeyed": [
+  {
+   "from_key": "1d40c95efa5d251c3be8d77f",
+   "to_key": "1cccb5f3281bc0171c3f47f1",
+   "at": "2026-10-21",
+   "reason": "event log corrected (period.ended clock); inputs verified identical, output unchanged",
+   "verified": [
+    "full-time fact sheet identical",
+    "old key reproduced"
+   ]
+  }
+ ]
+}

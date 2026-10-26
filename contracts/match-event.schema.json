@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/byline/contracts/match-event.schema.json",
+  "title": "BYLINE Synthetic Match Event v1",
+  "description": "Canonical immutable match event envelope. v1 payload is typed by event category in application-level Pydantic discriminated unions; unknown added fields are allowed in payload for future protocol versions.",
+  "type": "object",
+  "required": ["schema_version", "event_id", "match_id", "seq", "elapsed_ms", "period", "type", "source", "truth_status", "payload"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "event_id": {"type": "string", "minLength": 3, "maxLength": 100, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"},
+    "match_id": {"type": "string", "minLength": 3, "maxLength": 100},
+    "seq": {"type": "integer", "minimum": 0},
+    "elapsed_ms": {"type": "integer", "minimum": 0},
+    "period": {"enum": ["PRE", "H1", "HT", "H2", "FT", "ET1", "ET2", "PEN"]},
+    "display_clock": {"type": "string", "maxLength": 30},
+    "team_id": {"type": ["string", "null"]},
+    "player_id": {"type": ["string", "null"]},
+    "type": {
+      "enum": ["fixture.created", "team_news.updated", "lineup.confirmed", "period.started", "kickoff", "period.ended", "match.finished", "pass.completed", "pass.failed", "carry", "ball_recovery", "turnover", "pressure", "challenge", "tackle", "interception", "shot", "save", "goal.provisional", "goal.confirmed", "goal.disallowed", "own_goal", "foul.committed", "advantage.applied", "advantage.recalled", "offside.position_detected", "offside.offence_confirmed", "card.yellow", "card.second_yellow", "card.red", "disciplinary.reviewed", "injury.stoppage", "restart.awarded", "restart.taken", "penalty.taken", "penalty.outcome", "substitution", "var.review_started", "var.review_outcome", "tracking.frame"]
+    },
+    "source": {"enum": ["synthetic_fixture", "synthetic_generator", "derived_from_synthetic"]},
+    "truth_status": {"enum": ["official_synthetic", "observed_synthetic", "derived", "model_interpretation"]},
+    "correlation_id": {"type": ["string", "null"], "maxLength": 100},
+    "payload": {"type": "object"},
+    "supersedes_event_id": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"type": {"const": "restart.awarded"}}, "required": ["type"]}, "then": {"properties": {"payload": {"type": "object", "required": ["restart_type", "awarded_to_team_id"], "properties": {"restart_type": {"enum": ["direct_free_kick", "indirect_free_kick", "penalty", "corner", "goal_kick", "throw_in", "dropped_ball", "kickoff"]}, "awarded_to_team_id": {"type": "string"}}}}}},
+    {"if": {"properties": {"type": {"const": "pass.completed"}}, "required": ["type"]}, "then": {"required": ["team_id", "player_id"], "properties": {"payload": {"type": "object", "required": ["start", "end", "receiver_player_id"], "properties": {"start": {"$ref": "#/$defs/point"}, "end": {"$ref": "#/$defs/point"}, "receiver_player_id": {"type": "string"}}}}}},
+    {"if": {"properties": {"type": {"const": "offside.offence_confirmed"}}, "required": ["type"]}, "then": {"properties": {"truth_status": {"const": "official_synthetic"}, "payload": {"type": "object", "required": ["interference_type", "decision_event_id"], "properties": {"interference_type": {"enum": ["interfering_with_play", "interfering_with_opponent", "gaining_advantage"]}, "decision_event_id": {"type": "string"}}}}}},
+    {"if": {"properties": {"type": {"enum": ["goal.confirmed", "goal.disallowed"]}}, "required": ["type"]}, "then": {"properties": {"truth_status": {"const": "official_synthetic"}}}}
+  ],
+  "$defs": {
+    "point": {
+      "type": "object",
+      "required": ["x_m", "y_m"],
+      "properties": {"x_m": {"type": "number", "minimum": 0, "maximum": 105}, "y_m": {"type": "number", "minimum": 0, "maximum": 68}},
+      "additionalProperties": false
+    }
+  }
+}

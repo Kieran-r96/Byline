@@ -1,0 +1,76 @@
+.vread {
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  border-radius: var(--radius-card);
+  background: var(--stand);
+  box-shadow: inset 3px 0 0 var(--flood);
+}
+.vread__kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-display);
+  color: var(--flood);
+}
+.vread__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--flood);
+}
+.vread__text {
+  margin-top: var(--space-2);
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.vread__claim {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+  line-height: 1.5;
+}
+.vread__unc {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+}
+.vread__unc span {
+  color: var(--chalk);
+}
+.vread__how {
+  margin-top: var(--space-2);
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--chalk-2);
+}
+.vread__checks {
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: 4px;
+}
+.vread__checks li[data-ok='false'] {
+  color: var(--against);
+}
+.vread__calls {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-micro);
+}
+.vread__calls caption {
+  text-align: left;
+  padding-bottom: 6px;
+  color: var(--chalk);
+}
+.vread__calls th,
+.vread__calls td {
+  text-align: left;
+  padding: 4px 6px;
+  border-top: 1px solid var(--hairline);
+}
+.vread__calls th {
+  color: var(--chalk-3);
+  font-weight: var(--fw-medium);
+}

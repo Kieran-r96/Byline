@@ -1,0 +1,145 @@
+.run {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.run__stamp {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.run__badge {
+  display: inline-block;
+  margin-right: var(--space-2);
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(80, 201, 194, 0.55);
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.run__toggle {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.run__toggle:hover {
+  background: rgba(245, 242, 233, 0.06);
+}
+
+.run__chain {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+  counter-reset: step;
+}
+
+.run__step {
+  position: relative;
+  padding: var(--space-3) 0 var(--space-3) var(--space-6);
+  border-left: 1px solid var(--line);
+  margin-left: 11px;
+}
+.run__step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -12px;
+  top: var(--space-3);
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--panel-elevated);
+  box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--cream);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.run__step[data-agent='deterministic_validator']::before {
+  color: var(--teal);
+}
+
+.run__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.run__meta {
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+.run__does,
+.run__tools,
+.run__handoff,
+.run__note,
+.run__ids {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.45;
+}
+.run__handoff {
+  color: rgba(231, 186, 96, 0.9);
+}
+.run__said {
+  margin: var(--space-2) 0 0;
+  line-height: 1.5;
+}
+.run__verdict {
+  margin: var(--space-2) 0 0;
+  font-weight: 600;
+}
+.run__verdict--approved {
+  color: var(--teal);
+}
+.run__verdict--needs_revision,
+.run__verdict--rejected {
+  color: var(--gold);
+}
+.run__checks {
+  margin: var(--space-1) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.run__lenses dl {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+}
+.run__lenses dt {
+  color: var(--gold);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.run__lenses dd {
+  margin: 2px 0 0;
+  line-height: 1.5;
+}
+.run__h {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: 0.9375rem;
+}
+.run__nowrap {
+  white-space: nowrap;
+}

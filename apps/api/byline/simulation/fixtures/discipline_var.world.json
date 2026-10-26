@@ -1,0 +1,467 @@
+{
+ "fixture": {
+  "away_team_id": "RVC",
+  "competition": "BYLINE Synthetic League (fictional)",
+  "data_notice": "Synthetic data. Fictional clubs, players and officials. Seeded scenario.",
+  "home_team_id": "NBA",
+  "kickoff_local": "2026-10-24T17:30:00+01:00",
+  "match_id": "BYLINE-02",
+  "officials": [
+   {
+    "name": "Imogen Castell",
+    "official_id": "OFF-REF",
+    "role": "referee"
+   },
+   {
+    "name": "David Ruane",
+    "official_id": "OFF-AR1",
+    "role": "assistant_1"
+   },
+   {
+    "name": "Priya Lomax",
+    "official_id": "OFF-AR2",
+    "role": "assistant_2"
+   },
+   {
+    "name": "Owen Teale-Barker",
+    "official_id": "OFF-4TH",
+    "role": "fourth"
+   },
+   {
+    "name": "Samuel Rourke",
+    "official_id": "OFF-VAR",
+    "role": "var"
+   },
+   {
+    "name": "Lena Fitch",
+    "official_id": "OFF-AVAR",
+    "role": "avar"
+   }
+  ],
+  "ruleset": {
+   "competition_modifiers": {
+    "substitution_windows_exclude_half_time": true
+   },
+   "max_substitutions": 5,
+   "period_minutes": 45,
+   "ruleset_version": "IFAB-2026/27",
+   "substitution_windows": 3,
+   "var_in_use": true,
+   "yellow_accumulation_dismissal": 2
+  },
+  "scenario": {
+   "description": "Referee showcase: throw-in offside exception, straight red, DOGSO penalties (holding vs attempt to play), injury dropped ball, indirect free kick into goal, VAR-confirmed goal, penalty retake.",
+   "scenario_id": "discipline_var",
+   "seed": 5150,
+   "title": "Discipline & VAR: Northbridge Athletic v Riverton City",
+   "version": "v1"
+  },
+  "synthetic": true,
+  "timezone": "Europe/London",
+  "venue": "The Ironworks, Northbridge (fictional)"
+ },
+ "teams": [
+  {
+   "code": "NBA",
+   "formation": "4-2-3-1",
+   "founded": 1889,
+   "kit": {
+    "goalkeeper": "#2F6B4F",
+    "number": "#F2E6D0",
+    "primary": "#8E1F3A",
+    "secondary": "#F2E6D0"
+   },
+   "manager": {
+    "manager_id": "MGR-NBA",
+    "name": "Marta Kovacevic-Hale"
+   },
+   "name": "Northbridge Athletic",
+   "players": [
+    {
+     "family_name": "Hartwell",
+     "given_name": "Callum",
+     "player_id": "NBA-01",
+     "position": "GK",
+     "preferred_foot": "right",
+     "shirt_number": 1,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Mensah-Lowe",
+     "given_name": "Dario",
+     "player_id": "NBA-02",
+     "position": "RB",
+     "preferred_foot": "right",
+     "shirt_number": 2,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Ekberg",
+     "given_name": "Jonas",
+     "player_id": "NBA-05",
+     "position": "CB",
+     "preferred_foot": "right",
+     "shirt_number": 5,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Adeyemi-Clarke",
+     "given_name": "Remi",
+     "player_id": "NBA-06",
+     "position": "CB",
+     "preferred_foot": "left",
+     "shirt_number": 6,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Ward-Nakamura",
+     "given_name": "Felix",
+     "player_id": "NBA-03",
+     "position": "LB",
+     "preferred_foot": "left",
+     "shirt_number": 3,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Lindqvist",
+     "given_name": "Mateo",
+     "player_id": "NBA-04",
+     "position": "DM",
+     "preferred_foot": "right",
+     "shirt_number": 4,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Achterberg",
+     "given_name": "Owen",
+     "player_id": "NBA-08",
+     "position": "CM",
+     "preferred_foot": "right",
+     "shirt_number": 8,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Rennard",
+     "given_name": "Kofi",
+     "player_id": "NBA-07",
+     "position": "RW",
+     "preferred_foot": "left",
+     "shirt_number": 7,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Ferrandi",
+     "given_name": "Luca",
+     "player_id": "NBA-10",
+     "position": "AM",
+     "preferred_foot": "right",
+     "shirt_number": 10,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Haddad-Rhys",
+     "given_name": "Sami",
+     "player_id": "NBA-11",
+     "position": "LW",
+     "preferred_foot": "right",
+     "shirt_number": 11,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Vantreight",
+     "given_name": "Nico",
+     "player_id": "NBA-09",
+     "position": "ST",
+     "preferred_foot": "right",
+     "shirt_number": 9,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Oduya",
+     "given_name": "Ben",
+     "player_id": "NBA-13",
+     "position": "GK",
+     "preferred_foot": "right",
+     "shirt_number": 13,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Belmonte",
+     "given_name": "Tariq",
+     "player_id": "NBA-15",
+     "position": "CB",
+     "preferred_foot": "right",
+     "shirt_number": 15,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Pryce-Moreau",
+     "given_name": "Aled",
+     "player_id": "NBA-12",
+     "position": "RB",
+     "preferred_foot": "right",
+     "shirt_number": 12,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Solvang",
+     "given_name": "Iker",
+     "player_id": "NBA-14",
+     "position": "CM",
+     "preferred_foot": "right",
+     "shirt_number": 14,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Kastner",
+     "given_name": "Joel",
+     "player_id": "NBA-16",
+     "position": "DM",
+     "preferred_foot": "left",
+     "shirt_number": 16,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Thorne-Asante",
+     "given_name": "Mika",
+     "player_id": "NBA-17",
+     "position": "RW",
+     "preferred_foot": "left",
+     "shirt_number": 17,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Domsky",
+     "given_name": "Rafael",
+     "player_id": "NBA-19",
+     "position": "ST",
+     "preferred_foot": "right",
+     "shirt_number": 19,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Marchetti-Bose",
+     "given_name": "Theo",
+     "player_id": "NBA-20",
+     "position": "LW",
+     "preferred_foot": "right",
+     "shirt_number": 20,
+     "team_id": "NBA"
+    },
+    {
+     "family_name": "Kovalenko",
+     "given_name": "Yann",
+     "player_id": "NBA-22",
+     "position": "AM",
+     "preferred_foot": "left",
+     "shirt_number": 22,
+     "team_id": "NBA"
+    }
+   ],
+   "short_name": "Northbridge",
+   "stadium": "The Ironworks",
+   "team_id": "NBA"
+  },
+  {
+   "code": "RVC",
+   "formation": "4-3-3",
+   "founded": 1902,
+   "kit": {
+    "goalkeeper": "#E0A82E",
+    "number": "#FFFFFF",
+    "primary": "#1F6FEB",
+    "secondary": "#DCEBFF"
+   },
+   "manager": {
+    "manager_id": "MGR-RVC",
+    "name": "Duncan Arrowsmith"
+   },
+   "name": "Riverton City",
+   "players": [
+    {
+     "family_name": "Moberg-Kale",
+     "given_name": "Anders",
+     "player_id": "RVC-01",
+     "position": "GK",
+     "preferred_foot": "right",
+     "shirt_number": 1,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Tremaine",
+     "given_name": "Isaac",
+     "player_id": "RVC-02",
+     "position": "RB",
+     "preferred_foot": "right",
+     "shirt_number": 2,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Fairweather",
+     "given_name": "Leon",
+     "player_id": "RVC-04",
+     "position": "CB",
+     "preferred_foot": "right",
+     "shirt_number": 4,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Castellane",
+     "given_name": "Ruben",
+     "player_id": "RVC-05",
+     "position": "CB",
+     "preferred_foot": "left",
+     "shirt_number": 5,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Osterholt",
+     "given_name": "Malik",
+     "player_id": "RVC-03",
+     "position": "LB",
+     "preferred_foot": "left",
+     "shirt_number": 3,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Ndiaye-Shaw",
+     "given_name": "Gabriel",
+     "player_id": "RVC-06",
+     "position": "DM",
+     "preferred_foot": "right",
+     "shirt_number": 6,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Brennick",
+     "given_name": "Arlo",
+     "player_id": "RVC-08",
+     "position": "CM",
+     "preferred_foot": "right",
+     "shirt_number": 8,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Rostami",
+     "given_name": "Pavel",
+     "player_id": "RVC-10",
+     "position": "CM",
+     "preferred_foot": "left",
+     "shirt_number": 10,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Okafor-Lisle",
+     "given_name": "Junior",
+     "player_id": "RVC-07",
+     "position": "RW",
+     "preferred_foot": "left",
+     "shirt_number": 7,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Villabrook",
+     "given_name": "Enzo",
+     "player_id": "RVC-11",
+     "position": "LW",
+     "preferred_foot": "right",
+     "shirt_number": 11,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Delacroix-Hunt",
+     "given_name": "Marcus",
+     "player_id": "RVC-09",
+     "position": "ST",
+     "preferred_foot": "right",
+     "shirt_number": 9,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Rowe",
+     "given_name": "Stefan",
+     "player_id": "RVC-13",
+     "position": "GK",
+     "preferred_foot": "right",
+     "shirt_number": 13,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Hale",
+     "given_name": "Dominik",
+     "player_id": "RVC-15",
+     "position": "CB",
+     "preferred_foot": "right",
+     "shirt_number": 15,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Quaye",
+     "given_name": "Ezra",
+     "player_id": "RVC-12",
+     "position": "RB",
+     "preferred_foot": "right",
+     "shirt_number": 12,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Ambrose",
+     "given_name": "Hugo",
+     "player_id": "RVC-14",
+     "position": "CM",
+     "preferred_foot": "right",
+     "shirt_number": 14,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Krell",
+     "given_name": "Bastian",
+     "player_id": "RVC-16",
+     "position": "DM",
+     "preferred_foot": "right",
+     "shirt_number": 16,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Mbeki-Grant",
+     "given_name": "Silas",
+     "player_id": "RVC-17",
+     "position": "RW",
+     "preferred_foot": "left",
+     "shirt_number": 17,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Allardyce-Kim",
+     "given_name": "Jude",
+     "player_id": "RVC-19",
+     "position": "ST",
+     "preferred_foot": "right",
+     "shirt_number": 19,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Corvin",
+     "given_name": "Mateus",
+     "player_id": "RVC-20",
+     "position": "LW",
+     "preferred_foot": "right",
+     "shirt_number": 20,
+     "team_id": "RVC"
+    },
+    {
+     "family_name": "Feldmann",
+     "given_name": "Noah",
+     "player_id": "RVC-18",
+     "position": "AM",
+     "preferred_foot": "left",
+     "shirt_number": 18,
+     "team_id": "RVC"
+    }
+   ],
+   "short_name": "Riverton",
+   "stadium": "Weir Lane",
+   "team_id": "RVC"
+  }
+ ]
+}

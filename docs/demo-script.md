@@ -1,0 +1,19 @@
+# BYLINE demo film script, V4.1 (target 1:55, must stay under 2:00)
+
+Record real, uncut interactions on the golden match (BYLINE-01) in **cache-only** mode. Cache-only shows real recorded Foundry runs at zero cost. Every claim in the voiceover maps to a working feature; do not say anything the screen does not show. Record in a fresh private window so the fan scenes start from the team picker (fan choices are kept only in this browser). Record at 1440×900 or larger.
+
+| Time | Screen (what to click) | Voiceover (suggested) |
+|---|---|---|
+| 0:00–0:10 | App opens on the **Commentator** before kick-off: the pre-match note on the left, Northbridge's XI as shirts on the floodlit pitch on the right, bench alongside. Tap **Riverton** in the team switch: the shirts change in a short wave. | "BYLINE sits beside a commentator. The line-up is right there, and everything else waits until it matters." |
+| 0:10–0:25 | Click **Start the match**, set **12x**. At 7' the moment becomes "S. Haddad-Rhys was open as M. Lindqvist's pass was cut out", with the amber **Verified by Foundry agents** line. | "At seven minutes BYLINE measures a better option that was on, and three Foundry agents have checked what it means, in one line you can say." |
+| 0:25–0:55 | **Show the play** (the match pauses). On the 3D stage press **Next** through: The decision → Their lines → What happened (the intercepted pass) → Measured options → **What if?** (lilac, "Hypothetical: not what happened") → **Then?** and **The ball in** (ghost shirts, "Illustrative · not what happened · no outcome implied"). Open **How it was checked**: 6 real calls, tokens, latency. | "Step by step, at the commentator's pace. What happened, what was measured, then the alternative, labelled hypothetical, and an illustrative sketch of where play could go next, labelled as such. No outcome is claimed." |
+| 0:55–1:05 | Press **← Back to match**: the clock is back at exactly 7', at the same speed. Click the **Vantreight** shirt (or tap a crest for the club file): the player file opens beside the moment, with today's numbers and the facts worth saying. **Pin to top** one fact, **Mark used** another. | "Back to the exact moment you left. One tap on a shirt gives you the player's file, and you can pin or mark what you've used." |
+| 1:05–1:30 | Switch to **Studio** (Live production). Preview the 7' **Tactical breakthrough**, then **Take to air now**: the animated breakdown loops on the programme monitor (marked simulated output). Point to **Filled from verified data**: every field with its source. Pick **Sample partner template: Northgate** and the same graphic redraws in that template. | "In the gallery, a broadcaster's template is filled from verified data, every field traced to its source, and nothing airs until a producer takes it. Goal graphics are held during a VAR check." |
+| 1:30–1:50 | Switch to **Fan**. Pick **Northbridge**, then **Lindqvist**. At 7' **What would you do?**: the real frozen frame with three shirt choices. Pick **Haddad-Rhys**; the reveal says what happened in plain words, with the verified read. Tap **Show me why**. | "For fans, the same moment becomes a question. What would you do? Then the honest answer, from where everyone actually stood." |
+| 1:50–1:55 | End card: BYLINE wordmark, "Synthetic data · Microsoft Foundry · Agent Framework". | "BYLINE: football intelligence you can trust." |
+
+## Before recording
+- Backend: `cd apps/api && BYLINE_AI_PROVIDER=foundry BYLINE_AI_CACHE_ONLY=true .venv/Scripts/python -m uvicorn byline.api.app:app --port 8000`.
+- Frontend: `cd apps/web && npx vite build && npx vite preview` (http://localhost:4173).
+- Check the settings popover reads "Real model calls: 59 made · no more allowed": no live inference happens during the film.
+- Turn off OS notifications; hide the browser bookmarks bar.

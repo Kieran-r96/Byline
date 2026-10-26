@@ -1,0 +1,59 @@
+.segmented {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  background: var(--deep);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.segmented__option {
+  position: relative;
+  min-height: 38px;
+  min-width: var(--touch);
+  padding: 0 var(--space-4);
+  border-radius: 7px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--muted);
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+/* Keep a 44px hit area even though the visual pill is 38px. */
+.segmented__option::before {
+  content: '';
+  position: absolute;
+  inset: -3px -1px;
+}
+
+.segmented__option:hover:not([aria-checked='true']):not(:disabled) {
+  color: var(--cream);
+  background: var(--hover);
+}
+
+.segmented__option[aria-checked='true'] {
+  color: var(--ink);
+  background: var(--cream);
+  font-weight: var(--fw-display);
+}
+
+.segmented__option:focus-visible {
+  border-radius: 7px;
+}
+
+.segmented__option:disabled {
+  opacity: 0.45;
+}
+
+.segmented--sm .segmented__option {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  font-size: var(--fs-label);
+}
+.segmented--sm .segmented__option::before {
+  inset: -6px -1px;
+}

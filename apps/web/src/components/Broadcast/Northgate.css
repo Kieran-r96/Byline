@@ -1,0 +1,282 @@
+/*
+ * Sample partner template: Northgate Sports (fictional). Not a real broadcaster.
+ * It exists to show the template workflow: the same verified fields, dressed in a partner's package.
+ * White plates on an ultramarine strap, a lime signal, Barlow Condensed supers and Manrope straps,
+ * centred lower thirds, a top-right bug, square corners, and a shutter reveal from the centre.
+ */
+
+.gframe[data-template='northgate'] {
+  --ink-2: #e7e5de;
+}
+
+/* ---- anatomy */
+.gframe[data-template='northgate'] .gx-tabs {
+  margin-left: 0;
+  gap: 0;
+}
+.gframe[data-template='northgate'] .gx-tab {
+  padding: 0.45cqw 1.2cqw 0.35cqw;
+  font-size: 1.55cqw;
+  letter-spacing: 0.06em;
+  background: var(--tpl-accent);
+  color: var(--tpl-accent-ink);
+}
+.gframe[data-template='northgate'] .gx-tab + .gx-tab {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+}
+.gframe[data-template='northgate'] .gx-tab--measured {
+  background: #4fd1c5;
+  color: #0b1214;
+}
+.gframe[data-template='northgate'] .gx-plate {
+  background: var(--tpl-plate);
+  box-shadow: 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+  padding-right: 2cqw;
+}
+.gframe[data-template='northgate'] .gx-notch {
+  width: 1.1cqw;
+  margin-right: 0.6cqw;
+  background: var(--kit);
+}
+.gframe[data-template='northgate'] .gx-strap {
+  margin-left: 0;
+  align-self: stretch;
+  max-width: none;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.gframe[data-template='northgate'] .gx-strap--measured {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+}
+.gframe[data-template='northgate'] .gx-num {
+  color: var(--tpl-accent);
+}
+.gframe[data-template='northgate'] .gx-headline,
+.gframe[data-template='northgate'] .gx-family {
+  letter-spacing: 0.01em;
+}
+.gframe[data-template='northgate'] .gx-flash .gx-family {
+  font-size: 4.6cqw;
+}
+.gframe[data-template='northgate'] .gx-minute {
+  color: var(--tpl-strap);
+  opacity: 1;
+}
+.gframe[data-template='northgate'] .gx-body {
+  align-items: stretch;
+}
+
+/* spotlight: a numeral block in the strap colour instead of a shirt */
+.gframe[data-template='northgate'] .gx-flash .gx-art {
+  width: 10cqw;
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+  box-shadow: inset 0 -0.6cqw 0 var(--kit), 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .gx-flash .gx-tab--kit {
+  background: var(--tpl-accent);
+  color: var(--tpl-accent-ink);
+}
+.gframe[data-template='northgate'] .gx-score__code::before {
+  display: none;
+}
+.gframe[data-template='northgate'] .gx-score b {
+  opacity: 1;
+}
+
+/* breakthrough: the pitch sits on the white plate */
+.gframe[data-template='northgate'] .gx-tele .gx-art--pitch {
+  background: var(--tpl-strap);
+  box-shadow: 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+
+/* record: lime numerals on ultramarine */
+.gframe[data-template='northgate'] .gx-record .gx-art--hero {
+  background: var(--tpl-strap);
+  color: var(--tpl-accent);
+  box-shadow: inset 0 -0.6cqw 0 var(--kit), 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .gx-record .gx-tab--kit {
+  background: var(--tpl-accent);
+}
+.gframe[data-template='northgate'] .gx-foot {
+  color: #fff;
+}
+
+/* sub board: white board, team colour header */
+.gframe[data-template='northgate'] .gx-sub {
+  box-shadow: 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .gx-sub__head {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+  box-shadow: inset 0 -0.4cqw 0 var(--kit);
+}
+.gframe[data-template='northgate'] .gx-sub__head .gx-notch {
+  background: var(--tpl-accent);
+  width: 0.8cqw;
+}
+.gframe[data-template='northgate'] .gx-numeral--small {
+  height: 4.6cqw;
+  font-size: 3.4cqw;
+  background: var(--kit);
+  color: var(--kit-n);
+}
+
+/* stats: white full-frame with an ultramarine scoreline */
+.gframe[data-template='northgate'] .gx-stats {
+  background: var(--tpl-plate);
+  box-shadow: 0 0.5cqw 0 rgba(0, 0, 0, 0.25);
+}
+.gframe[data-template='northgate'] .gx-stats__score {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+}
+
+/* decision: the law on lime */
+.gframe[data-template='northgate'] .gx-law {
+  background: var(--tpl-accent);
+  box-shadow: 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .gx-tab--ref {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+}
+.gframe[data-template='northgate'] .gx-corrected {
+  background: #11131a;
+  color: #fff;
+}
+.gframe[data-template='northgate'] .gx-corrected__score {
+  color: var(--tpl-accent);
+}
+
+/* bug: white plate, ultramarine clock, top right */
+.gframe[data-template='northgate'] .sbug {
+  filter: none;
+  box-shadow: 0 0.3cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .sbug__score {
+  background: #11131a;
+  color: #fff;
+}
+.gframe[data-template='northgate'] .sbug__clock {
+  margin: 0;
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+}
+
+/* ---- choreography: shutters open from the centre line, then copy slides in */
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-tab,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-plate,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-strap,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-corrected,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-sub,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-sub__head,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-law,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-art,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-stats {
+  animation: ng-shutter 420ms cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-strap,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-corrected {
+  animation: ng-drop 380ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
+}
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .gx-l__in {
+  animation: ng-slide 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(220ms + var(--i, 0) * 50ms);
+}
+.gframe[data-template='northgate'] .gslot[data-phase='out'] .gx {
+  animation: ng-close 320ms cubic-bezier(0.65, 0, 0.35, 1) 60ms both;
+}
+
+@keyframes ng-shutter {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+  to {
+    clip-path: inset(-40% -10% -40% -10%);
+  }
+}
+@keyframes ng-drop {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-40%);
+  }
+  to {
+    clip-path: inset(-40% -10% -40% -10%);
+  }
+}
+@keyframes ng-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-1.2cqw);
+  }
+}
+@keyframes ng-close {
+  from {
+    clip-path: inset(-40% -10% -40% -10%);
+  }
+  to {
+    clip-path: inset(0 50% 0 50%);
+  }
+}
+
+/* ---- formats: corner box, player card and full frame in the partner's dress */
+.gframe[data-template='northgate'] .fx-kicker {
+  background: var(--tpl-accent);
+  color: var(--tpl-accent-ink);
+}
+.gframe[data-template='northgate'] .fx[data-family='breakthrough'] .fx-kicker {
+  background: #4fd1c5;
+  color: #0b1214;
+}
+.gframe[data-template='northgate'] .fx-pip__box {
+  box-shadow: inset 0 0 0 0.3cqw var(--tpl-strap);
+}
+.gframe[data-template='northgate'] .fx-pip__cap {
+  border-top-color: var(--tpl-strap);
+  box-shadow: 0 0.35cqw 0 rgba(0, 0, 0, 0.22);
+}
+.gframe[data-template='northgate'] .fx-spot,
+.gframe[data-template='northgate'] .fx-full__panel {
+  background: var(--tpl-plate);
+  box-shadow: 0 0.5cqw 0 rgba(0, 0, 0, 0.25);
+}
+.gframe[data-template='northgate'] .fx-spot__art {
+  background: var(--tpl-strap);
+  box-shadow: inset 0 -0.6cqw 0 var(--kit);
+}
+.gframe[data-template='northgate'] .fx-spot__hero {
+  color: var(--tpl-strap);
+}
+.gframe[data-template='northgate'] .fx-full__head {
+  background: var(--tpl-strap);
+  color: var(--tpl-strap-ink);
+  border-bottom: 0.5cqw solid var(--tpl-accent);
+}
+.gframe[data-template='northgate'] .fx-full__head .gx-notch {
+  width: 1.1cqw;
+  margin-right: 0.6cqw;
+  background: var(--kit);
+}
+.gframe[data-template='northgate'] .fx-hero,
+.gframe[data-template='northgate'] .fx-team {
+  background: var(--tpl-strap);
+  color: var(--tpl-accent);
+}
+.gframe[data-template='northgate'] .fx-facts dd .gx-num {
+  color: var(--tpl-strap);
+}
+.gframe[data-template='northgate'] .fx-full__wipe {
+  display: none;
+}
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .fx-pip__box,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .fx-spot,
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .fx-full__panel {
+  animation: ng-shutter var(--fx-ms, 420ms) cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.gframe[data-template='northgate'] .gslot[data-phase='in'] .fx-pip__cap {
+  animation: ng-drop 380ms cubic-bezier(0.22, 1, 0.36, 1) 260ms both;
+}

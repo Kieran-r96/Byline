@@ -1,0 +1,23 @@
+.env
+.env.*
+!.env.example
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+apps/web/dist/
+apps/web/test-results/
+apps/api/.cache/
+*.log
+**/build/
+**/*.egg-info/
+apps/web/screenshots/
+
+# agent worktrees
+.claude/worktrees/
+docs/screenshots/v4/wip/
+docs/screenshots/v4.1/wip/
+
+docs/screenshots/final-pass/wip/

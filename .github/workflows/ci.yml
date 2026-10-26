@@ -1,0 +1,171 @@
+name: ci
+
+# Validation only: no deployment, no Azure, no model calls, no secrets needed.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**/*.md"]
+  pull_request:
+    paths-ignore: ["docs/**", "**/*.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the history scan reads every commit
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Secret scan (tracked files)
+        run: python tools/secret_scan.py
+      - name: Secret scan (full history)
+        run: python tools/secret_scan.py --history
+
+  api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/api
+    env:
+      BYLINE_AI_PROVIDER: "off" # CI never calls a model
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: apps/api/pyproject.toml
+      - run: pip install -e ".[dev]" -r requirements-ai.txt
+      - run: ruff check byline tests
+      - run: mypy
+      - name: Tests (incl. security, no-model-call proofs, line-break geometry)
+        run: pytest -q
+      - name: Golden replay checksum
+        run: python -m pytest -q tests/test_simulator.py::test_same_seed_is_byte_identical_to_checked_in_fixture
+
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: Secret scan (built bundle)
+        working-directory: .
+        run: python3 tools/secret_scan.py --dir apps/web/dist
+
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [api, web]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the production image (not pushed, not deployed)
+        run: docker build -t byline:ci .
+      - name: Start the container exactly as it would run publicly
+        run: |
+          docker run -d -p 8000:8000 --name byline byline:ci
+          for i in $(seq 1 60); do curl -fsS 127.0.0.1:8000/healthz > /dev/null && break; sleep 1; done
+          curl -fsS 127.0.0.1:8000/healthz
+      - name: Smoke test over HTTP
+        run: |
+          set -euo pipefail
+          B=http://127.0.0.1:8000
+          # the app and its built assets
+          curl -fsS $B/ -o index.html
+          grep -q '<div id="root"' index.html
+          asset=$(grep -oE '/assets/[^"]+\.js' index.html | head -1)
+          curl -fsS "$B$asset" -o /dev/null
+          # synthetic matches (all three)
+          curl -fsS $B/api/matches -o matches.json
+          for m in BYLINE-01 BYLINE-02 BYLINE-03; do grep -q "$m" matches.json; done
+          # recorded real Foundry run is served, labelled as recorded, never fresh
+          curl -fsS $B/api/matches/BYLINE-01/tactics/T-option-NBA-0180/insight -o insight.json
+          grep -q '"verified"' insight.json
+          curl -fsS $B/api/system/status -o status.json
+          grep -q '"cache_only":true' status.json
+          grep -q '"state":"recorded"' status.json
+          # browser security headers on the public container
+          curl -fsSI $B/ -o headers.txt
+          grep -qi '^content-security-policy:' headers.txt
+          grep -qi '^x-content-type-options: nosniff' headers.txt
+          ! grep -qi '^server:' headers.txt
+          # nothing secret in what a visitor can fetch
+          mkdir -p fetched && mv index.html matches.json insight.json status.json headers.txt fetched/
+          python3 tools/secret_scan.py --dir fetched
+          # runs as a non-root user
+          test "$(docker exec byline id -u)" != "0"
+      - name: Container logs
+        if: always()
+        run: docker logs byline 2>&1 | tail -50
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [api, web]
+    env:
+      # same as the public demo: recorded real Foundry runs only; no client is created, no calls, no credentials
+      BYLINE_AI_PROVIDER: foundry
+      BYLINE_AI_CACHE_ONLY: "true"
+      FOUNDRY_DEPLOYMENT: gpt-4.1-mini
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: apps/api/pyproject.toml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: pip install -e . -r requirements-ai.txt
+        working-directory: apps/api
+      - name: Start API
+        working-directory: apps/api
+        run: |
+          nohup python -m uvicorn byline.api.app:app --port 8000 > api.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS 127.0.0.1:8000/healthz && break; sleep 1; done
+      - run: npm ci && npx playwright install --with-deps chromium
+        working-directory: apps/web
+      - name: Full browser E2E suite
+        run: npm run e2e
+        working-directory: apps/web
+      - name: Accessibility audit (axe)
+        working-directory: apps/web
+        run: |
+          nohup npx vite preview --port 4173 --strictPort > preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS 127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          npm run a11y
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-report
+          retention-days: 7
+          path: |
+            apps/web/playwright-report
+            apps/api/api.log
