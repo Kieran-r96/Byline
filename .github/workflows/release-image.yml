@@ -1,0 +1,36 @@
+name: release-image
+
+# Manual only: builds the production image from the selected commit and publishes it to GitHub Container
+# Registry, tagged with the commit SHA. No Azure credentials, no model calls; deployment is a separate, approved step.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+          docker build \
+            --label "org.opencontainers.image.source=https://github.com/${{ github.repository }}" \
+            --label "org.opencontainers.image.revision=${{ github.sha }}" \
+            -t "$IMAGE:${{ github.sha }}" .
+      - name: Smoke test before publishing
+        run: |
+          docker run -d -p 8000:8000 --name byline "$IMAGE:${{ github.sha }}"
+          for i in $(seq 1 60); do curl -fsS 127.0.0.1:8000/healthz > /dev/null && break; sleep 1; done
+          curl -fsS 127.0.0.1:8000/api/matches/BYLINE-01/tactics/T-option-NBA-0180/insight | grep -q '"verified"'
+      - name: Publish
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker push "$IMAGE:${{ github.sha }}"
+          docker inspect --format '{{index .RepoDigests 0}}' "$IMAGE:${{ github.sha }}" | tee digest.txt
+          echo "Published $(cat digest.txt)" >> "$GITHUB_STEP_SUMMARY"
