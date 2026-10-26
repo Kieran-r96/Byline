@@ -5,6 +5,7 @@ import type { WorldIndex } from '../services/matchView'
 import { usePrefs } from '../services/prefs'
 import type { StageStep } from '../services/stageScript'
 import { useTacticalInsight } from '../services/tacticalInsight'
+import type { TacticalInsight } from '../services/tacticalInsight'
 import { useMomentView } from '../services/useMomentView'
 import type { Role } from '../types/shell'
 
@@ -13,6 +14,12 @@ import type { Role } from '../types/shell'
  * measurements, what the data cannot show, and the verified Foundry read on the right. It never moves the
  * live match: the stage renders the frozen frame and replays tracking on its own.
  */
+/** The verified line for the stage's takeaway, in Spanish when the agents' recorded translation exists. */
+function verifiedLine(ins: NonNullable<TacticalInsight['insight']>, audience: 'fan' | 'commentator', lang: 'en' | 'es'): { text: string; label: string } {
+  const es = lang === 'es' ? ins.audience.translations?.[audience === 'fan' ? 'es.fan_plain' : 'es.commentator'] : undefined
+  return { text: es ?? (audience === 'fan' ? ins.audience.fan_plain : ins.audience.commentator), label: es ? 'Verified by Foundry agents · Spanish translation' : 'Verified by Foundry agents' }
+}
+
 export function TacticAnalysis({ momentId, matchId, world, role, onClose, withdrawnReason }: { momentId: string; matchId: string; world: WorldIndex; role: Role; onClose: () => void; withdrawnReason?: string | null }) {
   const { view, failed } = useMomentView(matchId, momentId)
   const verified = useTacticalInsight(matchId, momentId)
@@ -29,7 +36,7 @@ export function TacticAnalysis({ momentId, matchId, world, role, onClose, withdr
             world={world}
             audience={audience}
             onStepChange={(s) => setStep(s)}
-            verified={verified?.insight ? { text: role === 'fan' ? verified.insight.audience.fan_plain : verified.insight.audience.commentator, label: 'Verified by Foundry agents' } : undefined}
+            verified={verified?.insight ? verifiedLine(verified.insight, role === 'fan' ? 'fan' : 'commentator', lang) : undefined}
             withdrawn={withdrawnReason ? { reason: withdrawnReason } : undefined}
           />
         ) : (

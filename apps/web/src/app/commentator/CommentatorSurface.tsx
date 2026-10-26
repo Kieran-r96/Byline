@@ -77,10 +77,13 @@ function useVerified(matchId: string, s: Signal) {
 
 function AgentLine({ matchId, s }: { matchId: string; s: Signal }) {
   const v = useVerified(matchId, s)
+  const { lang } = usePrefs()
   if (!v?.insight) return null
+  // the recorded Spanish is the agents' own translation of the verified line; English when none was recorded
+  const es = lang === 'es' ? v.insight.audience.translations?.['es.commentator'] : undefined
   return (
-    <p className="verified-line">
-      <span>Verified by Foundry agents</span> {v.insight.audience.commentator}
+    <p className="verified-line" lang={es ? 'es' : undefined}>
+      <span>Verified by Foundry agents{es ? ' · Spanish translation' : ''}</span> {es ?? v.insight.audience.commentator}
     </p>
   )
 }

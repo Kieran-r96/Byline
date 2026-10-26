@@ -106,12 +106,12 @@ export function SettingsPopover({ phase, system, aiText, matches = [], matchId, 
         )}
         {onLang && (
           <fieldset className="settings__group">
-            <legend className="settings__heading label">Story language</legend>
+            <legend className="settings__heading label">AI insight language</legend>
             {(['en', 'es'] as const).map((l) => (
               <label key={l} className="settings__choice">
                 <input type="radio" name={`${panelId}-lang`} checked={lang === l} onChange={() => onLang(l)} />
                 <strong lang={l}>{l === 'en' ? 'English' : 'Español'}</strong>
-                <span>{l === 'en' ? 'Reference version' : 'Machine translation of verified stories'}</span>
+                <span>{l === 'en' ? 'Reference version' : 'Recorded Foundry translation of verified insights and stories; the rest of the interface stays in English'}</span>
               </label>
             ))}
           </fieldset>

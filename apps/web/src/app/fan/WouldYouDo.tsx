@@ -3,6 +3,7 @@ import { MiniPitch } from '../../components/Fan/MiniPitch'
 import { Shirt } from '../../components/Formation/Shirt'
 import { VerifiedRead } from '../../components/Tactics/VerifiedRead'
 import type { WorldIndex } from '../../services/matchView'
+import { usePrefs } from '../../services/prefs'
 import type { MomentView } from '../../services/schemas'
 import { useTacticalInsight } from '../../services/tacticalInsight'
 import { choicesFor, openness } from './choices'
@@ -14,6 +15,7 @@ import { fanPrefs, useFanPrefs } from './fanPrefs'
  */
 export function WouldYouDo({ view, world, matchId, onShowWhy }: { view: MomentView; world: WorldIndex; matchId: string; onShowWhy: () => void }) {
   const prefs = useFanPrefs()
+  const { lang } = usePrefs()
   const verified = useTacticalInsight(matchId, view.moment_id)
   const choices = useMemo(() => choicesFor(view, world), [view, world])
   const picked = prefs.answers[view.moment_id] ?? null
@@ -56,7 +58,7 @@ export function WouldYouDo({ view, world, matchId, onShowWhy }: { view: MomentVi
               </li>
             ))}
           </ul>
-          {verified && <VerifiedRead data={verified} audience="fan" />}
+          {verified && <VerifiedRead data={verified} audience="fan" lang={lang} />}
           <p className="wyd__honest">Measured from where everyone stood at that instant. Nobody can know what would have happened next.</p>
           <button type="button" className="btn btn--primary wyd__why" onClick={onShowWhy}>
             Show me why
