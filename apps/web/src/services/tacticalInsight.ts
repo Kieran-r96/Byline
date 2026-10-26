@@ -36,7 +36,7 @@ export const TacticalInsightSchema = z.looseObject({
       total_latency_ms: z.number(),
       est_cost_usd: z.number(),
       finished_at_iso: z.string().optional(),
-      calls: z.array(z.looseObject({ role: z.string(), latency_ms: z.number(), input_tokens: z.number(), output_tokens: z.number(), ok: z.boolean() })).default([]),
+      calls: z.array(z.looseObject({ role: z.string(), latency_ms: z.number(), input_tokens: z.number(), output_tokens: z.number(), ok: z.boolean(), attempt: z.number().optional(), response_id: z.string().nullable().optional() })).default([]),
     })
     .nullable(),
   notice: z.string().optional(),

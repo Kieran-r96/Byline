@@ -65,16 +65,21 @@ export function VerifiedRead({ data, audience, lang = 'en' }: { data: TacticalIn
                   <th scope="col">Agent</th>
                   <th scope="col">Latency</th>
                   <th scope="col">Tokens in/out</th>
+                  <th scope="col">Foundry response ID</th>
                 </tr>
               </thead>
               <tbody>
                 {prov.calls.map((c, i) => (
                   <tr key={i}>
-                    <td>{c.role}</td>
+                    <td>
+                      {c.role}
+                      {c.attempt && c.attempt > 1 ? ` · draft ${c.attempt}` : ''}
+                    </td>
                     <td className="numeric">{(c.latency_ms / 1000).toFixed(1)} s</td>
                     <td className="numeric">
                       {c.input_tokens}/{c.output_tokens}
                     </td>
+                    <td className="vread__rid">{c.response_id ?? '—'}</td>
                   </tr>
                 ))}
               </tbody>
