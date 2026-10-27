@@ -58,11 +58,17 @@ Press **← Back to match**. The clock returns to where you were.
 2. Press **Pin** or **Mark used**: the next fact moves up.
 3. Try the quick tools above the match (Players, Match stats, Records, Decisions).
 
-## 5. Studio (30 s)
+## 5. Studio (60 s)
 
 1. Switch to **Studio** at about 7:00. Open *Better option on · 7'* from the rundown.
 2. Try **Lower third**, **Corner box** and **Full-screen analysis** in the preview.
 3. Press **Take to air now**. The graphic appears on the simulated programme monitor. Every field is traced to its source in the table below it.
+4. **Pre-match, half-time and full-time packages.** Drag the timeline to about **47:00**, then open the **Analysis desk** tab and choose **Half-time**.
+   - Pick measured moments from the library and press **Add to package**.
+   - Reorder the running order and set each item's format.
+   - Press **Send package to production**.
+   - The items arrive in the Live production rundown in running order, and the producer still approves each one before it airs.
+   - **Pre-match** and **Full-time** work the same way.
 
 ## 6. Fan (20 s)
 
