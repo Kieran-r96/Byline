@@ -8,7 +8,7 @@ BYLINE follows a live football match event by event, detects the moments and tac
 
 Built for Microsoft's *Inside the Game: Premier League Developer Hackathon* (2026).
 
-**Live demo:** https://ca-byline-demo.yellowstone-acde35ac.eastus.azurecontainerapps.io (judging release, no sign-in) · **Video (under 2 minutes):** _link added at submission_ · **[Judge walkthrough](docs/submission/JUDGE_WALKTHROUGH.md)**
+**Live demo:** https://ca-byline-demo.yellowstone-acde35ac.eastus.azurecontainerapps.io (judging release, no sign-in) · **[Video (under 2 minutes)](https://www.youtube.com/watch?v=t-mLZds0DoE)** · **[Judge walkthrough](docs/submission/JUDGE_WALKTHROUGH.md)**
 
 ![Commentator at 7 minutes: one live insight, verified by Foundry agents](docs/screenshots/release/cm-7m-desk.png)
 

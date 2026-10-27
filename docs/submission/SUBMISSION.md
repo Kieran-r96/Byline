@@ -51,7 +51,7 @@ BYLINE turns a live synthetic football match into verified match intelligence. T
 |---|---|
 | Live demo | https://ca-byline-demo.yellowstone-acde35ac.eastus.azurecontainerapps.io |
 | Repository | https://github.com/Kieran-r96/Byline |
-| Video | _your YouTube or Vimeo URL_ |
+| Video | https://www.youtube.com/watch?v=t-mLZds0DoE |
 | Judge walkthrough | https://github.com/Kieran-r96/Byline/blob/main/docs/submission/JUDGE_WALKTHROUGH.md |
 
 ## Testing instructions (for the form)
