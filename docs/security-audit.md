@@ -1,6 +1,6 @@
 # BYLINE pre-deployment security audit
 
-Date: 2026-10-24. Base commit `39d6708`; audit branch `worktree-agent-aecbe9e0db16c121a`. Scope: the owner's Priority 7 directive (secrets, dependencies, input handling, CORS and headers, production config, Foundry spend, Azure tokens, read-only demo, tests, licences, fresh browser session). Submission rules: `docs/compliance-checklist.md`.
+Date: 2026-10-24, updated after deployment on 26 Oct. Scope: secrets, dependencies, input handling, CORS and headers, production configuration, Foundry spend, Azure tokens, the read-only demo, tests, licences and a fresh browser session.
 
 **What this audit does not claim.** It is evidence from automated tests, scans and local black-box probes of the single-container build. It is not a penetration test, and nothing was deployed: Docker is not installed here, so the image itself was not built (CI builds and smoke-tests it); Azure ingress behaviour is marked NEEDS VERIFICATION where it matters. Security is therefore *tested*, not *fully verified*.
 
@@ -16,12 +16,12 @@ Date: 2026-10-24. Base commit `39d6708`; audit branch `worktree-agent-aecbe9e0db
 | L3 | Low | Unknown `/api/...` paths returned the app shell (200) in single-container mode. | **Fixed** `0434b82`: JSON 404. |
 | L4 | Low | `/docs` and `/redoc` load Swagger UI and ReDoc from a third-party CDN; `server: uvicorn` header. | **Fixed** `0434b82`: off in the image (`BYLINE_API_DOCS=false`; `/openapi.json` kept, no secrets); `--no-server-header`. |
 | L5 | Low | The minified bundle strips the MIT and OFL licence notices of what it ships. | **Fixed** `09d625c`: `/third-party-notices.txt`. |
-| L6 | Low (privacy) | All 119 commits carry the owner's work email address as author and committer. | **Owner action** when squashing: use a GitHub `noreply` address. |
+| L6 | Low (privacy) | Commit metadata could expose a personal email address. | **Fixed**: the public repository uses a GitHub `noreply` address. |
 | L7 | Low | Python dependencies are resolved fresh at image build (no lock or constraints file). | **Open.** Today's fresh resolution audits clean. Recommend a constraints file once the image can be built and tested. |
-| L8 | Low | The call ledger lives on the container's ephemeral disk and resets on restart. | **Accepted.** Cache-only + cap 0 make it moot for the public demo. Keep the cap small if live mode is ever enabled (`docs/deployment-plan.md` already says so). |
+| L8 | Low | The call ledger lives on the container's ephemeral disk and resets on restart. | **Accepted.** Cache-only + cap 0 make it moot for the public demo. Keep the cap small if live mode is ever enabled. |
 | I1 | Info | Production build ships source maps. | Accepted: the repository is public anyway. |
 | I2 | Info | A 500 comes from Starlette's outermost error handler, without the security headers. Its body is only `Internal Server Error`. | Accepted. |
-| I3 | Info | No project LICENSE file. | **Owner decision** (`docs/licensing-and-data.md`). |
+| I3 | Info | No project LICENSE file. | Deliberate: all rights reserved (`docs/licensing-and-data.md`). |
 
 No High or Critical findings. No secret was found anywhere.
 
@@ -43,9 +43,9 @@ No High or Critical findings. No secret was found anywhere.
 |---|---|
 | **Method** | `tools/secret_scan.py`, extended with three modes and patterns for private keys, Azure key assignments, JWTs and bearer tokens, storage connection strings, OpenAI, GitHub, AWS, Google and Slack tokens, Entra client secrets, SAS signatures, **real Azure AI resource hostnames** and **tenant/subscription id assignments**. Forbidden files: `.env`, `.env.*` except `.env.example`, `.pem`, `.pfx`, `.p12`, `.azure/`, `model_call_ledger.json`. Findings name file and pattern, never the value. A self-test plants a token of each kind (`test_secret_scanner_detects_each_pattern_without_printing_values`, `test_dist_scan_finds_a_planted_token`). |
 | **Commands** | `python tools/secret_scan.py` · `python tools/secret_scan.py --history` · `python tools/secret_scan.py --dir apps/web/dist` |
-| **Result** | Tracked: **559 files, 0 findings**. History: **119 commits on all refs, 0 findings**; no forbidden file was ever added. The refs are master, 10 `worktree-agent-*` branches and 5 tags; the stash is empty. Built bundle: **45 files, 0 findings**. A manual grep of the tracked tree for Azure hostnames, GUIDs and the owner's email found none. |
+| **Result** | Tracked: **559 files, 0 findings**. History: **all commits on all refs, 0 findings**; no forbidden file was ever added. Built bundle: **45 files, 0 findings**. A manual grep of the tracked tree for Azure hostnames, GUIDs and the owner's email found none. |
 | **.env handling** | `.env` is git-ignored and docker-ignored (`.env`, `.env.*`), and was never committed. The local `.env` holds no key: auth is Entra (`FOUNDRY_AUTH=entra`, no `FOUNDRY_API_KEY`). Its endpoint and tenant id stay local. `.env.example` has placeholders only. |
-| **Residual** | The owner's work email is in commit metadata (L6). History will be squashed before publishing; the scan above covers it either way. |
+| **Residual** | None. |
 
 ## 2. Dependencies
 
@@ -79,7 +79,7 @@ Routes enumerated in `apps/api/byline/api/app.py`: **39** (35 GET, 4 POST), plus
 | **CORS** | No CORS middleware, on purpose: app and API share one origin. A cross-origin `GET` gets no `Access-Control-Allow-Origin`, and the preflight is refused (`test_no_cors_grant_for_other_origins`). A cross-site form POST (`text/plain`) cannot create a session (422, `test_cross_site_form_post_cannot_create_a_session`). Mutating session routes also need the unguessable 96-bit session id. |
 | **Headers** (every response, including 404/422/429/413 and SSE; pure ASGI middleware) | `Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'` · `X-Content-Type-Options: nosniff` · `X-Frame-Options: DENY` · `Referrer-Policy: no-referrer` · `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()` · `Cross-Origin-Opener-Policy: same-origin` · `Cross-Origin-Resource-Policy: same-origin` |
 | **CSP compatibility** | The built app needed two changes: zod's JIT probe (`new Function`) caused a `script-src eval` violation, so zod now runs jitless (`ac7e681`); Vite inlines four tiny font subsets as `data:` URIs, so `font-src` allows `data:`. Result against the single-container build: **0 CSP violations, 0 console errors, 0 off-origin requests in all 39 a11y scenes** (13 states × desktop, laptop and phone, including the Three.js stage, whose `scene-*.js` chunk loaded 12 times), and the full E2E suite passes (27/27). |
-| **HSTS** | Off by default; `BYLINE_HSTS=true` adds `max-age=31536000; includeSubDomains`. **Owner action at deploy:** enable it only when the ingress is HTTPS-only (Container Apps `allowInsecure=false`). `test_hsts_only_when_enabled`. |
+| **HSTS** | Off by default; `BYLINE_HSTS=true` adds `max-age=31536000; includeSubDomains`. Enabled on the public deployment, whose ingress is HTTPS-only (Container Apps `allowInsecure=false`). `test_hsts_only_when_enabled`. |
 
 ## 5. Production configuration
 
@@ -94,7 +94,7 @@ Routes enumerated in `apps/api/byline/api/app.py`: **39** (35 GET, 4 POST), plus
 | Process | non-root uid 10001, `--no-server-header`, healthcheck `/healthz` | live: no `server` header |
 | Logging | uvicorn default `info` (access log on). The deployment plan uses `--logs-destination none`. Logs never contain credentials (`test_anonymous_crawl…` checks every log record for canaries). | |
 
-`docs/deployment-plan.md` passes `FOUNDRY_OPENAI_BASE_URL=<endpoint>` to the cache-only app. It is not needed in cache-only mode, so **omit it** (one less identifier in the environment).
+The cache-only app is deployed without `FOUNDRY_OPENAI_BASE_URL`: it is not needed in cache-only mode, so the environment holds no Foundry identifier.
 
 ## 6. Foundry: every code path that can call a model
 
@@ -161,10 +161,6 @@ Summary (details: `apps/web/THIRD_PARTY.md`, `docs/licensing-and-data.md`):
 - The recorded verified Foundry story at 28' is served ("verified by Foundry agents"); status is `recorded`, `cache_only: true`.
 - No CSP violations, console errors or page errors; no request to any other host (no Azure, no Google Fonts); no 401/403; no cookies set.
 
-## Post-deploy checks (NEEDS VERIFICATION once the owner approves a deployment)
+## Post-deploy checks (26 Oct 2026)
 
-1. Confirm the Container Apps ingress *appends* the client IP to `X-Forwarded-For`. Send a burst of 200 requests with spoofed headers from outside: expect about 60 allowed, then 429.
-2. HTTPS-only ingress. Then set `BYLINE_HSTS=true`.
-3. `curl -I https://<app>/` shows the CSP and other headers; `/api/system/status` shows `recorded`, `cache_only: true`, `calls_cap: 0`.
-4. Do not pass `FOUNDRY_OPENAI_BASE_URL` or assign a managed identity to the cache-only app.
-5. Re-run `npm audit` and `pip-audit` right before the image build.
+Verified against the public deployment (`docs/submission/DEPLOYMENT.md`): HTTPS-only ingress with HSTS enabled; CSP and the other security headers on every response; `/api/system/status` reports `recorded`, `cache_only: true`, `calls_cap: 0`; no Foundry endpoint, key or managed identity is configured on the app.

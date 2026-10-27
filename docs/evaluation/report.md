@@ -44,6 +44,6 @@ _Labels are authored motifs only. 'Unlabelled detections' meet the detector defi
 
 **TESTS:** full suite 110 passed, 1 deselected in 24.03s; agent orchestration (test mocks) 11 passed in 3.04s
 
-**UI / DEPLOY:** not measured by this script (see PROGRESS.md for screenshot and deployment checks).
+**UI / DEPLOY:** not measured by this script.
 
 **LIMITATIONS:** synthetic data only; labels are authored motifs; player-centre tracking cannot adjudicate marginal offside; agent quality measured on a small number of real runs.

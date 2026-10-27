@@ -71,7 +71,7 @@ flowchart LR
 - **Explain.** See the multi-agent workflow below; there is also a law-grounded "Why that decision?" explainer for official decisions.
 - **Render and personalise.** One verified claim is written for each audience (commentator, studio, fan), with an optional Spanish variant.
 
-Details: [architecture decisions](docs/architecture-decisions.md) · [API contract](docs/api-contract.md) · [evaluation](docs/evaluation/report.md) · [intelligence audit](docs/final-pass-report.md).
+Details: [architecture decisions](docs/architecture-decisions.md) · [API contract](docs/api-contract.md) · [evaluation](docs/evaluation/report.md).
 
 ## How BYLINE uses Microsoft Foundry and multi-agent AI
 

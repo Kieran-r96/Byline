@@ -63,11 +63,11 @@ Everything else is produced by code and labelled as such:
 
 Cache-only mode does not pretend to be live. The stamp says "Recorded" with the original run time, and every cached response carries `cache_hit: true` from the API (`/api/insights/{id}/trace`). The E2E test `demo path` in `apps/web/e2e/stories.spec.ts` asserts the "served from cache, no new model call" label on the real verified story.
 
-To see it: start the demo, choose **Commentator**, press **Jump to the first AI-verified story**, open **Show evidence**, then **Show how the AI reached this**. Screenshot: `docs/screenshots/p4-agent-run.png`.
+To see it: start the demo, choose **Commentator**, press **Jump to the first AI-verified story**, open **Show evidence**, then **Show how the AI reached this**.
 
 ## 5. Fresh inference
 
-None is planned without approval. The proposed budget for the Live Intelligence Engine V2 evaluation will be stated before any paid run (see `TASKS.md`).
+The public demo makes none: it is cache-only with a hard call cap of 0, and replays the recorded runs above.
 
 ## 6. Tactical moments (V4): one real verified run
 
