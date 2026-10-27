@@ -158,6 +158,7 @@ The current prototype demonstrates this approach using synthetic data and a simu
 ## Known limitations
 
 - Synthetic data only; a licensed live data feed would replace the simulator.
+- Events and 2 Hz player and ball tracking come from the simulator. BYLINE does not detect events from video and uses no computer vision.
 - The demo shows recorded Foundry runs, not live inference.
 - Studio programme output is simulated; there is no broadcast integration.
 - Tactical hypotheticals are geometric sketches from a frozen frame, not predictions.
